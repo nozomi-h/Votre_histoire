@@ -78,3 +78,5 @@ gem 'enum_help'
 
 gem 'rails-i18n'
 
+gem 'gretel'
+
