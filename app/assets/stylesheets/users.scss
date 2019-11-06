@@ -1,0 +1,63 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.shop_name{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.title{
+  text-align: center;
+  font-size: 20px;
+}
+
+.space{
+  margin-top: 40px;
+}
+
+.line_box{
+  width: 30%;
+	border-bottom: 1px solid #333333;
+  margin: 10px auto;
+}
+
+.line_box_long{
+  width: 100%;
+	border-bottom: 1px solid #333333;
+  margin: 10px auto;
+}
+
+.line_box_login{
+  width: 100%;
+	border-bottom: 1px solid #FFCCCC;
+  margin: 10px auto;
+}
+
+.field{
+  text-align: center;
+  margin: 20px auto;
+}
+
+.btn-primary {
+  background: ＃FFCCCC; //ボタンの背景色
+  color: ＃CCCCCC; //ボタンのテキストの色
+}
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary,
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus,
+.open > .dropdown-toggle.btn-primary.focus,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+    background: ＃FFCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: ＃CCCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+// .btn-primary.outline {
+//     border: 3px solid 好きな色; //アウトラインのみのボタンの線の色
+//     color: 好きな色; //アウトラインのみのボタンのテキストの色
+// }
