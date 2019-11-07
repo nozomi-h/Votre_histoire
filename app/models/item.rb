@@ -33,4 +33,14 @@ class Item < ApplicationRecord
     tax_include = self.price * 1.10
     return tax_include
   end
+
+  def self.search(search) #self.でクラスメソッドとしている
+    if search ## Controllerから渡されたパラメータが!= nilの場合は、nameカラムを部分一致検索
+      Item.where(['prodct_name LIKE ?', "%#{search}%"])
+      ## %はどんな文字でもokという意味 　## like=曖昧検索 %を含む事で初めて使える演算子  ## likeを=に変えて%を消す → 完全一致した物のみ
+    else
+      Item.all ## 全て表示。
+    end
+  end
+
 end
