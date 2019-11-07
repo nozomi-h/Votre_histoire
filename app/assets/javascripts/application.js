@@ -38,3 +38,5 @@ $(document).on('turbolinks:load', function() {
         "#user_building": "%6%7" // # 大口事務所の番地と名称が入力される
       }
   })
+}
+)
