@@ -17,3 +17,12 @@ ja:
         25: "25"
         26: "26"
         Free: "Free"
+    genre:
+      genre_name:
+        OUTER: "OUTER"
+        TOPS: "TOPS"
+        BOTTOMS: "BOTTOMS"
+        ONEPICE: "ONEPICE"
+        ACCESSORIES: "ACCESSORIES"
+        SHOES: "SHOES"
+

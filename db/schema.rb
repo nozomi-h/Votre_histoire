@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_115222) do
+ActiveRecord::Schema.define(version: 2019_11_08_135909) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -77,10 +77,12 @@ ActiveRecord::Schema.define(version: 2019_11_08_115222) do
   create_table "item_color_sizes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "color_id"
+    t.integer "size_id"
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "genre_name", null: false
     t.string "prodct_name", null: false
     t.string "image_id"
     t.string "material", null: false
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_115222) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genre_id"
   end
 
   create_table "order_items", force: :cascade do |t|

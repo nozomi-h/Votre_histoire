@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
 
+  belongs_to :genre
+
   has_many :arrivals
 
   has_many :carts, dependent: :destroy
@@ -7,7 +9,6 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :item_color_sizes, dependent: :destroy
 
-  validates :genre_name, presence: true
   validates :prodct_name, presence: true
   validates :price, presence: true
   validates :status, presence: true
@@ -15,11 +16,6 @@ class Item < ApplicationRecord
   attachment :image
 
   enum status: {available: 0, not_available: 1, sold_out: 2}
-
-    validates :prodct_name, presence: true
-    validates :price, presence: true
-    validates :status, presence: true
-
   acts_as_paranoid
 
   def favorited_by?(current_user)
