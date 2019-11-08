@@ -81,19 +81,16 @@
         <div class="field">
           <p>性別</p>
           <div class="field_box cp_sl01">
-            <select required>
-              <option value="" hidden>選択してください</option>
-              <option value="1">女</option>
-              <option value="2">男</option>
-            </select>
+            <%= f.select :sex, [["女"], ["男"]], :prompt => "選択してください"%>
           </div>
         </div>
 
 
         <div class="field">
           <p>生年月日</p>
-          <%= f.label :　 %>
-          <%= f.date_select :birth_day, autofocus: true, autocomplete: "birth_day", :size => "50*50" %>
+          <div class="field_box cp_sl01">
+            <%= f.date_select :birth_day, autofocus: true, autocomplete: "birth_day", :size => "50*50" %>
+          </div>
         </div>
 
 
