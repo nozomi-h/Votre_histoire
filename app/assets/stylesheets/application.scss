@@ -13,13 +13,15 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";  /*ここを追加*/
- @import "bootstrap"; 
 
- input.btn-primary{
-  background-color: pink;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+input.btn-primary{
+  background-color: pink; //ボタンの背景色
 }
 
+// hoverでカーソル置いた時の色を指定
 input.btn-primary:hover{
   background-color: gray;
 }
@@ -36,4 +38,9 @@ input.btn-primary:hover{
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
     background: ＃FFCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
     color: ＃CCCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-primary.outline {
+  border: 3px solid pink; //アウトラインのみのボタンの線の色
+  // color: ; //アウトラインのみのボタンのテキストの色
 }
