@@ -7,26 +7,28 @@
 
     <div class="col-xs-9">
       <div class="line_box_long"></div>
-      <div class="title">ADD PRODUCT</div>
+      <div class="title">NEW PRODUCT</div>
       <div class="line_box_long"></div>
 
       <%# image 登録 %>
 
       <%# product_name,product_material 登録 %>
-      <%= form_for(@item) do |f| %>
+      <%= form_with url:items_path do |f| %>
 				<h5>Product name</h5>
 				<%= f.text_field :prodct_name, class: "col-xs-12" %>
+        <h5>Genre</h5>
+        <%= f.select :genre_name, [["OUTER"], ["TOPS"], ["BOTTOMS"], ["ONEPICE"], ["SHOES"], ["ACCESSORIES"], ["SHOES"]], :prompt => "選択してください" %>
 				<h5>Product material</h5>
 				<%= f.text_area :material, class: "col-xs-12"%>
 
       <%# size,color 登録 %>
         <div class="field_1">
-          <%= f.label :color %>
-          <%= f.select :colors, [["S"], ["M"]],  :prompt => "選択してください" %>
+          <%= f.label :size %>
+          <%= f.select :sizes, [["S"], ["M"], ["24"], ["25"], ["26"], ["Free"]], :prompt => "選択してください" %>
         </div>
         <div class="field_1">
-          <%= f.label :size %>
-          <%= f.select :sizes, [["white"], ["block"], ["beige"], ["pink"], ["brown"], ["gray"]],  :prompt => "選択してください" %>
+          <%= f.label :color %>
+          <%= f.select :colors, [["white"], ["block"], ["beige"], ["pink"], ["brown"], ["gray"]], :prompt => "選択してください" %>
         </div>
 
         <div class = "create">

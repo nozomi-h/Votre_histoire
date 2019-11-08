@@ -13,7 +13,8 @@ class Item < ApplicationRecord
   validates :status, presence: true
 
   attachment :image
-    enum status: {available: 0, not_available: 1, sold_out: 2}
+
+  enum status: {available: 0, not_available: 1, sold_out: 2}
 
     validates :prodct_name, presence: true
     validates :price, presence: true

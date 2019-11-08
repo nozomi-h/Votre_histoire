@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_223530) do
+ActiveRecord::Schema.define(version: 2019_11_08_115222) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -58,11 +58,18 @@ ActiveRecord::Schema.define(version: 2019_11_07_223530) do
   create_table "colors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "color", default: 0, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.integer "genre_name", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,6 +111,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_223530) do
   create_table "sizes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
