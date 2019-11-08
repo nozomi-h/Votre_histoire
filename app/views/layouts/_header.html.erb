@@ -8,7 +8,9 @@
     <%# [:search]に入ったwordを探す %>
     <%= text_field_tag :search, params[:search] %>
     <%# 検索ボタン %>
-    <%= submit_tag "Search" %>
+    <%= button_tag :type => "submit", :class =>"btn" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
   </p>
   <% end %>
 
