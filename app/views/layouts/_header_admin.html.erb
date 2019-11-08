@@ -4,10 +4,14 @@
   <%# httpのget method %>
   <%= form_tag root_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search] %> <%# [:search]に入ったwordを探す %>
-    <%= submit_tag "Search" %> <%# 検索ボタン %>
+    <%# [:search]に入ったwordを探す %>
+    <%= text_field_tag :search, params[:search] %>
+    <%# 検索 %>
+    <%= button_tag :type => "submit", :class =>"btn" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
   </p>
   <% end %>
 
-  
+
 </div>
