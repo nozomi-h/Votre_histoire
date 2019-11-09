@@ -11,16 +11,20 @@
       <div class="title">NEW PRODUCT</div>
       <div class="line_box_long"></div>
 
-      <%= form_with url:admin_items_path do |f| %>
+      <%= form_with model:@item, url:admin_items_path do |f| %>
+
+        <div class="sell-content">
         <%# image 登録 %>
-        <%#h5>Image</%#h5>
-        <%#= f.attachment_field :image %>
+          <h5>Image</h5>
+          <%= f.attachment_field :image %>
+        </div>
+
         <div class="sell-content clearfix">
           <%# product_name,genre 登録 %>
           <h5>Product name</h5>
           <%= f.text_field :prodct_name, class: "col-xs-12" %>
           <h5>Product material</h5>
-          <%= f.text_area :material, class: "col-xs-12"%>
+          <%= f.text_area :material, class: "col-xs-12" %>
         </div>
 
         <div class="sell-content clearfix">
