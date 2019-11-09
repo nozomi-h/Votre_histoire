@@ -1,0 +1,15 @@
+
+<div class="">
+  <h2 class="prodct_name">Votre histoire</h2>
+
+  <%# httpのget method %>
+  <%= form_tag root_path, :method => 'get' do %>
+    <%# [:search]に入ったwordを探す %>
+    <%= text_field_tag :search, params[:search] %>
+    <%# 検索 %>
+    <%= button_tag :type => "submit", :class =>"btn" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  <% end %>
+
+</div>

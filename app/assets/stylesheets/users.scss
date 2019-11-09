@@ -16,6 +16,10 @@
   margin-top: 40px;
 }
 
+.space_box{
+  margin-top: 100px;
+}
+
 .line_box{
   width: 30%;
 	border-bottom: 1px solid #333333;
@@ -25,7 +29,7 @@
 .line_box_long{
   width: 100%;
 	border-bottom: 1px solid #333333;
-  margin: 10px auto;
+  margin: 15px auto;
 }
 
 .line_box_login{
@@ -39,25 +43,57 @@
   margin: 20px auto;
 }
 
-.btn-primary {
-  background: ＃FFCCCC; //ボタンの背景色
-  color: ＃CCCCCC; //ボタンのテキストの色
-}
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
-.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
-.open > .dropdown-toggle.btn-primary,
-.open > .dropdown-toggle.btn-primary:hover,
-.open > .dropdown-toggle.btn-primary:focus,
-.open > .dropdown-toggle.btn-primary.focus,
-.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
-    background: ＃FFCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-    color: ＃CCCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+.field_1{
+  text-align: left;
 }
 
-// .btn-primary.outline {
-//     border: 3px solid 好きな色; //アウトラインのみのボタンの線の色
-//     color: 好きな色; //アウトラインのみのボタンのテキストの色
-// }
+.user_item{
+  text-align: left;
+}
+
+.field_box {
+	overflow: hidden;
+	width: 90%;
+	margin: 2em auto;
+	text-align: center;
+}
+.field_box select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.field_box select::-ms-expand {
+  display: none;
+}
+.field_box.cp_sl01 {
+	position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
+}
+.field_box.cp_sl01::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+.field_box.cp_sl01 select {
+	padding: 8px 38px 8px 8px;
+	color: #666666;
+}

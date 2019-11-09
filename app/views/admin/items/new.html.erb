@@ -1,0 +1,78 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">NEW PRODUCT</div>
+      <div class="line_box_long"></div>
+
+      <%= form_with url:admin_items_path do |f| %>
+        <%# image 登録 %>
+        <%#h5>Image</%#h5>
+        <%#= f.attachment_field :image %>
+        <div class="sell-content clearfix">
+          <%# product_name,genre 登録 %>
+          <h5>Product name</h5>
+          <%= f.text_field :prodct_name, class: "col-xs-12" %>
+          <h5>Product material</h5>
+          <%= f.text_area :material, class: "col-xs-12"%>
+        </div>
+
+        <div class="sell-content clearfix">
+          <div class="sell-sub-head">
+            Product Details
+          </div>
+
+          <div class="sell-form-box">
+            <h5>Genre</h5><%# genre 登録 %>
+            <div class="field_box cp_sl01">
+              <%= f.select :genre_name, [["OUTER",0], ["TOPS",1], ["BOTTOMS",2], ["ONEPICE",3], ["ACCESSORIES",4], ["SHOES",5]], :prompt => "---" %>
+            </div>
+            <%# collection_select=渡された配列を並べるセレクト　genre_id,Genre.allはジャンル全件の名前を並べてidがitemに渡るようにしている %>
+            <%#=f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %>
+
+            <h5>Color</h5><%# color 登録 %>
+            <div class="field_box cp_sl01">
+              <div class="select">
+                <%= f.select :colors, [["white",0], ["block",1], ["beige",2], ["pink",3], ["brown",4], ["gray",5]], :prompt => "---" %>
+              </div>
+            </div>
+
+            <h5>Size</h5><%# size 登録 %>
+            <div class="field_box cp_sl01">
+              <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sell-content clearfix">
+          <div class="sell-sub-head">
+            Selling Price
+          </div>
+
+          <div class="sell-form-box">
+            <div class="field_1">
+              <h5>Price</h5><%# priceの設定 %>
+              <%= f.number_field :price %>円
+            </div>
+          </div>
+        </div>
+
+        <div class="sell-content">
+          <div class = "create">
+            <%= f.submit 'POST', class: "btn btn-primary col-xs-6 col-xs-offset-3" %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
