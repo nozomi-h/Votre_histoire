@@ -1,0 +1,31 @@
+
+<table class="tableindex table-condensed">
+  <tr>
+    <th>Product name</th>
+    <th>Product material</th>
+    <th>Genre</th>
+    <th>Color</th>
+    <th>Size</th>
+    <th>Stock</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+
+  <% @items.each do |item| %>
+    <tr>
+      <%= link_to admin_item_path(item.id) do %>
+        <td><%= link_to "#{item.prodct_name}", admin_item_path(item.id) %></td>
+        <td><%= link_to "#{item.material}", admin_item_path(item.id) %></td>
+      <% end %>
+        <td><%= item.genre.genre_name %></td>
+        <td><%= item.color.color %></td>
+        <td><%= item.size.size %></td>
+        <td><%= (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
+        <td><%= item.status_i18n %></td>
+        <td>
+          <%= link_to "編集", edit_admin_item_path(item.id), class: "btn btn-sm btn-success" %>
+          <%= link_to "在庫追加", new_admin_item_stock_path(item.id), class: "btn btn-sm btn-primary" %>
+        </td>
+    </tr>
+  <% end %>
+</table>
