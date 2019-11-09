@@ -1,0 +1,28 @@
+
+ja:
+  enums:
+    color:
+      color:
+        white: "white"
+        black: "black"
+        beige: "beige"
+        pink: "pink"
+        brown: "brown"
+        gray: "gray"
+    size:
+      size:
+        S: "S"
+        M: "M"
+        24: "24"
+        25: "25"
+        26: "26"
+        Free: "Free"
+    genre:
+      genre_name:
+        OUTER: "OUTER"
+        TOPS: "TOPS"
+        BOTTOMS: "BOTTOMS"
+        ONEPICE: "ONEPICE"
+        ACCESSORIES: "ACCESSORIES"
+        SHOES: "SHOES"
+

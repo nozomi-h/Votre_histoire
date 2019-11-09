@@ -1,21 +1,17 @@
+<div class="">
+  <h2 class="prodct_name">Votre histoire</h2>
 
-<div class="sidebar">
-  <div class="col-xs-8 col-xs-offset-2">
-  <header>
-    <h2 class="prodct_name">Votre histoire</h2>
-  </header>
-
-  <nav>
   <%# httpのget method %>
   <%= form_tag root_path, :method => 'get' do %>
+  <p>
     <%# [:search]に入ったwordを探す %>
     <%= text_field_tag :search, params[:search] %>
     <%# 検索 %>
     <%= button_tag :type => "submit", :class =>"btn" do %>
       <i class="fas fa-search"></i>
     <% end %>
+  </p>
   <% end %>
 
-  </nav>
-  </div>
+
 </div>
