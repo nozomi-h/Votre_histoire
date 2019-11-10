@@ -32,7 +32,7 @@
   margin: 15px auto;
 }
 
-.line_box_login{
+.line_box_pink{
   width: 100%;
 	border-bottom: 1px solid #FFCCCC;
   margin: 10px auto;
@@ -96,4 +96,19 @@
 .field_box.cp_sl01 select {
 	padding: 8px 38px 8px 8px;
 	color: #666666;
+}
+
+.user-name{
+	background-color: #000;
+	width: 100%;
+	height: 40px;
+}
+
+.user-edit{
+	padding: 20px;
+}
+
+.unsubscribe{
+	padding: 40px;
+	text-align: right;
 }
