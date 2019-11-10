@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";  /*ここを追加*/
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 html*{
@@ -47,7 +47,7 @@ footer address{
 }
 
 .btn-primary{
-  background-color: pink; //ボタンの色
+  background-color: pink; /* ボタンの色 */
 }
 
 // .btn-primary:hover{
@@ -64,11 +64,20 @@ footer address{
 .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
 .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
-    background: pink; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    background: pink; /* ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色 */
+    color: black; /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
 }
 
 // .btn-primary.outline {
 //   border: 3px solid pink; //アウトラインのみのボタンの線の色
 //   color: white; //アウトラインのみのボタンのテキストの色
 // }
+
+header {
+  position: relative; /* #socialの基準位置を相対位置へ変更する */
+}
+.social {
+  position: absolute; /* .headerの左上を基準に絶対位置で指定する */
+  top: 22px; /* .headerの左上から22px下側へ移動する */
+  right: 22px; /* .headerの右上から22px左側へ移動する */
+}
