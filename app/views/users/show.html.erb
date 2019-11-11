@@ -47,7 +47,7 @@
         <tr>
           <td></td>
           <td><%= order.order_items.first.with_deleted_item.title %>
-          <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...</td>
+          <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...<% end %></td>
           <td><%= order.purchase_price %></td>
           <td><%= order.payment %></td>
           <td><%= order.status_i18n %></td>
