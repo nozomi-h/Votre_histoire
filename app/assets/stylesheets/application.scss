@@ -21,11 +21,10 @@ html*{
 }
 
 body{
-  marigin: 0;
+  margin: 0;
 }
 
 // フッター
-footer{}
 .footer-container{
   overflow: hidden;
   padding: 20px;
@@ -73,11 +72,6 @@ footer address{
 //   color: white; //アウトラインのみのボタンのテキストの色
 // }
 
-header {
-  position: relative; /* #socialの基準位置を相対位置へ変更する */
-}
-.social {
-  position: absolute; /* .headerの左上を基準に絶対位置で指定する */
-  top: 22px; /* .headerの左上から22px下側へ移動する */
-  right: 22px; /* .headerの右上から22px左側へ移動する */
-}
+// header {
+//   position: relative; /* #socialの基準位置を相対位置へ変更する */
+// }

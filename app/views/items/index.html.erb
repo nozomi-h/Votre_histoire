@@ -6,11 +6,10 @@
 <div class="col-xs-9">
   <div class="maincontents">
 
-    <div class="top-image">
-      <img src="images/top-img.jpg" alt="">
-    </div>
+    <%= image_tag('top-image.jpg', class: 'top-image') %>
 
-    <video src="top-video.mp4" autoplay></video>
+    <%#= video_tag('top-video.mp4', autoplay: true) %>
+
 
     <div class="news">
       <div class="tab-pane" id="weekly_rank">
