@@ -22,14 +22,18 @@ html*{
 
 body{
   margin: 0;
+}
 
 input.btn-primary{
   background-color: pink; //ボタンの背景色
 }
 
-// hoverでカーソル置いた時の色を指定
-input.btn-primary:hover{
-  background-color: gray;
+html*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
 }
 
 // フッター
@@ -74,4 +78,8 @@ footer address{
     background: pink; /* ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色 */
     color: black; /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
 }
+
+.btn-primary.outline {
+  border: 3px solid pink; //アウトラインのみのボタンの線の色
+  // color: ; //アウトラインのみのボタンのテキストの色
 }
