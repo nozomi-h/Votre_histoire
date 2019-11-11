@@ -21,10 +21,42 @@ input.btn-primary{
   background-color: pink; //ボタンの背景色
 }
 
-// hoverでカーソル置いた時の色を指定
-input.btn-primary:hover{
-  background-color: gray;
+html*{
+  box-sizing: border-box;
 }
+
+body{
+  margin: 0;
+}
+
+// フッター
+.footer-container{
+  overflow: hidden;
+  padding: 20px;
+  background: #000000;
+}
+
+.copyright{
+  float: left;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+footer address{
+  float: right;
+  font-style: normal;
+  font-size: 1.0rem;
+  color: #ffffff;
+}
+
+.btn-primary{
+  background-color: pink; /* ボタンの色 */
+}
+
+// .btn-primary:hover{
+//   background-color: gray;
+// }
 
 .btn-primary:hover, .btn-primary:focus,
 .btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
@@ -36,8 +68,8 @@ input.btn-primary:hover{
 .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
 .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
-    background: ＃FFCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-    color: ＃CCCCCC; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    background: pink; /* ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色 */
+    color: black; /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
 }
 
 .btn-primary.outline {

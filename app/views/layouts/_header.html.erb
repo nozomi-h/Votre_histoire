@@ -1,0 +1,35 @@
+
+<div class="sidebar">
+  <div class="col-xs-9 col-xs-offset-3">
+    <header>
+      <h2 class="prodct_name">Votre histoire</h2>
+    </header>
+
+    <nav>
+    <%# httpのget method %>
+    <%= form_tag root_path, :method => 'get' do %>
+      <%# [:search]に入ったwordを探す %>
+      <%= text_field_tag :search, params[:search] %>
+      <%# 検索 %>
+      <%= button_tag :type => "submit", :class =>"btn" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+
+    <div class="social">
+      <%# fa-lgは、アイコンの大きさ設定 1.333…倍 %>
+      <i class="fab fa-facebook-f fa-lg"></i>
+      <i class="fab fa-twitter fa-lg"></i>
+      <i class="fab fa-instagram fa-lg"></i>
+      <i class="fab fa-line fa-lg"></i>
+    </div>
+
+    <%# @genres.each do |genre| %>
+      <%#= link_to "OUTER", genre_path(genre.id) %>
+    <%# end %>
+
+    </nav>
+  </div>
+</div>

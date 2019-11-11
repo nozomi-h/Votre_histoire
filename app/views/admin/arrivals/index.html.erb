@@ -1,0 +1,47 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="line_box_long"></div>
+      <div class="title">ARRIVAL</div>
+      <div class="line_box_long"></div>
+
+      <table class="table_admin table-condensed width="100%"">
+        <tr>
+          <th>Product name</th>
+          <th>Date</th>
+          <th>Genre</th>
+          <th>Stock</th>
+          <th>Status</th>
+        </tr>
+
+        <% @arrivals.each do |arrival| %>
+          <tr>
+            <td width="30%">
+            <% if arrival.item != nil %> <%# != とは、等しくないという意味 %>
+              <%= link_to "#{arrival.item.prodct_name}", admin_arrivals_path(arrival.item_id) %>
+            <% else %>
+              <span>削除済み</span>
+            <% end %>
+            </td>
+
+            <td width="30%"><%= arrival.arrival_date %></td>
+
+            <td width="15%"><%= arrival.item.genre.genre_name %></td>
+
+            <td width="10%"><%= arrival.arrival_count %></td>
+
+            <td width="15%"><%= arrival.status_i18n %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <%# ページネーション追加 %>
+
+  </div>
+</div>
