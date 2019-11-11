@@ -13,8 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+input.btn-primary{
+  background-color: pink; //ボタンの背景色
+}
 
 html*{
   box-sizing: border-box;
@@ -67,11 +72,7 @@ footer address{
     color: black; /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
 }
 
-// .btn-primary.outline {
-//   border: 3px solid pink; //アウトラインのみのボタンの線の色
-//   color: white; //アウトラインのみのボタンのテキストの色
-// }
-
-// header {
-//   position: relative; /* #socialの基準位置を相対位置へ変更する */
-// }
+.btn-primary.outline {
+  border: 3px solid pink; //アウトラインのみのボタンの線の色
+  // color: ; //アウトラインのみのボタンのテキストの色
+}
