@@ -5,6 +5,7 @@ class Admin::ArrivalsController < ApplicationController
   end
 
   def index
+    @arrivals = Arrival.page(params[:id])
 
   end
 end

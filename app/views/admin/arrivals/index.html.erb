@@ -19,24 +19,25 @@
           <th>Status</th>
         </tr>
 
-<%# !!!!!! arrival tableにカラムを追加する !!!!!! %>
-        <tr>
-          <td width="30%">
-          <% if arrival.item != nil %>
-            <%= link_to "#{arrival.item.prodct_name}", admin_arrivals_path(arrival.item_id) %>
-          <% else %>
-            <span>削除済み</span>
-          <% end %>
-          </td>
+        <% @arrivals.each do |arrival| %>
+          <tr>
+            <td width="30%">
+            <% if arrival.item != nil %> <%# != とは、等しくないという意味 %>
+              <%= link_to "#{arrival.item.prodct_name}", admin_arrivals_path(arrival.item_id) %>
+            <% else %>
+              <span>削除済み</span>
+            <% end %>
+            </td>
 
-          <td width="30%"><%= arrival.arrival_date %></td>
+            <td width="30%"><%= arrival.arrival_date %></td>
 
-          <td width="15%"><%= arrival.genre %></td>
+            <td width="15%"><%= arrival.item.genre.genre_name %></td>
 
-          <td width="10%"><%= arrival.arrival_count %></td>
+            <td width="10%"><%= arrival.arrival_count %></td>
 
-          <td width="15%"><%= arrival.status_i18n %></td>
-        </tr>
+            <td width="15%"><%= arrival.status_i18n %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
 

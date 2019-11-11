@@ -2,8 +2,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    p "@@@@@"
-    p @items
+    @genre = Genre.all
 
   end
 
@@ -12,10 +11,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    p "@@@@@"
-    p params[:genre_name]
-    p items_params
-    # item = Item.new(
     #   prodct_name:params[:prodct_name], ## paramsからprodct_nameを取得
     #   material:params[:material], ## paramsからmaterialを取得
     #   price:params[:price], ## paramsからpricrを取得
