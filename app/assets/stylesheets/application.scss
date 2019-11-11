@@ -13,9 +13,16 @@
  *= require_tree .
  *= require_self
  */
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
 
 input.btn-primary{
   background-color: pink; //ボタンの背景色
