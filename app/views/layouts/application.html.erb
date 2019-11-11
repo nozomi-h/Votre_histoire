@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VotreHistoire</title>
+    <title>Votre histoire</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -13,9 +12,21 @@
   </head>
 
   <body>
-  <div class="container">
+    <%# パンくずリスト %>
+    <div class="container">
     <p><%= breadcrumbs separator: "&rsaquo;"%></p>
+    </div>
     <%= yield %>
-  </div>
+
+    <%# フッター %>
+    <footer>
+      <div class="footer-container">
+        <p class="copyright">@VotreHitoire</p>
+        <address>Votre histoire<br>
+        東京都渋谷区神南<br>
+        03-0000-0000</address>
+      </div>
+    </footer>
+
   </body>
 </html>
