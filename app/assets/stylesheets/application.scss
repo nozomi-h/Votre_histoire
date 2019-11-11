@@ -22,6 +22,14 @@ html*{
 
 body{
   margin: 0;
+
+input.btn-primary{
+  background-color: pink; //ボタンの背景色
+}
+
+// hoverでカーソル置いた時の色を指定
+input.btn-primary:hover{
+  background-color: gray;
 }
 
 // フッター
@@ -67,6 +75,7 @@ footer address{
     color: black; /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
 }
 
+<<<<<<< HEAD
 // .btn-primary.outline {
 //   border: 3px solid pink; //アウトラインのみのボタンの線の色
 //   color: white; //アウトラインのみのボタンのテキストの色
@@ -75,3 +84,9 @@ footer address{
 // header {
 //   position: relative; /* #socialの基準位置を相対位置へ変更する */
 // }
+=======
+.btn-primary.outline {
+  border: 3px solid pink; //アウトラインのみのボタンの線の色
+  // color: ; //アウトラインのみのボタンのテキストの色
+}
+>>>>>>> devise
