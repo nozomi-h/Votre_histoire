@@ -29,7 +29,39 @@
     <div class="space">購入履歴</div>
 
     <%# --購入履歴をここに記述-- %>
+    <% @orders.each do |order| %>
+      <table class="table-date table-condensed">
+        <tr>
+          <th>▼<%= order.created_at.strftime('%Y/%m/%d') %>ご注文
+          <%= link_to '(詳細へ)', order_path(order.id) %></th>
+        </tr>
+      </table>
+      <table class="table-content table-condensed">
+        <tr>
+          <th>ご注文番号</th>
+          <th>ご注文内容</th>
+          <th>ご注文金額合計</th>
+          <th>お支払方法</th>
+          <th>配送状況</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= order.order_items.first.with_deleted_item.title %>
+          <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...</td>
+          <td><%= order.purchase_price %></td>
+          <td><%= order.payment %></td>
+          <td><%= order.status_i18n %></td>
+        </tr>
+      </table>
+    <% end %>
+
+      <%# != とは、等しくない という意味 %>
+
+    <div class="user-edit">
+      <%= link_to '購入履歴一覧へ', orders_path(@user_id), class:'btn btn-default' %>
+    </div>
   </div>
+
 
   <div class="sell-content">
     <div class="space">お客様情報</div>
@@ -64,6 +96,7 @@
       <%= link_to "変更する", edit_user_path(@user.id), class:'btn btn-default' %>
       <%= link_to "住所一覧へ", user_addresses_path(@user.id), class:'btn btn-default' %>
     </div>
+
     <div class="unsubscribe">
       <%= link_to "退会する", user_path(@user.id), method: :delete, "data-confirm" => "退会すると【お客様の情報が全て失われてしまいます】がよろしいですか？" %>
     </div>

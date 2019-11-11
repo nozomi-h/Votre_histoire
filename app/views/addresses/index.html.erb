@@ -8,8 +8,9 @@
   <div class="title">登録住所一覧</div>
   <div class="line_box_long"></div>
 
-  <table class="table-content table-condensed">
-    <% @addresses.each do |address| %>
+  <%# --登録住所をここに記述-- %>
+  <% @addresses.each do |address| %>
+    <table class="table-content table-condensed">
       <tr>
         <th>配送先氏名</th>
         <th>配送先住所</th>
@@ -20,7 +21,8 @@
         <%= link_to '変更', edit_user_address_path(address.user.id, address.id) %>&nbsp;｜&nbsp;
         <%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tr>
-  </table>
+    </table>
+  <% end %>
 </div>
 
 <%# &nbsp; ＝通常の半角スペースと同じサイズの空白 %>
