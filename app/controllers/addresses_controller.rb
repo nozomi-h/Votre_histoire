@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :destroy, :update]
 
   def index
-
+    @address = Addresses.all
   end
 
   def show
