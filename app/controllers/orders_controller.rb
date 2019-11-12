@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :create, :edit, :update, :complete]
 
   def index
-    ## @user =
+    @user = current_user
     @orders = current_user.orders
   end
 

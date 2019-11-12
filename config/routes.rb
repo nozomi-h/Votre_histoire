@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-  get '' => 'admins#top'
+    get '' => 'admins#top'
+
+    resources :genres, only: [:show]
 
     resources :users, only: [:index, :show, :update, :destroy] do
       get :orders, on: :member
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'items#index'
+
   resources :items, only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
   end
@@ -43,10 +46,13 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:index, :new, :create]
 
+  resources :genres, only: [:show]
+
   resources :addresses, except: [:show]
 
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :carts, only: [:index, :new]
     ## favoritesはitemsのところでネストさせていて誰のどのitemかというのがわかっているからここにはネストさせなくても良い
+  end
 end

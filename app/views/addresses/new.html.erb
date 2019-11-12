@@ -58,7 +58,7 @@
       </div>
 
       <div class="actions">
-        <%= link_to "戻る", address_path(@current_user.id), :class => 'btn btn-default' %>
+        <%= link_to "戻る", address_path(current_user.id), :class => 'btn btn-default' %>
         <%= f.submit "登録する", :class => "btn btn-default" %>
       </div>
       <% end %>
