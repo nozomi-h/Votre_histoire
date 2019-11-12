@@ -3,7 +3,8 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :destroy, :update]
 
   def index
-    @address = Addresses.all
+    @addresses = Address.all
+
   end
 
   def show
@@ -11,6 +12,8 @@ class AddressesController < ApplicationController
   end
 
   def new
+    @address = Address.new(user_id: params[:user_id])
+    @user = current_user.id
 
   end
 
