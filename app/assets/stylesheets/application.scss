@@ -28,14 +28,6 @@ input.btn-primary{
   background-color: pink; //ボタンの背景色
 }
 
-html*{
-  box-sizing: border-box;
-}
-
-body{
-  margin: 0;
-}
-
 // フッター
 .footer-container{
   overflow: hidden;
@@ -82,4 +74,14 @@ footer address{
 .btn-primary.outline {
   border: 3px solid pink; //アウトラインのみのボタンの線の色
   // color: ; //アウトラインのみのボタンのテキストの色
+}
+
+.header_menu{
+  font-family: 'Times New Roman';
+}
+
+.shop_name_sideber{
+  text-align: left;
+	margin: 30px 0 10px 10px;
+  font-family: 'Times New Roman';
 }

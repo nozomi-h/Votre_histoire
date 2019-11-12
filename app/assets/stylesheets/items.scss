@@ -2,6 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.top_title{
+.table-date td{
+  background-color: #dcdcdc;
+}
+
+.table-content th{
+  background: #efefef;
+  font-weight: normal;
+  white-space: nowrap;
   text-align: center;
+}
+
+.sell-content{
+  padding: 70px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.sell-sub-head{
+  float: left;
+  color: #888;
+}
+
+.sell-form-box{
+  float: right;
+}
+
+.create{
+  padding: 20px auto;
+}
+
+.top-image{
+  width: 100%;
+  margin-top: 40px;
+}
+
+.news{
+  padding: 40px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0 260px;
+  text-align: left;
+  line-height: 30px;
+}
+
+.top-image{
+  width: 100%;
+}
+
+.main-contents{
+  margin: 10px auto;
 }
