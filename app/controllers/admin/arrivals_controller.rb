@@ -6,6 +6,5 @@ class Admin::ArrivalsController < ApplicationController
 
   def index
     @arrivals = Arrival.page(params[:id])
-
   end
 end

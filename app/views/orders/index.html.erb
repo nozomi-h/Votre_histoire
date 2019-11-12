@@ -30,7 +30,7 @@
           <th>配送状況</th>
         </tr>
         <tr>
-          <td></td>
+          <td><%= order.order_number %></td>
           <td><%= order.order_items.with_deleted_item.prodct_name %>
           <td><%= order.purchase_price %></td>
           <td><%= order.payment %></td>
@@ -39,4 +39,6 @@
       </table>
     <% end %>
   </div>
+
+  <%# ページネーション %>
 </div>

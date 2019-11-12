@@ -19,7 +19,7 @@
   <table class="table-content table-condensed">
     <tr>
       <th>注文番号</th>
-      <td></td>
+      <td><%= order.order_number %></td>
     </tr>
     <tr>
       <th>注文日時</th>
@@ -57,7 +57,7 @@
     <% end %>
     <tr>
       <td colspan="3">送料</td>
-      <td>¥</td>
+      <td>¥<%= @order.postage %></td>
     </tr>
     <tr>
       <td colspan="3">合計</td>
@@ -83,7 +83,7 @@
     </tr>
     <tr>
       <th>住所</th>
-      <td><%= current_user.postal_code %><%= current_user.prefecture %><%= current_user.city_address %><%= current_user.building %></td>
+      <td><%= @order.address.postal_code %><%= @order.address.prefecture %><%= @order.address.city_address %><%= @order.address.building %></td>
     </tr>
     <tr>
       <th>連絡先電話番号</th>

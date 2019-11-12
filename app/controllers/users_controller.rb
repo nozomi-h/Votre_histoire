@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     ## limit(1)で1件表示
     @orders = @user.orders.limit(1)
     @favorites = @user.favorite_items.limit(5)
-
   end
 
   def edit
