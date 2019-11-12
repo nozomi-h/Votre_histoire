@@ -1,11 +1,28 @@
 class ApplicationController < ActionController::Base
 
+  ## 新規登録した時のリダイレクト先
+  def after_sign_up_path_for(resource)
+    user_path(resource)
+  end
+
+  ## ログインした時のリダイレクト先
   def after_sign_in_path_for(resource)
-		user_path(resource)
+    case resource
+    when :admin
+      admin_path
+    when :user
+    user_path(resource)
+    end
 	end
 
-	def after_sign_out_path_for(resource)
-		root_path
+  ## ログアウトした時のリダイレクト先
+  def after_sign_out_path_for(resource)
+    case resource
+    when :admin ## adminの場合
+      new_admin_sesstion_path ## adminのログインページへ
+    when :user ## userの場合
+      root_path ## トップページへ
+    end
 	end
 
 	protected

@@ -24,13 +24,15 @@ body{
   margin: 0;
 }
 
-input.btn-primary{
-  background-color: pink; //ボタンの背景色
+// フッター
+footer {
+  position: absolute; // absoluteは、絶対位置を指定する値
+  bottom: 0; // 下に固定
+  width: 100%;
 }
 
-// フッター
 .footer-container{
-  overflow: hidden;
+  overflow: hidden; //はみ出た部分が隠れる
   padding: 20px;
   background: #000000;
 }
@@ -49,8 +51,14 @@ footer address{
   color: #ffffff;
 }
 
+
+// ボタン
+input.btn-primary{
+  background-color: pink; //ボタンの背景色
+}
+
 .btn-primary{
-  background-color: pink; /* ボタンの色 */
+  background-color: pink; // ボタンの色
 }
 
 // .btn-primary:hover{
@@ -67,8 +75,8 @@ footer address{
 .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
 .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
-    background: pink; /* ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色 */
-    color: black; /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
+    background: pink; // ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: black; // ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
 }
 
 .btn-primary.outline {

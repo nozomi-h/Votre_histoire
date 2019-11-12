@@ -2,15 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  word-break: break-all; // 文の改行 言語に関係なく表示範囲に合わせて改行する
+  word-wrap: break-all; //文字の切れ目で自動改行
+}
+
 .table-date td{
   background-color: #dcdcdc;
 }
 
 .table-content th{
   background: #efefef;
-  font-weight: normal;
-  white-space: nowrap;
-  text-align: center;
+  font-weight: normal; // 文字の太さ
+  white-space: nowrap; // ソース中のホワイトスペース・改行の表示方法 nowrapはは両方とも無効とする
+  text-align: left;
+  width: 25%;
+  padding: 10px;
 }
 
 .sell-content{
@@ -54,4 +63,9 @@ ul {
 
 .main-contents{
   margin: 10px auto;
+}
+
+.top_title{
+  text-align: center;
+  font-family: 'Times New Roman'
 }

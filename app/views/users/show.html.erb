@@ -60,7 +60,7 @@
         <%# != とは、等しくない という意味 %>
 
         <div class="user-edit">
-          <%= link_to '購入履歴一覧へ', orders_path(@user_id), class:'btn btn-default col-xs-10 col-xs-offset-1' %>
+          <%= link_to '購入履歴一覧へ', orders_path(@user_id), class:'btn btn-default col-xs-12' %>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
 
       <%# --会員情報をここに記述-- %>
       <%# table-condensedは行間の狭いテーブルになる　小さいテーブル %>
-      <table class="table-content table-condensed">
+      <table class="table-content table-bordered">
         <tr><%# thの横にtdがくる形式のtableの書き方 %>
           <th>氏名</th>
           <td><%= @user.last_name %><%= @user.first_name %></td>
@@ -94,8 +94,8 @@
       </table>
 
       <div class="user-edit">
-        <%= link_to "変更する", edit_user_path(@user.id), class:'btn btn-default col-xs-5 col-xs-offset-1' %>
-        <%= link_to "住所一覧へ", addresses_path, class:'btn btn-default col-xs-5 col-xs-offset-1' %>
+        <%= link_to "変更する", edit_user_path(@user.id), class:'btn btn-default col-xs-5' %>
+        <%= link_to "住所一覧へ", addresses_path, class:'btn btn-default col-xs-5 col-xs-offset-2' %>
       </div>
 
       <div class="unsubscribe">
