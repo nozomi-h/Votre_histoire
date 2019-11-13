@@ -4,7 +4,7 @@
       <%= render 'layouts/header' %>
     </div>
 
-    <div class="col-xs-9 user_page">
+    <div class="col-xs-9">
 
       <%# --ユーザーの名前-- %>
       <div class="user-name">
@@ -19,6 +19,7 @@
         <div class="line_box_pink"></div>
 
         <div class="space">　お気に入り<div>
+        <div class="line_box_gray"></div>
 
         <%# --お気に入り情報をここに記述-- %>
         <% @favorites.each do |item| %>
@@ -33,6 +34,7 @@
 
       <div class="border">
         <div class="space">　購入履歴</div>
+        <div class="line_box_gray"></div>
 
         <%# --購入履歴をここに記述-- %>
         <table class="table-date table-bordered">

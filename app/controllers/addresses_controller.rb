@@ -4,7 +4,6 @@ class AddressesController < ApplicationController
 
   def index
     @addresses = Address.all
-
   end
 
   def show
@@ -14,12 +13,10 @@ class AddressesController < ApplicationController
   def new
     @address = Address.new(user_id: params[:user_id])
     @user = current_user.id
-
   end
 
   def edit
     @address = Address.find(params[:id])
-
   end
 
   def create
