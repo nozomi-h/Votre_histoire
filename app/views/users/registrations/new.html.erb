@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-8 col-xs-offset-2">
 
       <h5 class="space">SNSから登録する</h5>
       <div class="line_box_pink"></div>
@@ -19,64 +19,65 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <p>氏名<span class="required">必須</span></p>
-            <%= f.label :　姓　 %>
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :size => "30*30" %>
-            <%= f.label :　名　 %>
-            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", :size => "30*30" %>
+          <p>氏名　　　　　<span class="required">必須</span>
+              &ensp;&ensp;姓
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :size => "30*30" %>
+              &ensp;&ensp;名
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", :size => "30*30" %>
+          </p>
         </div>
 
         <div class="field">
-          <p>カナ<span class="required">必須</span></p>
-            <%= f.label :　セイ %>
-            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name", :size => "30*30" %>
-            <%= f.label :　メイ %>
-            <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name", :size => "30*30" %>
+          <p>カナ　　　　　<span class="required">必須</span>
+              セイ
+              <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name", :size => "30*30" %>
+              メイ
+              <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name", :size => "30*30" %>
+          </p>
         </div>
 
         <div class="field">
-          <p>メールアドレス<span class="required">必須</span></p>
-            <%= f.label :　 %>
+          <p>メールアドレス <span class="required">必須</span>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "70*70" %>
+          </p>
         </div>
 
         <div class="field">
-          <p>連絡先電話番号<span class="required">必須</span></p>
-            <%= f.label :　 %>
+          <p>連絡先電話番号 <span class="required">必須</span>
             <%= f.telephone_field :tel_number, autofocus: true, autocomplete: "tel_number", :size => "70*70" %>
+          </p>
         </div>
 
         <div class="field">
-          <p>郵便番号<span class="required">必須</span></p>
-            <%= f.label :　 %>
-            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", :size => "30*30" %>
-            <p>(半角英数) 例1000101  ※郵便番号がわからない場合は
-            <%=link_to "こちら", "https://www.post.japanpost.jp/smt-zipcode/" %>
-            </p>
+          <p>郵便番号　　　<span class="required">必須</span>
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", :size => "30*30" %><br>
+            <span class="postal_code">(半角英数) 例1000101  ※郵便番号がわからない場合は
+            <%=link_to "こちら", "https://www.post.japanpost.jp/smt-zipcode/" %></span>
+          </p>
         </div>
 
         <div class="field">
-          <p>都道府県<span class="required">必須</span></p>
-            <%= f.label :　 %>
+          <p>都道府県　　　 <span class="required">必須</span>
             <%= f.text_field :prefecture, autofocus: true, autocomplete: "prefecture", :size => "70*70" %>
+          </p>
         </div>
 
         <div class="field">
-          <p>市区町村・番地<span class="required">必須</span></p>
-            <%= f.label :　 %>
+          <p>市区町村・番地 <span class="required">必須</span>
             <%= f.text_field :city_address, autofocus: true, autocomplete: "city_address", :size => "70*70" %>
+          </p>
         </div>
 
         <div class="field">
-          <p>マンション名　等</p>
-            <%= f.label :　 %>
+          <p>マンション名　等　　
             <%= f.text_field :building, autofocus: true, autocomplete: "building", :size => "70*70" %>
+          </p>
         </div>
 
 
         <div class="field">
           <h5 class="space">その他情報</h5>
-          <div class="line_box_login"></div>
+          <div class="line_box_pink"></div>
         </div>
 
         <div class="field">
@@ -95,28 +96,28 @@
         </div>
 
 
-        <h5 class="space">パスワード</h5>
-        <div class="line_box_pink"></div>
 
         <div class="field">
           <h5 class="space">パスワード</h5>
-          <div class="line_box_login"></div>
+          <div class="line_box_pink"></div>
         </div>
 
         <div class="field">
-          <%= f.label :パスワード %><span class="required">必須</span>
-          <% if @minimum_password_length %>
-          <%#<em>(<%= @minimum_password_length %> <%#characters minimum)</em> %>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", :size => "70*70" %>
+          <p>パスワード　　　　<span class="required">必須</span>
+            <% if @minimum_password_length %>
+            <%#<em>(<%= @minimum_password_length %> <%#characters minimum)</em> %>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", :size => "50*50" %>
+          </p>
         </div>
 
         <div class="field">
-          <%= f.label :パスワード（確認） %><span class="required">必須</span><br>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "70*70" %>
+          <p>パスワード（確認）<span class="required">必須</span>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "50*50" %>
+          </p>
         </div>
 
-        <div class="actions">
+        <div class="user-edit">
           <%= f.submit "登録する", :class => "btn btn-primary col-xs-10 col-xs-offset-1 " %>
         </div>
       <% end %>

@@ -8,7 +8,9 @@
 
       <%# --ユーザーの名前-- %>
       <div class="user-name">
-        <%= @user.last_name %><%= @user.first_name %>
+        <p class="current-user">
+          <%= @user.last_name %><%= @user.first_name %>　様
+        </p>
       </div>
 
 
@@ -16,7 +18,7 @@
         <div class="space">お買い物情報</div>
         <div class="line_box_pink"></div>
 
-        <div class="space">お気に入り<div>
+        <div class="space">　お気に入り<div>
 
         <%# --お気に入り情報をここに記述-- %>
         <% @favorites.each do |item| %>
@@ -30,35 +32,37 @@
 
 
       <div class="sell-content">
-        <div class="space">購入履歴</div>
+        <div class="space">　購入履歴</div>
 
         <%# --購入履歴をここに記述-- %>
-        <% @orders.each do |order| %>
-          <table class="table-date table-bordered">
-            <tr>
-              <th>▼<%= order.created_at.strftime('%Y/%m/%d') %>ご注文
-              <%= link_to '(詳細へ)', order_path(order.id) %></th>
-            </tr>
-          </table>
-          <table class="table-content table-condensed">
-            <tr>
-              <th>ご注文番号</th>
-              <th>ご注文内容</th>
-              <th>ご注文金額合計</th>
-              <th>お支払方法</th>
-              <th>配送状況</th>
-            </tr>
-            <tr>
-              <td><%= order.order_number %></td>
-              <td><%= order.order_items.first.with_deleted_item.title %>
-              <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...<% end %></td>
-              <td><%= order.purchase_price %></td>
-              <td><%= order.payment %></td>
-              <td><%= order.status_i18n %></td>
-            </tr>
-          </table>
-        <% end %>
+        <table class="table-date table-bordered">
+          <tr>
+            <th>▼<%#= @order.created_at.strftime('%Y/%m/%d') %>
+                ご注文<%#= link_to '(詳細へ)', order_path(order.id) %>
+            </th>
+          </tr>
+        </table>
 
+        <table class="table-content table-bordered width="100%""">
+          <tr>
+            <th>ご注文番号</th>
+            <th>ご注文内容</th>
+            <th>ご注文金額合計</th>
+            <th>お支払方法</th>
+            <th>配送状況</th>
+          </tr>
+
+          <% @orders.each do |order| %>
+            <tr>
+              <td width="20%"><%= order.order_number %></td>
+              <td width="40%"><%= order.order_items.first.with_deleted_item.title %>
+              <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...<% end %></td>
+              <td width="20%"><%= order.purchase_price %></td>
+              <td width="10%"><%= order.payment %></td>
+              <td width="10%"><%= order.status_i18n %></td>
+            </tr>
+          <% end %>
+        </table>
         <%# != とは、等しくない という意味 %>
 
         <div class="user-edit">
@@ -71,7 +75,7 @@
       <div class="line_box_pink"></div>
 
       <%# --会員情報をここに記述-- %>
-      <%# table-condensedは行間の狭いテーブルになる　小さいテーブル %>
+      <%# table-borderedはボーダー（ラインの表示） %>
       <table class="table-content table-bordered">
         <tr><%# thの横にtdがくる形式のtableの書き方 %>
           <th>氏名</th>

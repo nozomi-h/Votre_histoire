@@ -26,8 +26,8 @@ body{
 
 // フッター
 footer {
-  position: absolute; // absoluteは、絶対位置を指定する値
-  bottom: 0; // 下に固定
+  //position: absolute; // absoluteは、絶対位置を指定する値
+  //bottom: 0; // 下に固定
   width: 100%;
 }
 
@@ -121,6 +121,3 @@ ol {
   padding: 20px;
 }
 
-.body-container{
-  min-height: 2000px;
-}

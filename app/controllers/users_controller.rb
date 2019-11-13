@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     ## limit(1)で1件表示
     @orders = @user.orders.limit(1)
     @favorites = @user.favorites.limit(5)
+    # @order = @user.order
+  end
+
+  def create
+    @user = User.new
   end
 
   def edit

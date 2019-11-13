@@ -79,3 +79,4 @@ gem 'rails-i18n'
 
 gem 'gretel'
 
+gem 'pry-byebug'

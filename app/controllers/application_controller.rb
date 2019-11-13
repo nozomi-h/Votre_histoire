@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   ## 新規登録した時のリダイレクト先
   def after_sign_up_path_for(resource)
@@ -8,9 +9,9 @@ class ApplicationController < ActionController::Base
   ## ログインした時のリダイレクト先
   def after_sign_in_path_for(resource)
     case resource
-    when Admin
+    when :admin
       admin_path
-    when User
+    when :user
     user_path(resource)
     end
 	end
@@ -18,16 +19,16 @@ class ApplicationController < ActionController::Base
   ## ログアウトした時のリダイレクト先
   def after_sign_out_path_for(resource)
     case resource
-    when Admin ## adminの場合
+    when :admin ## adminの場合
       new_admin_sesstion_path ## adminのログインページへ
-    when User ## userの場合
+    when :user ## userの場合
       root_path ## トップページへ
     end
 	end
 
 	protected
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name,:first_name,:last_kana_name,:first_kana_name,:email,:tel_number,:password])
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name,:first_name,:last_kana_name,:first_kana_name,:email,:tel_number,:prefecture,:city_address,:building,:password,:birth_day,:sex])
 		devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
 	end
 end
