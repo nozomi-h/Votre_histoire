@@ -8,13 +8,14 @@
 
       <div class="title">CART</div>
 
+      <div class="sell-content">
         <table class="table-date">
           <tr>
             <th>ご注文商品</th>
           </tr>
         </table>
 
-        <table class="table-bordered">
+        <table class="table-content table-bordered">
           <tr>
             <th>商品写真</th>
             <th>商品名</th>
@@ -44,12 +45,21 @@
             <td><%#= current_user.cart_sum.round(0) %>円　(税込)</td>
           </tr>
         </table>
+      </div>
 
+
+      <div class="sell-content">
         <table class="table-date">
           <tr>
             <th>お届け先</th>
           </tr>
         </table>
+      </div>
+
+
+      <div class="sell-content">
+      </div>
+
 
     </div>
   </div>

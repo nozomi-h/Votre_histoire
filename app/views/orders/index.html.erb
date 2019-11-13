@@ -6,7 +6,9 @@
 
   <%# --ユーザーの名前-- %>
   <div class="user-name">
-    <%= @user.last_name %><%= @user.first_name %>
+    <p class="current-user">
+      <%= @user.last_name %><%= @user.first_name %>　様
+    </p>
   </div>
 
   <div class="sell-content">
