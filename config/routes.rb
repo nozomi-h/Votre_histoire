@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     get :complete, on: :member
   end
 
-  resources :carts, only: [:index, :new, :create]
+  resources :carts, only: [:create, :destroy]
 
   resources :genres, only: [:show]
 
@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
-    resources :carts, only: [:index, :new]
+    resources :carts, only: [:index, :new, :update]
     ## favoritesはitemsのところでネストさせていて誰のどのitemかというのがわかっているからここにはネストさせなくても良い
   end
 end

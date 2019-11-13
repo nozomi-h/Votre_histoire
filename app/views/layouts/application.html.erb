@@ -14,12 +14,14 @@
   <body>
     <%# パンくずリスト %>
     <div class="container">
-    <p><%= breadcrumbs separator: "&rsaquo;"%></p>
+    <p><%#= breadcrumbs separator: "&rsaquo;"%></p>
     </div>
+    <div class="body-container">
     <%= yield %>
+    </div>
 
     <%# フッター %>
-    <footer>
+    <footer class="clearfix">
       <div class="footer-container">
         <p class="copyright">@VotreHitoire</p>
         <address>Votre histoire<br>

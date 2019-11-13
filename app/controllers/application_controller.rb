@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   ## ログインした時のリダイレクト先
   def after_sign_in_path_for(resource)
     case resource
-    when :admin
+    when Admin
       admin_path
-    when :user
+    when User
     user_path(resource)
     end
 	end
@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
   ## ログアウトした時のリダイレクト先
   def after_sign_out_path_for(resource)
     case resource
-    when :admin ## adminの場合
+    when Admin ## adminの場合
       new_admin_sesstion_path ## adminのログインページへ
-    when :user ## userの場合
+    when User ## userの場合
       root_path ## トップページへ
     end
 	end

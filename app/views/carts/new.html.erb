@@ -4,48 +4,52 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
-      <h2 class="prodct_name">Votre histoire</h2>
+      <h2 class="shop_name">Votre histoire</h2>
 
       <div class="title">CART</div>
 
-      <table class="table">
-        <tr>
-          <th>ご注文商品</th>
-        </tr>
-      </table>
+        <table class="table-date">
+          <tr>
+            <th>ご注文商品</th>
+          </tr>
+        </table>
 
-      <table class="table_1 table-condensed">
-        <tr>
-          <th>商品写真</th>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>削除</th>
-          <th>小計</th>
-        </tr>
+        <table class="table-bordered">
+          <tr>
+            <th>商品写真</th>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>削除</th>
+            <th>小計</th>
+          </tr>
 
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+          <% @carts.each do |cart, i| %>
+            <tr>
+              <td><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %></td>
+              <td><%= cart.item.prodct_name %></td>
+              <td><%= cart.item.price %>円</td>
+              <td><%= form_for(:number, url: user_cart_path(current_user.id,cart.id), method: :PATCH) do |f| %>
+                    <%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %>
+                  <% end %>
+              </td>
+              <td><%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
+              <% subtotal = cart.item.price * cart.amount %>
+              <td><%= subtotal.round(0) %>円</td>
+            </tr>
+          <% end %>
 
-        <tr>
-          <td colspan="3", style="text-align:right;">合計</td>
-          <td></td>
-        </tr>
+          <tr>
+            <td colspan="5", style="text-align:right;">合計</td>
+            <td><%#= current_user.cart_sum.round(0) %>円　(税込)</td>
+          </tr>
+        </table>
 
-      </table>
-
-      <table class="table">
-        <tr>
-          <th>お届け先</th>
-        </tr>
-      </table>
-
+        <table class="table-date">
+          <tr>
+            <th>お届け先</th>
+          </tr>
+        </table>
 
     </div>
   </div>
