@@ -1,0 +1,34 @@
+<div class="sticky">
+  <p>
+    <header>
+      <h2 class="shop_name_sideber">Votre histoire</h2>
+    </header>
+
+    <nav>
+      <%= form_tag root_path, :method => 'get' do %><%# httpのget method %>
+        <%= text_field_tag :search, params[:search] %><%# [:search]に入ったwordを探す %>
+          <%= button_tag :type => "submit", :class =>"btn" do %><%# 検索 %>
+            <i class="fas fa-search"></i>
+          <% end %>
+      <% end %>
+
+      <ol class="header_menu">
+        <a class="">
+          <li><%= link_to "OUTER", genre_path(0) %></li>
+          <li><%= link_to "TOPS", genre_path(1) %></li>
+          <li><%= link_to "BOTTOMS", genre_path(2) %></li>
+          <li><%= link_to "ONEPICE", genre_path(3) %></li>
+          <li><%= link_to "ACCESSORIES", genre_path(4) %></li>
+          <li><%= link_to "SHOES", genre_path(5) %></li>
+        </a>
+      </ol>
+
+      <ol class="header_menu">
+        <a class="">
+          <li><%= link_to "新規商品登録", new_admin_item_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path %></li>
+        </a>
+      </ol>
+    </nav>
+  </a>
+</div>

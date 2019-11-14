@@ -144,8 +144,8 @@
 	height: 0;
 	padding: 0;
 	content: '';
-	border-left: 6px solid transparent;
-	border-right: 6px solid transparent;
+	border-left: 6px solid transparent; //▼の作成
+	border-right: 6px solid transparent; //▼の作成
 	border-top: 6px solid #666666;
 	pointer-events: none; //要素がポインターイベントの対象になることはない
 }

@@ -26,15 +26,11 @@ body{
 
 // フッター
 footer {
-  //position: absolute; // absoluteは、絶対位置を指定する値
-  //bottom: 0; // 下に固定
   width: 100%;
-}
-
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
+  height: 120px;
+  text-align: center;
+  padding: 50px 0;
+  // background-color: #848282;
 }
 
 .footer-container{
@@ -119,5 +115,11 @@ ol {
   text-align: left;
   line-height: 30px;
   padding: 20px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 

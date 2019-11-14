@@ -20,7 +20,7 @@
         </tr>
       </table>
 
-      <table class="table-content table-bordered">
+      <table class="table-content-block table-bordered width="100%"">
         <tr>
           <th>商品写真</th>
           <th>商品名</th>
@@ -31,12 +31,12 @@
 
         <% @carts.each_with_index do |cart, i| %>
           <tr>
-            <td><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %> </td>
-            <td><%= cart.item.prodct_name %></td>
-            <td><%= cart.item.price %>円</td>
-            <td><%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %></td>
+            <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %> </td>
+            <td width="40%"><%= cart.item.prodct_name %></td>
+            <td width="15%"><%= cart.item.price %>円</td>
+            <td width="10%"><%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %></td>
             <% subtotal = cart.item.price * cart.amount %>
-            <td><%= subtotal.round(0) %></td>
+            <td width="15%"><%= subtotal.round(0) %></td>
           </tr>
         <% end %>
 
@@ -57,7 +57,6 @@
           <td></td>
         </tr>
       </table>
-
 
       <table class="table-date">
         <tr>

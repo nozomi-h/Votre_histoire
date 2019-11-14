@@ -11,6 +11,8 @@ table {
 
 .table-date th{
   background-color: #dcdcdc;
+  height: 25px;
+  font-weight: normal;
 }
 
 .table-content th{
@@ -19,6 +21,14 @@ table {
   white-space: nowrap; // ソース中のホワイトスペース・改行の表示方法 nowrapはは両方とも無効とする
   text-align: left;
   width: 20%;
+  padding: 10px;
+}
+
+.table-content-block th{
+  background: #efefef;
+  font-weight: normal; // 文字の太さ
+  white-space: nowrap; // ソース中のホワイトスペース・改行の表示方法 nowrapはは両方とも無効とする
+  text-align: center;
   padding: 10px;
 }
 

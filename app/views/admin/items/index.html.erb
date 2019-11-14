@@ -1,42 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
 
-<table class="table-date table-condensed">
-  <tr>
-    <th>Arrival</th>
-    <td></td>
-  </tr>
-</table>
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ITEM LIST</div>
+      <div class="line_box_long"></div>
 
-<table class="table-content table-condensed">
-  <tr>
-    <th>Product name</th>
-    <th>Product material</th>
-    <th>Genre</th>
-    <th>Color</th>
-    <th>Size</th>
-    <th>Stock</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
+      <table class="table-content-block table-bordered width="100%"">
+        <tr>
+          <th>Product name</th>
+          <th>Product material</th>
+          <th>Genre</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
 
-  <% @items.each do |item| %>
-  <tr>
-    <%= link_to admin_item_path(item.id) do %>
-      <td><%= link_to "#{item.prodct_name}", admin_item_path(item.id) %></td>
-      <td><%= link_to "#{item.material}", admin_item_path(item.id) %></td>
-    <% end %>
+        <% @items.each do |item| %>
+          <tr>
+            <%= link_to admin_item_path(item.id) do %>
+              <td width="30%"><%= link_to "#{item.prodct_name}", admin_item_path(item.id) %></td>
+              <td width="20%"><%= link_to "#{item.material}", admin_item_path(item.id) %></td>
+            <% end %>
 
-      <% item.item_color_sizes.each do | color | %>
-        <td><%= color.color %></td>
-      <% end %>
-      <% item.item_color_sizes.each do | size | %>
-        <td><%= size.size %></td>
-      <% end %>
-      <td><%= (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
-      <td><%= item.status_i18n %></td>
-      <td>
-        <%= link_to "edit", edit_admin_item_path(item.id), class: "btn btn-success" %>
-        <%= link_to "add", new_admin_item_stock_path(item.id), class: "btn btn-primary" %>
-      </td>
-  </tr>
-<% end %>
-</table>
+            <% item.item_color_sizes.each do | color | %>
+              <td width="10%"><%= color.color %></td>
+            <% end %>
+
+            <% item.item_color_sizes.each do | size | %>
+              <td width="10%"><%= size.size %></td>
+            <% end %>
+
+            <td width="10%"><%= (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
+
+            <td width="10%"><%= item.status_i18n %></td>
+
+            <td width0="10%">
+              <%= link_to "edit", edit_admin_item_path(item.id), class: "btn btn-success" %>
+              <%= link_to "add", new_admin_item_stock_path(item.id), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
