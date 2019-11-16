@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="box clearfix">
+        <div class="item_show_image">
+          <%= attachment_image_tag @item, :jacket_image, size: '300x300', fallback: 'no_image.jpg' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="box clearfix">
+        <div class="item_show_name">
+          <%= @item.prodct_name %>
+        </div>
+        <div class="item_show_price">
+          <%= @item.tax_include.round(0) %>円(税込)
+        </div>
+        <div class="item_show_favorite">
+          <div class="favorite-button-<%=@item.id %>">
+            <%= render 'favorites/favorite', item: @item %>
+          </div>
+        </div>
+        <div class="item_cart">
+          <%#= form_for @cart do |f| %>
+            <%# <%= f.number_field :amount, min: "1", max: "99", value: 1 %><%#span style="color: #fff;"> 個</%#span>
+            <%# <%= f.hidden_field :item_id, value: @item.id %>
+            <div class="item_size">
+              <%= @item_color_size.size %>
+            </div>
+            <div class="cart_presence">
+              <% if @item.status_before_type_cast == 0 %>
+                <%= button_tag type: "submit", class: "btn btn-primary" do %>
+                  <p>カートに入れる</p>
+                <% end %>
+              <% else %>
+                <%= button_tag type: "submit", disabled: true, class: "btn btn-primary", style: "background-color: pink; border-color: pink; padding-right: 10px;" do %>
+                  <p style="font-size: 16px; font-style: bold; padding-top: 10px; margin: 0 auto;">SOLD OUT</p>
+                <% end %>
+              <% end %>
+          <%# end %>
+        </div>
+        <div class="item_material">
+          <p>【 素材 】</p>
+          <div class="material_date">
+            <%= @item.material %>
+          </div>
+        </div>
+        <div class="size_table">
+          <% @items.each do |item| %>
+            <%= item.size(genre_name:genre) %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

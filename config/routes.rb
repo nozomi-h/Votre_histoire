@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
+    get :genre, on: :collection
   end
 
   ## exceptは ~を除く

@@ -30,6 +30,8 @@ footer {
   height: 120px;
   text-align: center;
   padding: 50px 0;
+  //position: absolute; // ←絶対位置
+  bottom: 0; // 下に固定
   // background-color: #848282;
 }
 
@@ -39,20 +41,21 @@ footer {
   background: #000000;
 }
 
-.copyright{
-  float: left;
+.footer-nav {
+  display: flex; //その直下の要素が並列になる
+  justify-content: space-around; //配置コンテナーの中で主軸方向に均等に配置
+  color: #ffffff;
+  font-family: 'Times New Roman';
+}
+
+.footer-nav ul{
   margin: 0;
-  font-size: 0.8rem;
+  padding: 0;
+  list-style: none;
+  font-size: 1.1rem;
   color: #ffffff;
+  font-family: 'Times New Roman';
 }
-
-footer address{
-  float: right;
-  font-style: normal;
-  font-size: 1.0rem;
-  color: #ffffff;
-}
-
 
 // ボタン
 input.btn-primary{
@@ -103,15 +106,17 @@ input.btn-primary{
 }
 
 // サイドバー固定の設定
-.sticky{
-  position: -webkit-sticky;
-  position: sticky;
-  top: 10px;
+.sticky {
+  position: fixed; // 要素の位置を固定する
+  //top: 0; // 基準の位置を画面の一番上に指定する
+  //left: 0; // 基準の位置を画面の一番左に指定する
+  margin: 0; // 要素の余白を０にする
+  //padding: 0 50px 50px 50px; // 要素内側の余白を指定する
 }
 
 // サイドバーメニュー
 ol {
-  list-style: none;
+  list-style: none; // ・をなくす
   text-align: left;
   line-height: 30px;
   padding: 20px;

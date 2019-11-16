@@ -1,7 +1,5 @@
 class Item < ApplicationRecord
 
-  belongs_to :genre
-
   has_many :arrivals
 
   has_many :carts, dependent: :destroy
@@ -16,6 +14,9 @@ class Item < ApplicationRecord
   attachment :image
 
   enum status: {available: 0, not_available: 1, sold_out: 2}
+  enum genre: {OUTER:0, TOPS:1, BOTTOMS:2, ONEPICE:3, ACCESSORIES:4, SHOES:5}
+  #enum size: {S:0, M:1, 24:2, 25:3, 26:4, Free:5}
+  #enum color: {}
   acts_as_paranoid
 
   def favorited_by?(current_user)

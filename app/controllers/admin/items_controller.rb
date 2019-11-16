@@ -23,16 +23,14 @@ class Admin::ItemsController < ApplicationController
       material:items_params[:material], ## paramsからmaterialを取得
       price:items_params[:price], ## paramsからpricrを取得
       status:1, ## 販売停止中
-      genre_id:Genre.where(genre_name:genre_params[:genre_name]).first.id ## genre tableからparamsのgenre_nameを使用して検索し、取得データの先頭のidを抽出する
+      genre:genre_params[:genre_name].to_i ## item tableからparamsのgenre_nameを使用して検索し、取得データの先頭のidを抽出する
     )
-
     item.save
     item_color_size = ItemColorSize.new(
       item_id:item.id,
       color_id:Color.where(color:item_color_sizes_params[:colors]).first.id,## color tableからparamsのcolorsを使用して検索し、取得データの先頭のidを抽出する
       size_id:Size.where(size:item_color_sizes_params[:sizes]).first.id ## size tableからparamsのsizesを使用して検索し、取得データの先頭のidを抽出する
     )
-
     item_color_size.save
     redirect_to admin_items_path
   end

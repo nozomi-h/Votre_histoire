@@ -1,6 +1,7 @@
 class Admin::ArrivalsController < ApplicationController
 
   def new
+    
 
   end
 

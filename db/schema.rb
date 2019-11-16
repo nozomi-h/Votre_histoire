@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_152052) do
+ActiveRecord::Schema.define(version: 2019_11_14_063417) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -71,12 +71,6 @@ ActiveRecord::Schema.define(version: 2019_11_11_152052) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.integer "genre_name", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "item_color_sizes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -94,7 +88,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_152052) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "genre_id"
+    t.integer "genre"
   end
 
   create_table "order_items", force: :cascade do |t|
