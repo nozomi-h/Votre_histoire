@@ -24,4 +24,9 @@ PER = 9 ## ページネーション
     @items = Item.where(genre:Item.genres[params[:genre_name]])
   end
 
+  private
+  def item_params
+    params.require(:item).permit(:prodct_name, :material, :image, :color, :size, colors_attributes: [:id, :color, :_destroy, sizes_attributes: [:id, :size, :_destroy]])
+  end
+
 end

@@ -84,3 +84,5 @@ gem 'pry-byebug'
 group :development do
   gem "letter_opener"
 end
+
+gem 'cocoon'

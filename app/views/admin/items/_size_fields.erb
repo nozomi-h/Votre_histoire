@@ -1,0 +1,24 @@
+<%# cocoon %>
+
+= simple_form_for(@item) do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@item.errors.count, "error")
+        prohibited this item from being saved:
+      %ul
+        - @item.errors.full_messages.each do |message|
+          %li= message
+  .js-item
+    .field
+      = f.input :name
+    .field
+      %h2 サイズ
+      = f._size_fields_for :items do |size|
+        = render 'size_fields', f: size
+        %br
+        %br
+    .field
+      = link_to_add_association 'ADD TO SIZE', f, :sizes
+  .actions
+    = f.submit '登録'

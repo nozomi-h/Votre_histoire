@@ -7,7 +7,9 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :item_color_sizes, dependent: :destroy
   has_many :colors, through: :item_color_sizes ## throughでitem_color_sizeを通してcolorsを取得する
-  has_many :sizes, through: :item_color_sizes
+  accepts_nested_attributes_for :colors, allow_destroy: true
+  has_many :sizes, through: :item_color_sizes ## throughでitem_color_sizeを通してsizesを取得する
+  accepts_nested_attributes_for :sizes, allow_destroy: true
 
   validates :prodct_name, presence: true
   validates :price, presence: true

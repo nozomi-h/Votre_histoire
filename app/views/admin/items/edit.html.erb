@@ -47,10 +47,16 @@
                 <%= f.select :colors, [["white",0], ["block",1], ["beige",2], ["pink",3], ["brown",4], ["gray",5]], :prompt => "---" %>
               </div>
             </div>
+            <div class="cocoon"><%# color 追加 %>
+              <%= link_to_add_association "ADD TO COLOR", f, :colors %>
+            </div>
 
             <h5>Size</h5><%# size 登録 %>
             <div class="field_box cp_sl01">
               <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
+            </div>
+            <div class="cocoon"><%# size 追加 %>
+              <%= link_to_add_association "ADD TO SIZE", f, :sizes %>
             </div>
 
           </div>
