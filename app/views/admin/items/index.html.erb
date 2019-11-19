@@ -25,25 +25,25 @@
         <% @items.each do |item| %>
           <tr>
             <%= link_to admin_item_path(item.id) do %>
-              <td width="30%"><%= link_to "#{item.prodct_name}", admin_item_path(item.id) %></td>
-              <td width="20%"><%= link_to "#{item.material}", admin_item_path(item.id) %></td>
+              <td width="20%"><%= link_to "#{item.prodct_name}", admin_item_path(item.id) %></td>
             <% end %>
 
-            <% item.item_color_sizes.each do | color | %>
-              <td width="10%"><%= color.color %></td>
-            <% end %>
+              <td width="25%"><%= item.material %></td>
 
-            <% item.item_color_sizes.each do | size | %>
-              <td width="10%"><%= size.size %></td>
-            <% end %>
+            <td width="10%"></td>
 
-            <td width="10%"><%= (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
+            <%# &colorでcolorのcolorをcollect（収集）している → color_modelの配列をcolorのcolorの配列にした %>
+            <td width="10%"><%= item.colors.distinct.collect(&:color).join(', ') %></td>
 
-            <td width="10%"><%= item.status_i18n %></td>
+            <td width="5%"><%= item.sizes.distinct.collect(&:size).join(', ') %></td>
 
-            <td width0="10%">
-              <%= link_to "edit", edit_admin_item_path(item.id), class: "btn btn-success" %>
-              <%= link_to "add", new_admin_item_stock_path(item.id), class: "btn btn-primary" %>
+            <td width="5%"><%= (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
+
+            <td width="15%"><%= item.status_i18n %></td>
+
+            <td width="10%">
+              <%= link_to "edit", edit_admin_item_path(item.id) %> |
+              <%= link_to "add", new_admin_item_arrival_path(item.id) %>
             </td>
           </tr>
         <% end %>

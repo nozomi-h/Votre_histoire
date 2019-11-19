@@ -80,3 +80,7 @@ gem 'rails-i18n'
 gem 'gretel'
 
 gem 'pry-byebug'
+
+group :development do
+  gem "letter_opener"
+end

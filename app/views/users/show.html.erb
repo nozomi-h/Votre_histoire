@@ -14,22 +14,20 @@
       </div>
 
 
-      <div class="sell-content">
-        <div class="space">お買い物情報</div>
-        <div class="line_box_pink"></div>
+      <div class="space">お買い物情報</div>
+      <div class="line_box_pink"></div>
 
-        <div class="space">　お気に入り<div>
-        <div class="line_box_gray"></div>
+      <div class="space">　お気に入り</div>
+      <div class="line_box_gray"></div>
 
-        <%# --お気に入り情報をここに記述-- %>
-        <% @favorites.each do |item| %>
-          <div class="user-favorite">
-            <%= attachment_image_tag item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
-            <%= link_to "#{item.prodct_name}",item_path(item.id), style: "color: white;" %>
-            <%= item.price %>円(税込)
-          </div>
-        <% end %>
-      </div>
+      <%# --お気に入り情報をここに記述-- %>
+      <% @favorites.each do |item| %>
+        <div class="user-favorite">
+          <%= attachment_image_tag item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+          <%= link_to "#{item.prodct_name}",item_path(item.id), style: "color: white;" %>
+          <%= item.price %>円(税込)
+        </div>
+      <% end %>
 
 
       <div class="border">
@@ -45,7 +43,7 @@
           </tr>
         </table>
 
-        <table class="table-content table-bordered width="100%""">
+        <table class="table-content table-bordered width="100%"">
           <tr>
             <th>ご注文番号</th>
             <th>ご注文内容</th>

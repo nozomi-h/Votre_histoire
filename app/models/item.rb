@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :order_items, dependent: :destroy
   has_many :item_color_sizes, dependent: :destroy
+  has_many :colors, through: :item_color_sizes ## throughでitem_color_sizeを通してcolorsを取得する
+  has_many :sizes, through: :item_color_sizes
 
   validates :prodct_name, presence: true
   validates :price, presence: true
@@ -15,8 +17,6 @@ class Item < ApplicationRecord
 
   enum status: {available: 0, not_available: 1, sold_out: 2}
   enum genre: {OUTER:0, TOPS:1, BOTTOMS:2, ONEPICE:3, ACCESSORIES:4, SHOES:5}
-  #enum size: {S:0, M:1, 24:2, 25:3, 26:4, Free:5}
-  #enum color: {}
   acts_as_paranoid
 
   def favorited_by?(current_user)

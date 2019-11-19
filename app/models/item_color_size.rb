@@ -1,8 +1,7 @@
 class ItemColorSize < ApplicationRecord
 
-  has_many :colors, dependent: :destroy
-  has_many :sizes, dependent: :destroy
-
+  belongs_to :color
+  belongs_to :size
   belongs_to :item
 
 end

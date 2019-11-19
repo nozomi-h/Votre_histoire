@@ -6,14 +6,22 @@ class UsersController < ApplicationController
     if @user.id != current_user.id
       redirect_to root_path
     end
+    ## userを特定して注文日時を表示
+    @order = current_user.orders
     ## limit(1)で1件表示
     @orders = @user.orders.limit(1)
     @favorites = @user.favorites.limit(5)
-    # @order = @user.order
   end
 
   def create
     @user = User.new
+    ## mail送付について
+    if @user.save
+      NotificationMailer.send_confirm_to_user(@user).deliver
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def edit

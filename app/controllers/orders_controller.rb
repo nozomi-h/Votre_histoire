@@ -5,12 +5,13 @@ class OrdersController < ApplicationController
   def index
     @user = current_user
     @orders = current_user.orders
+    render :index
   end
 
   def show
-    ## @user =
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    render :show
   end
 
   def create
@@ -26,6 +27,6 @@ class OrdersController < ApplicationController
   end
 
   def complete
-
+    @order = Order.find(params[:id])
   end
 end

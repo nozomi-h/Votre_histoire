@@ -107,6 +107,7 @@ input.btn-primary{
 
 // サイドバー固定の設定
 .sticky {
+  min-height: 100vh;
   position: fixed; // 要素の位置を固定する
   //top: 0; // 基準の位置を画面の一番上に指定する
   //left: 0; // 基準の位置を画面の一番左に指定する

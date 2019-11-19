@@ -8,13 +8,24 @@
       <% @items.each do |item| %>
         <%= item[:genre_name] %>
 
-        <%= link_to item_path(item.id) do %>
-          <%= attachment_image_tag item, :image, format:'jpeg', fallback: "no_image.jpg", size: "100x100", class: "image" %>
-        <% end %>
+        <div class="space_box"></div>
 
-        <%= link_to "#{item.prodct_name}",item_path(item.id), class: "link-text" %>
-        <%= item.tax_include.round(0) %>円(税込)
+        <div class="genre_item clearfix">
+          <div class="genre_item_img">
+            <%= link_to item_path(item.id) do %>
+              <%= attachment_image_tag item, :image, format:'jpeg', fallback: "no_image.jpg", size: "100x100", class: "image" %>
+            <% end %>
+          </div>
+
+          <div class="genre_item_name">
+            <%= link_to "#{item.prodct_name}",item_path(item.id), class: "link-text" %>
+          </div>
+          <div class="genre_item_price">
+            <%= item.tax_include.round(0) %>円(税込)
+          </div>
+        </div>
       <% end %>
+
     </div>
   </div>
 </div>

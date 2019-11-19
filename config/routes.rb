@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
     resources :genres, only: [:show]
 
+    resources :orders, only: [:index, :show, :update]
+
+    resources :arrivals, only: [:index, :update]
+
     resources :users, only: [:index, :show, :update, :destroy] do
       get :orders, on: :member
     end
@@ -24,10 +28,7 @@ Rails.application.routes.draw do
     resources :items do
       resources :arrivals, only: [:new, :create, :edit, :update]
     end
-
-    resources :orders, only: [:index, :show, :update]
-
-    resources :arrivals, only: [:index]
+    patch '/admins/items/:id/edit', to: 'items#update'
 
   end
 

@@ -5,3 +5,27 @@
 .genre{
   font-size: 20px;
 }
+
+.genre_item{
+  float: left; //右側に回り込ませる
+}
+
+.genre_item_img{
+}
+
+img {
+}
+
+.genre_item_name{
+  font-size: 16px;
+}
+
+.genre_item_price{
+  font-size: 16px;
+}
+
+//displayに対する値
+//block; 要素が横までいっぱいに広がり、縦に並んでいく
+//inline; 要素が平ぺったく横に並んでいく
+//inline-block; blockとinlineの中間
+//none; 非表示になる
