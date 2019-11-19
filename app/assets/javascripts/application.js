@@ -14,9 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
-//= require cocoon
 
 $(document).on('turbolinks:load', function() {
 

@@ -31,6 +31,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.tags.build
   end
 
   def edit

@@ -1,24 +1,12 @@
 <%# cocoon %>
 
-= simple_form_for(@item) do |f|
-  - if @item.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@item.errors.count, "error")
-        prohibited this item from being saved:
-      %ul
-        - @item.errors.full_messages.each do |message|
-          %li= message
-  .js-item
-    .field
-      = f.input :name
-    .field
-      %h2 カラー
-      = f._color_fields_for :items do |color|
-        = render 'color_fields', f: color
-        %br
-        %br
-    .field
-      = link_to_add_association 'ADD TO COLOR', f, :colors
-  .actions
-    = f.submit '登録'
+<div class="nested-fields well-compact color-box">
+  <h6>Color</h6><%# color 登録 %>
+  <div class="field_box cp_sl01">
+    <div class="select">
+      <%= f.select :colors, [["white",0], ["block",1], ["beige",2], ["pink",3], ["brown",4], ["gray",5]], :prompt => "---" %>
+    </div>
+  </div>
+  <p style="margin: 10px;"><%= link_to_remove_association "DELETE", f %></p>
+    <%= link_to_add_association "ADD TO COLOR", f, :colors %>    </div>
+</div>
