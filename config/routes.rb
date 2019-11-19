@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index, :show, :update]
 
-    resources :arrivals, only: [:index, :update]
+    resources :arrivals, only: [:index, :new, :update]
 
     resources :users, only: [:index, :show, :update, :destroy] do
       get :orders, on: :member

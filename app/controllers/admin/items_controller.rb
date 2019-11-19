@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.tags.build
+    @item.item_color_sizes.build
   end
 
   def edit

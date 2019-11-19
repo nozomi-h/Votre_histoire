@@ -56,7 +56,7 @@
               <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
             </div>
             <div class="cocoon"><%# size 追加 %>
-              <%= link_to_add_association "ADD TO SIZE", f, :sizes %>
+              <%= render 'form', item: @item %>
             </div>
           </div>
         </div>
