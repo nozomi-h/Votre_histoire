@@ -38,25 +38,25 @@
             <div class="field_box cp_sl01">
               <%= f.select :genre_name, [["OUTER",0], ["TOPS",1], ["BOTTOMS",2], ["ONEPICE",3], ["ACCESSORIES",4], ["SHOES",5]], :prompt => "---" %>
             </div>
-            <%# collection_select=渡された配列を並べるセレクト　genre_id,Genre.allはジャンル全件の名前を並べてidがitemに渡るようにしている %>
-            <%#=f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %>
 
+            <%= f.fields_for :item_color_size do | ics | %>
             <h5>Color</h5><%# color 登録 %>
             <div class="field_box cp_sl01">
               <div class="select">
-                <%= f.select :colors, [["white",0], ["block",1], ["beige",2], ["pink",3], ["brown",4], ["gray",5]], :prompt => "---" %>
+                <%= ics.collection_select :color_id, Color.all, :id, :color %>
               </div>
             </div>
             <div class="cocoon"><%# color 追加 %>
-              <%= link_to_add_association "ADD TO COLOR", f, :colors %>
+              <%#%= link_to_add_association "ADD TO COLOR", f, :colors %>
             </div>
 
             <h5>Size</h5><%# size 登録 %>
             <div class="field_box cp_sl01">
-              <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
+              <%#= ics.collection_select :size_id, Size.sizes, :id, :name %>
             </div>
+            <% end %>
             <div class="cocoon"><%# size 追加 %>
-              <%= render 'form', item: @item %>
+              <%#= render 'form', item: @item, form: f %>
             </div>
           </div>
         </div>

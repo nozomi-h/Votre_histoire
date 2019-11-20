@@ -17,7 +17,7 @@
         <h5 class="space">お客様情報</h5>
         <div class="line_box_pink"></div>
 
-        <%= form_for(@user, url: edit_user_path(current_user.id, @user.id)) do |f| %>
+        <%= form_for @user do |f| %>
           <%#= render "error_messages" %>
 
           <div class="field">
@@ -88,9 +88,9 @@
               <%= f.date_select :birth_day, autofocus: true, autocomplete: "birth_day", :size => "50*50" %>
             </div>
           </div>
+          <%= f.submit "変更する", class:'btn btn-default col-xs-10 col-xs-offset-1' %>
         <% end %>
         <div class="user-edit">
-          <%= link_to "変更する", user_path, class:'btn btn-default col-xs-10 col-xs-offset-1' %>
         </div>
       </div>
     </div>

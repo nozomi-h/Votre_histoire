@@ -10,29 +10,29 @@
       <div class="title">EDIT ADDRESS</div>
       <div class="line_box_long"></div>
 
-      <%= form_for(@address, url: address_path(current_user.id, @address.id)) do |f| %>
+      <%= form_for[current_user, @address] do |f| %>
         <%#= render error %>
 
         <div class="field">
-        <p>氏名<span class="required">必須</span></p>
-          <%= f.label :　姓　 %>
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :size => "30*30" %>
-          <%= f.label :　名　 %>
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", :size => "30*30" %>
-      </div>
+          <p>氏名<span class="required">必須</span></p>
+            <%= f.label :　姓　 %>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :size => "30*30" %>
+            <%= f.label :　名　 %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", :size => "30*30" %>
+        </div>
 
-      <div class="field">
-        <p>カナ<span class="required">必須</span></p>
-          <%= f.label :　セイ %>
-          <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name", :size => "30*30" %>
-          <%= f.label :　メイ %>
-          <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name", :size => "30*30" %>
-      </div>
+        <div class="field">
+          <p>カナ<span class="required">必須</span></p>
+            <%= f.label :　セイ %>
+            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name", :size => "30*30" %>
+            <%= f.label :　メイ %>
+            <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name", :size => "30*30" %>
+        </div>
 
-      <div class="field">
-        <p>連絡先電話番号<span class="required">必須</span></p>
-          <%= f.telephone_field :tel_number, autofocus: true, autocomplete: "tel_number", :size => "70*70" %>
-      </div>
+        <div class="field">
+          <p>連絡先電話番号<span class="required">必須</span></p>
+            <%= f.telephone_field :tel_number, autofocus: true, autocomplete: "tel_number", :size => "70*70" %>
+        </div>
 
       <div class="field">
         <p>郵便番号<span class="required">必須</span></p>

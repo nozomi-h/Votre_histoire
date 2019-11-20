@@ -26,7 +26,7 @@ ja:
         ACCESSORIES: "ACCESSORIES"
         SHOES: "SHOES"
     order:
-      statsu:
+      status:
         preparing: "配送準備中"
         in_delivery: "配送中"
         delivered: "配送完了"
@@ -34,4 +34,9 @@ ja:
         cash: "代金引換"
         transfer: "振込み"
         credit_card: "クレジットカード"
+    item:
+      status:
+        available: "0"
+        not_available: "1"
+        sold_out: "2"
 

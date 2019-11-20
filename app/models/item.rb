@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
 
   has_many :arrivals
-
   has_many :carts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :order_items, dependent: :destroy

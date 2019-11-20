@@ -26,6 +26,7 @@ class AddressesController < ApplicationController
     if @address.save
       redirect_to user_addresses_path(@address.user.id)
     else
+      puts @address.errors.full_messages
       render :new
     end
   end
@@ -47,6 +48,6 @@ class AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :prefecture, :city_address, :building, :postal_code)
+    params.require(:address).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :prefecture, :city_address, :building, :postal_code, :tel_number)
   end
 end
