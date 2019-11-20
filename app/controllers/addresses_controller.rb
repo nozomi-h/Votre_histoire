@@ -3,7 +3,8 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :destroy, :update]
 
   def index
-    @addresses = Address.all
+    @user = User.find(params[:user_id])
+    @addresses = @user.addresses.all
   end
 
   def show
@@ -16,18 +17,36 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = Address.find(params[:id])
+    @address = Address.find(params[:address_id])
   end
 
   def create
-
+    @address = Address.new(address_params)
+    @address.user_id = current_user.id
+    if @address.save
+      redirect_to user_addresses_path(@address.user.id)
+    else
+      render :new
+    end
   end
 
   def update
-
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      redirect_to user_addresses_path(@address.user.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to user_addresses_path(@address.user.id)
+  end
 
+  private
+  def address_params
+    params.require(:address).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :prefecture, :city_address, :building, :postal_code)
   end
 end

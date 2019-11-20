@@ -11,53 +11,75 @@
       <div class="title">ADD PRODUCT</div>
       <div class="line_box_long"></div>
 
+      <div class="sell-content clearfix">
+        <%# product_name,product_material 登録 %>
+        <div class="sell-sub-head">
+          Product name
+        </div>
+        <div class="boxes"><%= @item.prodct_name %></div>
+        <%# <div class="line_border_arrival"></div> %>
+        <div class="sell-sub-head">
+          Product material
+        </div>
+        <div class="boxes"><%= @item.material %></div>
+        <%# <div class="line_border_arrival"></div> %>
+      </div>
 
-        <div class="sell-content clearfix">
-          <%# product_name,genre 登録 %>
-          <h5><font color="#1F9BFD">PRODUCT NAME</font></h5>
-            <p class="boxes"><%= @item.prodct_name %></p>
-          <div class="line">
+      <div class="line_box_pastel"></div>
 
-          <h5><font color="#1F9BFD">PRODUCT MATERIAL</font></h5>
-            <p class="boxes"><%= @item.material %></p>
-          <div class="line">
-          <%# <h5>Product material</h5>
-          <%= f.text_area :material, class: "col-xs-12" %> %>
+      <div class="sell-content">
+        <div class="sell-sub-head">
+          Product Details
         </div>
 
-        <div class="sell-content clearfix">
-          <div class="sell-sub-head">
-            Product Details
+        <div class="space_mini"></div>
+
+        <%= form_with(model: @arrival, url: admin_item_arrivals_path(@item.id), local: true) do |f| %>
+
+          <h5>Color</h5><%# color 登録 %>
+          <div class="field_box cp_sl01">
+            <%= f.select :colors, [["white",0], ["block",1], ["beige",2], ["pink",3], ["brown",4], ["gray",5]], :prompt => "---" %>
           </div>
 
-          <div class="sell-form-box">
-
-            <h5>現在の在庫数</h5>
-              <p class="arrival-count"><%= (Arrival.where(item_id: @item.id).sum(:arrival_count)) - (OrderItem.where(item_id: @item.id).sum(:amount))%></p>
-              <p class="boxes"><%= form_with(model: @arrival, url: admin_item_arrivals_path(@item.id), local: true) do |f| %></p>
-
-            <h5 align="center">入荷年月日</h5>
-              <p class="boxes"><%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %></p>
-
-            <h5 align="center">入荷数入力</h5>
-              <p class="boxes"><%= f.number_field :arrival_count, min: "1", value: "1" %></p>
-
-            <div class="field_1">
-              <h5>Size</h5><%# size 登録 %>
-              <%= f.select :sizes, [["white"], ["block"], ["beige"], ["pink"], ["brown"], ["gray"]],  :prompt => "選択してください" %>
-            </div>
-            <div class="field_1">
-              <h5>Color</h5><%# color 登録 %>
-              <%= f.select :colors, [["S"], ["M"]],  :prompt => "選択してください" %>
-            </div>
+          <h5>Size</h5><%# size 登録 %>
+          <div class="field_box cp_sl01">
+            <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
           </div>
+      </div>
+
+      <div class="line_box_pastel"></div>
+
+      <div class="sell-content">
+        <div class="sell-sub-head">
+          Stock quantity
         </div>
 
-        <div class = "create">
-          <%= f.submit 'POST', class: "btn btn-primary col-xs-10 col-xs-offset-1" %>
-				</div>
+        <div class="space_mini"></div>
+
+          <h5 align="center">Current stock</h5>
+          <div class="arrival-count">
+            <%= (Arrival.where(item_id: @item.id).sum(:arrival_count)) - (OrderItem.where(item_id: @item.id).sum(:amount))%>
+          </div>
+
+          <div class="space_mini"></div>
+
+          <h5 align="center">Arrival date</h5>
+          <div class="boxes">
+            <%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %>
+          </div>
+
+          <div class="space_mini"></div>
+
+          <h5 align="center">Number of arrivals</h5>
+          <div class="boxes">
+            <%= f.number_field :arrival_count, min: "1", value: "1" %>
+          </div>
+
+          <div class = "create">
+            <%= f.submit 'POST', class: "btn btn-primary col-xs-10 col-xs-offset-1" %>
+          </div>
         <% end %>
-
+      </div>
     </div>
 
   </div>

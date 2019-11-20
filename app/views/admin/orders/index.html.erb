@@ -1,0 +1,39 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ORDER LIST</div>
+      <div class="line_box_long"></div>
+
+      <table class="table-content-block table-bordered width="100%"">
+        <tr>
+          <th>Order number</th>
+          <th>User name</th>
+          <th>Purchase date</th>
+          <th>Price</th>
+          <th>Delivery stutas</th>
+          <th></th>
+        </tr>
+
+        <% @orders.each do |order| %>
+          <tr>
+            <td width="20%"><%= order.order_number %></td>
+            <td width="35%"><%= order.user.last_name + order.user.first_name %></td>
+            <td width="15%"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td width="15%"><%= order.total_price.round(0) %>円</td>
+            <td width="15%"><%= order.status_i18n %></td>
+            <td><%= link_to "注文詳細", admin_order_path(order.id), class: "btn btn-default col-xs-12" %></td>
+          </tr>
+        <% end %>
+      </table>
+
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>

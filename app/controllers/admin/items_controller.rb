@@ -40,8 +40,6 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    p Color.colors[params[:colors]]
-    p Size.sizes[params[:sizes]]
 
     item_color_size = @item.item_color_sizes.build # まず、colorもsizeもセットされていない（itemだけがセットされている）新しい item_color_size を作る
     item_color_size.color = Color.find_by_color(Color.colors.key(items_params[:colors].to_i)) # paramsの:colorsで渡された "0" や "1" という文字列を to_i メソッドで数字に変換し、それを使ってDBから取得した Color インスタンスを item_color_size の color アトリビュートにセットする

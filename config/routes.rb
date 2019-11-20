@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index, :show, :update]
 
-    resources :arrivals, only: [:index, :new, :update]
+    resources :arrivals, only: [:index, :update]
 
     resources :users, only: [:index, :show, :update, :destroy] do
       get :orders, on: :member
@@ -49,8 +49,6 @@ Rails.application.routes.draw do
   resources :carts, only: [:create, :destroy]
 
   resources :genres, only: [:show]
-
-  resources :addresses, except: [:show]
 
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]

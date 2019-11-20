@@ -1,0 +1,93 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">USER</div>
+      <div class="line_box_long"></div>
+
+      <div class="sell-content">
+        <div class="sell-sub-head">
+          Name
+        </div>
+        <div class="boxes"><%= @user.last_name %><%= @user.first_name %></div>
+        <div class="line_box_purple"></div>
+
+        <div class="sell-sub-head">
+          Kana
+        </div>
+        <div class="boxes"><%= @user.last_kana_name %><%= @user.first_kana_name %></div>
+        <div class="line_box_purple"></div>
+
+        <div class="sell-sub-head">
+          Address
+        </div>
+        <div class="boxes"><%= @user.prefecture %><%= @user.city_address %><%= @user.building %></div>
+        <div class="line_box_purple"></div>
+
+        <div class="sell-sub-head">
+          Tellphon
+        </div>
+        <div class="boxes"><%= @user.tel_number %></div>
+        <div class="line_box_purple"></div>
+
+        <div class="sell-sub-head">
+          Mail
+        </div>
+        <div class="boxes"><%= @user.email %></div>
+        <div class="line_box_purple"></div>
+      </div>
+
+
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ADDRESS</div>
+      <div class="line_box_long"></div>
+
+      <table class="table-content-block table-bordered width="100%"">
+        <tr>
+          <th>Delivery name</th>
+          <th>Delivery address</th>
+        </tr>
+
+        <tr>
+          <td width="30%"></td>
+          <td width="70%"></td>
+        </tr>
+      </table>
+
+
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ORDER LIST</div>
+      <div class="line_box_long"></div>
+
+      <table class="table-date table-bordered">
+        <tr>
+          <th>▼<%#= @order.created_at.strftime('%Y/%m/%d') %>
+            ご注文<%#= link_to '(詳細へ)', order_path(order.id) %>
+          </th>
+        </tr>
+      </table>
+      <table class="table-content-block table-bordered width="100%"">
+        <tr>
+          <th>Order number</th>
+          <th>Order item</th>
+          <th>Price</th>
+          <th>Payment</th>
+          <th>Delivery stutas</th>
+        </tr>
+
+        <tr>
+          <td width="20%"></td>
+          <td width="35%"></td>
+          <td width="15%"></td>
+          <td width="15%"></td>
+          <td width="15%"></td>
+        </tr>
+      </table>

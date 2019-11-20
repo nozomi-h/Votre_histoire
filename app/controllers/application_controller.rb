@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     case resource
     when :admin ## adminの場合
-      new_admin_sesstion_path ## adminのログインページへ
+      new_admin_session_path ## adminのログインページへ
     when :user ## userの場合
       root_path ## トップページへ
     end

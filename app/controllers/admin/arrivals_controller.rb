@@ -1,8 +1,8 @@
 class Admin::ArrivalsController < ApplicationController
 
   def new
-    @item = Item.new
-    # @arrival = Arrival.find(params[:item_id])
+    @item = Item.find(params[:item_id])
+    @arrival = Arrival.new
   end
 
   def index
