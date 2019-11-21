@@ -16,20 +16,22 @@
       <ol class="header_menu">
         <%# enumで定義したkeyの一覧を取得する %>
         <% Item.genres.keys.each do |genre| %>
-          <li><%= link_to genre, genre_items_path(genre_name:genre) %></li>
+          <li><%= link_to genre, genre_items_path(genre:genre) %></li>
         <% end %>
       </ol>
 
       <ol class="header_menu">
         <% if user_signed_in? %><%# userがログインしている時の表示 %>
         <a class="">
-          <li><%= link_to "マイページ", user_path(current_user) %></li>
-          <li><%= link_to "カート", new_user_cart_path(current_user) %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "TOP", root_path %></li>
+          <li><%= link_to "MY PAGE", user_path(current_user) %></li>
+          <li><%= link_to "CART", new_user_cart_path(current_user) %></li>
+          <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
           <% else %><%# userがログアウトしている時の表示 %>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-          <li><%= link_to "マイページ", new_user_session_path %></li>
-          <li><%= link_to "新規会員登録", new_user_registration_path %></li>
+          <li><%= link_to "TOP", root_path %></li>
+          <li><%= link_to "LOG IN", new_user_session_path %></li>
+          <li><%= link_to "MY PAGE", new_user_session_path %></li>
+          <li><%= link_to "NEW ACCOUNT", new_user_registration_path %></li>
         </a>
         <% end %>
       </ol>

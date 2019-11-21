@@ -4,11 +4,14 @@
       <%= render 'layouts/header' %>
     </div>
 
-    <div class="col-xs-6">
-      <%= params[:genre_name] %>
-      <% @items.each do |item| %>
+    <div class="col-xs-9">
+      <div class="genre_name_title">
+        <%= params[:genre] %>
+      </div>
 
-        <div class="space_box"></div>
+      <div class="space_box"></div>
+
+      <% @items.each do |item| %>
 
         <div class="genre_item clearfix">
           <div class="genre_item_img">

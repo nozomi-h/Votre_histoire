@@ -4,42 +4,45 @@
       <%= render 'layouts/header' %>
     </div>
 
-    <div class="col-xs-4">
-      <div class="box clearfix">
+    <div class="col-xs-6">
+      <div class="show_page clearfix">
         <div class="item_show_image">
-          <%= attachment_image_tag @item, :image, size: '300x300', fallback: 'no_image.jpg' %>
+          <%= attachment_image_tag @item, :image, size: '500x400', fallback: 'no_image.jpg' %>
         </div>
       </div>
     </div>
 
     <div class="col-xs-4">
-      <div class="box clearfix">
+      <div class="show_page_side clearfix">
         <div class="item_show_name">
           <%= @item.prodct_name %>
         </div>
         <div class="item_show_price">
-          <%= @item.tax_include.round(0) %>円(税込)
+          ¥<%= @item.tax_include.round(0) %><p class="tax"> (税込)</p>
         </div>
-        <div class="item_show_favorite">
-          <div class="favorite-button-<%=@item.id %>">
-            <%#= render 'favorites/favorite', item: @item %>
-          </div>
-        </div>
-        <% @item.item_color_sizes.each do |item| %>
+        <% @item.item_colors.each do |item| %>
           <div class="item_cart">
-            <div class="item_size">
-              <%= item.size.size %>
+            <div class="item_color">
+              <%= item.color.color %>
             </div>
-            <div class="cart_presence">
+            <div class="item_size">
+              <%#= item.size %>
+            </div>
+            <div class="cart_presence clearfix">
               <% if item.item.status_before_type_cast == 0 %>
                 <%= button_tag type: "submit", class: "btn btn-primary" do %>
                   <p>ADD TO CART</p>
                 <% end %>
               <% else %>
                 <%= button_tag type: "submit", disabled: true, class: "btn btn-primary", style: "background-color: pink; border-color: pink; padding-right: 10px;" do %>
-                  <p style="font-size: 16px; font-style: bold; padding-top: 10px; margin: 0 auto;">SOLD OUT</p>
+                  <p style="font-size: 16px; font-weight: bold; margin: 0 auto;">SOLD OUT</p>
                 <% end %>
               <% end %>
+            </div>
+            <div class="item_show_favorite">
+              <div class="favorite-button-<%=@item.id %>">
+                <%= render 'favorites/favorite', item: @item %>
+              </div>
             </div>
           </div>
         <% end %>
@@ -50,9 +53,9 @@
           </div>
         </div>
         <div class="size_table">
-          <% @items.each do |item| %>
-            <%= item.size(genre_name:genre) %>
-          <% end %>
+          <%# @items.each do |item| %>
+            <%#= item.size(genre:genre) %>
+          <%# end %>
         </div>
       </div>
     </div>

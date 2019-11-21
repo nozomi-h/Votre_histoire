@@ -14,7 +14,7 @@
 
       <ol class="header_menu">
         <% Item.genres.keys.each do |genre| %>
-          <li><%= link_to genre, genre_items_path(genre_name:genre) %></li>
+          <li><%= link_to genre, genre_items_path(genre:genre) %></li>
         <% end %>
       </ol>
 

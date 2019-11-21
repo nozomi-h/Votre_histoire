@@ -32,31 +32,32 @@
           <div class="sell-sub-head">
             Product Details
           </div>
-
           <div class="sell-form-box">
+            <h5>Status</h5><%# status 登録 %>
+            <div class="field_box cp_sl01">
+              <%= f.select :status, Item.statuses.keys, {}, :prompt => "---" %>
+            </div>
             <h5>Genre</h5><%# genre 登録 %>
             <div class="field_box cp_sl01">
-              <%= f.select :genre_name, [["OUTER",0], ["TOPS",1], ["BOTTOMS",2], ["ONEPICE",3], ["ACCESSORIES",4], ["SHOES",5]], :prompt => "---" %>
+              <%= f.select :genre, Item.genres.keys, {}, :prompt => "---" %>
             </div>
-
-            <%= f.fields_for :item_color_size do | ics | %>
             <h5>Color</h5><%# color 登録 %>
             <div class="field_box cp_sl01">
               <div class="select">
-                <%= ics.collection_select :color_id, Color.all, :id, :color %>
+                <%= f.fields_for :item_colors do |ic| %>
+                  <%= ic.collection_select :color_id, Color.all, :id, :color %>
+                    <h5>Size</h5><%# size 登録 %>
+                    <div class="field_box cp_sl01">
+                      <%= ic.fields_for :item_color_sizes do |ics| %>
+                        <%= ics.collection_select :size_id, Size.all, :id, :size %>
+                      <% end %>
+                    </div>
+                <% end %>
               </div>
             </div>
-            <div class="cocoon"><%# color 追加 %>
-              <%#%= link_to_add_association "ADD TO COLOR", f, :colors %>
-            </div>
-
-            <h5>Size</h5><%# size 登録 %>
-            <div class="field_box cp_sl01">
-              <%#= ics.collection_select :size_id, Size.sizes, :id, :name %>
-            </div>
-            <% end %>
-            <div class="cocoon"><%# size 追加 %>
-              <%#= render 'form', item: @item, form: f %>
+            <h5>Amount</h5>
+            <div class="stock">
+              <%= f.number_field :amount, min: 1 %>
             </div>
           </div>
         </div>

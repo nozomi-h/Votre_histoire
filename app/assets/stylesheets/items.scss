@@ -30,7 +30,7 @@ table {
   white-space: nowrap; // ソース中のホワイトスペース・改行の表示方法 nowrapはは両方とも無効とする
   text-align: center;
   padding: 10px;
-  font-family: 'Times New Roman'
+  font-family: 'Times New Roman';
 }
 
 .table-content-block td{
@@ -73,5 +73,66 @@ ul {
 
 .top_title{
   text-align: center;
-  font-family: 'Times New Roman'
+  font-family: 'Times New Roman';
+}
+
+.show_page{
+  margin: 60px 10px 20px 40px;
+}
+
+.item_show_image{
+  
+}
+
+.show_page_side{
+  margin: 60px 0 0 10px;
+}
+
+.item_show_name{
+  font-size: 25px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  font-family: 'Times New Roman';
+}
+
+.item_show_price{
+  font-size: 22px;
+  font-family: 'Times New Roman';
+}
+
+.tax{
+  display: inline;
+  font-size: 13px;
+}
+
+.cart_presence{
+  margin: 10px;
+}
+
+.item_show_favorite{
+  display: inline;
+  background-color: #EFEFEF;
+  background-size: 50% auto;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+}
+
+.heart{
+  color: pink;
+}
+
+.item_color{
+  font-size: 20px;
+  font-family: 'Times New Roman';
+}
+
+.item_material{
+  font-size: 13px;
+  margin: 20px;
+}
+
+.material_date{
+  font-size: 11px;
 }

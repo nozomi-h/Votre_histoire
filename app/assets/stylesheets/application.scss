@@ -24,13 +24,17 @@ body{
   margin: 0;
 }
 
+.body-container{
+  min-height: 700px;
+}
+
 // フッター
 footer {
   width: 100%;
   height: 120px;
   text-align: center;
   padding: 50px 0;
-  //position: absolute; // ←絶対位置
+  position: relative; // ←絶対位置
   bottom: 0; // 下に固定
   // background-color: #848282;
 }
@@ -129,8 +133,8 @@ ol {
   clear: both;
 }
 
-.footer_menu{
-
+.header_menu li a{
+  color: #000000;
 }
 
 .footer_menu_about{

@@ -20,7 +20,7 @@ PER = 9 ## ページネーション
   end
 
   def genre
-    @items = Item.where(genre:Item.genres[params[:genre_name]])
+    @items = Item.where(genre:Item.genres[params[:genre]])
   end
 
   private

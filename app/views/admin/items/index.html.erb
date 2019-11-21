@@ -16,8 +16,6 @@
           <th>Product name</th>
           <th>Product material</th>
           <th>Genre</th>
-          <th>Color</th>
-          <th>Size</th>
           <th>Stock</th>
           <th>Status</th>
           <th></th>
@@ -27,19 +25,16 @@
           <tr>
             <td width="10%"><%= item.created_at %></td>
             <%= link_to admin_item_path(item.id) do %>
-              <td width="20%"><%= link_to "#{item.prodct_name}", admin_item_path(item.id) %></td>
+              <td width="20%"><%= link_to "#{item.prodct_name}", item_path(item.id) %></td>
             <% end %>
 
               <td width="20%"><%= item.material %></td>
 
             <td width="10%"><%= item.genre %></td>
 
-            <%# &colorでcolorのcolorをcollect（収集）している → color_modelの配列をcolorのcolorの配列にした %>
-            <td width="5%"><%= item.colors.distinct.collect(&:color).join(', ') %></td>
-
-            <td width="5%"><%= item.sizes.distinct.collect(&:size).join(', ') %></td>
-
-            <td width="5%"><%= (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
+            <td width="5%">
+              <%= (Item.where(id: item.id).sum(:amount)) + (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %>
+            </td>
 
             <td width="15%"><%= item.status_i18n %></td>
 

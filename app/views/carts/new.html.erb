@@ -1,22 +1,27 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
       <h2 class="shop_name">Votre histoire</h2>
 
+      <div class="space"></div>
       <div class="title">CART</div>
 
-      <% breadcrumb pretext: "CART: ", separator: " &rsaquo; " %>
-      <% end %>
+      <%# breadcrumb pretext: "CART: ", separator: " &rsaquo; " %>
+      <%# end %>
 
-      <div class="sell-content">
+      <div class="cart_content">
         <table class="table-date">
           <tr>
-            <th>ご注文商品</th>
+            <th>&emsp;ご注文商品</th>
           </tr>
         </table>
 
-        <table class="table-content-block table-bordered width="100%"">
+        <table class="table-content-block table-bordered" width="100%">
           <tr>
             <th>商品写真</th>
             <th>商品名</th>
@@ -31,9 +36,10 @@
               <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %></td>
               <td width="40%"><%= cart.item.prodct_name %></td>
               <td width="10%"><%= cart.item.price %>円</td>
-              <td width="10%"><%= form_for(:number, url: user_cart_path(current_user.id,cart.id), method: :PATCH) do |f| %>
-                    <%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %>
-                  <% end %>
+              <td width="10%">
+                <%#= form_for(:number, url: user_cart_path(current_user.id,cart.id), method: :PATCH) do |f| %>
+                  <%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %>
+                <%# end %>
               </td>
               <td width="10%"><%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
               <% subtotal = cart.item.price * cart.amount %>
@@ -43,22 +49,29 @@
 
           <tr>
             <td colspan="5", style="text-align:right;">合計</td>
-            <td><%#= current_user.cart_sum.round(0) %>円　(税込)</td>
+            <td><%#= current_user.cart.sum.round(0) %>円　(税込)</td>
           </tr>
         </table>
       </div>
 
-
-      <div class="sell-content">
-        <table class="table-date">
-          <tr>
-            <th>お届け先</th>
-          </tr>
-        </table>
+      <div class="choice">
+        &emsp;お届け先
+      </div>
+      <div class="method">
+        <%= radio_button_tag "address", 0, checked: "checked" %>
+        <%= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
+        <div class="delivery-address">
+          <% @addresses.each do |address| %>
+            <%= radio_button_tag "address", 1, checked: "checked" %>
+            <%= label_tag "#{@user.address.prefecture + @user.address.city_address + @user.address.building}" %>
+          <% end %>
+        </div>
       </div>
 
-
-      <div class="sell-content">
+      <div class="choice"">
+        &emsp;お支払方法
+      </div>
+      <div class="method">
       </div>
     </div>
   </div>
