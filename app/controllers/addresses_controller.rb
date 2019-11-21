@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = Address.find(params[:address_id])
+    @address = Address.find(params[:id])
   end
 
   def create

@@ -3,10 +3,10 @@ class CartsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :destroy, :update]
 
   def new
-    @carts = Cart.where(user_id: current_user.id)
-    if @cart_items.empty? ## cartは空か？
-      redirect_to root_path ## cartが空ならtopページへ
-    end
+    # @carts = Cart.where(user_id: current_user.id)
+    # if @cart_items.empty? ## cartは空か？
+    #   redirect_to root_path ## cartが空ならtopページへ
+    # end
     #if Cart.exists?(user_id: current_user.id)
     ## whereは該当するデータ全てが返ってくる
       @carts = Cart.where(user_id: current_user.id)

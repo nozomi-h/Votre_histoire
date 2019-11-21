@@ -15,13 +15,14 @@
         <tr>
           <th>配送先氏名</th>
           <th>配送先住所</th>
+          <th></th>
         </tr>
 
         <% @addresses.each do |address| %>
           <tr>
             <td width="30%"><%= address.last_name %><%= address.first_name %></td>
-            <td width="70%">
-              <%= address.prefecture %><%= address.city_address %><%= address.building %>&emsp;&emsp;&emsp;
+            <td width="55%"><%= address.prefecture %><%= address.city_address %><%= address.building %></td>
+            <td width="15%">
               <%= link_to '変更', edit_user_address_path(address.user.id, address.id) %>&nbsp;｜&nbsp;
               <%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
             </td>

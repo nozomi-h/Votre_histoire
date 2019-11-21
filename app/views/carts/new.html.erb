@@ -62,7 +62,7 @@
         <%= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
         <div class="delivery-address">
           <% @addresses.each do |address| %>
-            <%= radio_button_tag "address", 1, checked: "checked" %>
+            <%= radio_button_tag "address", 1 %>
             <%= label_tag "#{@user.address.prefecture + @user.address.city_address + @user.address.building}" %>
           <% end %>
         </div>
