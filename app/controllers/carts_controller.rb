@@ -19,13 +19,6 @@ class CartsController < ApplicationController
   def create
     #@cart = current_user.carts.build(cart_params)
     #user_cart = current_user.carts.where(item_id: params[:cart][:item_id].to_i).first
-    ## cart内で数変更に関する記述
-    # if user_cart
-    #   @cart = user_cart
-    #   amount = params[:cart][:amount].to_i + @cart.amount
-    #   @cart.update(amount: amount)
-    #   redirect_to user_carts_path(current_user.id)
-    # else
       @cart = Cart.new
       @cart.user_id = current_user.id
       @cart.amount = 1
@@ -38,7 +31,6 @@ class CartsController < ApplicationController
         @items = Item.page(params[:page]).per(10).reverse_order
         render 'items/index'
       end
-    # end
   end
 
   def update

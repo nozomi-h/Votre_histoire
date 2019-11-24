@@ -16,7 +16,6 @@
           <th>Product name</th>
           <th>Product material</th>
           <th>Genre</th>
-          <th>Stock</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -28,15 +27,11 @@
               <td width="20%"><%= link_to "#{item.prodct_name}", item_path(item.id) %></td>
             <% end %>
 
-              <td width="20%"><%= item.material %></td>
+              <td width="25%"><%= item.material %></td>
 
-            <td width="10%"><%= item.genre %></td>
+            <td width="15%"><%= item.genre %></td>
 
-            <td width="5%">
-              <%= (Item.where(id: item.id).sum(:amount)) + (Arrival.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %>
-            </td>
-
-            <td width="15%"><%= item.status_i18n %></td>
+            <td width="10%"><%= item.status_i18n %></td>
 
             <td width="10%">
               <%= link_to "EDIT", edit_admin_item_path(item.id) %>
@@ -45,6 +40,9 @@
           </tr>
         <% end %>
       </table>
+      <div class="paginate">
+        <%= paginate @items %>
+      </div>
     </div>
   </div>
 </div>

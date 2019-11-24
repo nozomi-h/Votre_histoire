@@ -48,34 +48,38 @@
         </table>
       </div>
 
-      <%= form_tag new_user_cart_path do %>
+      <%= form_tag("/users/#{current_user.id}/carts", method: :get) do %>
         <div class="choice">
           &emsp;お届け先
         </div>
         <div class="method">
-          <%= radio_button_tag "address", 0, checked: "checked" %> <%# checkedオプションは選択済みにする %>
-          <%= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
+          <%#%= radio_button_tag "address", 0, checked: "checked" %> <%# checkedオプションは選択済みにする %>
+          <%#= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
           <div class="delivery-address">
-            <% @addresses.each do |address| %>
-              <%= radio_button_tag "address", 1 %>
-              <%= label_tag "#{address.prefecture + address.city_address + address.building}" %><br>
-            <% end %>
+            <%= "#{@addresses.first.prefecture + @addresses.first.city_address + @addresses.first.building}" %>
+            <%# @addresses.each do |address| %>
+              <%#= radio_button_tag "address", 1 %>
+              <%#= label_tag "#{address.prefecture + address.city_address + address.building}" %><br>
+            <%# end %>
           </div>
         </div>
+        <div class="choice">
+          &emsp;お支払方法
+        </div>
+        <div class="method">
+          クレジットカード
+          <%#= radio_button_tag "payment", 0, checked: 'checked' %>
+          <%#= label_tag "商品代引き" %><br>
+          <%#= radio_button_tag "payment", 1 %>
+          <%#= label_tag "振込" %><br>
+          <%#= radio_button_tag "payment", 2 %>
+          <%#= label_tag "クレジットカード決済" %>
+        </div>
+        <div class="user-edit">
+          <%= link_to "ショッピングを続ける", root_path, class:'btn btn-default col-xs-4 col-xs-offset-1' %>
+          <%= submit_tag "購入手続きへ", class:'btn btn-default col-xs-4 col-xs-offset-2' %>
+        </div>
       <% end %>
-
-      <div class="choice"">
-        &emsp;お支払方法
-      </div>
-      <div class="method">
-          <%= radio_button_tag "payment", 0, checked: 'checked' %>
-          <%= label_tag "商品代引き" %><br>
-          <%= radio_button_tag "payment", 1 %>
-          <%= label_tag "振込" %><br>
-          <%= radio_button_tag "payment", 2 %>
-          <%= label_tag "クレジットカード決済" %>
-      </div>
-      <%= link_to "購入手続きへ", user_carts_path(current_user.id) %>
     </div>
   </div>
 </div>

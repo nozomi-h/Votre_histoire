@@ -47,7 +47,7 @@
           </tr>
         </table>
 
-        <table class="table-content table-bordered width="100%"">
+        <table class="table-content table-bordered" width="100%">
           <tr>
             <th>ご注文番号</th>
             <th>ご注文内容</th>
@@ -59,9 +59,9 @@
           <% @orders.each do |order| %>
             <tr>
               <td width="20%"><%= order.order_number %></td>
-              <td width="40%"><%= order.order_items.first.with_deleted_item.title %>
+              <td width="40%"><%= order.order_items.first.item.prodct_name %>
               <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...<% end %></td>
-              <td width="20%"><%= order.purchase_price %></td>
+              <td width="20%"><%= order.item.purchase_price %></td>
               <td width="10%"><%= order.payment %></td>
               <td width="10%"><%= order.status_i18n %></td>
             </tr>

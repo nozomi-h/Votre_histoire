@@ -1,18 +1,25 @@
-<%# breadcrumb :complete %>
+<% breadcrumb :complete %>
 
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <h2 class="prodct_name">Votre histoire</h2>
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+      <h2 class="shop_name">Votre histoire</h2>
 
       <div class="line_box"></div>
 
-      <div class="box">
-        <p>ご注文ありがとうございました。</p><br>
+      <div class="box_complete">
+        <strong>ご注文ありがとうございました。</strong><br>
+        <br>
+        <br>
+        <br>
+        <br>
         <p>お客様の注文番号は<span><%= @order.order_number %></span>です。</p>
-        <p>ご注文内容の詳細をメールにて誤送付しておりますので、<br>
-        ご確認くださいませ。</p>
+        <p>ご注文内容の詳細をメールにて誤送付しておりますので、ご確認くださいませ。</p>
       </div>
 
     </div>

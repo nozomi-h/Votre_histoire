@@ -49,16 +49,17 @@
       <div class="title">ADDRESS</div>
       <div class="line_box_long"></div>
 
-      <table class="table-content-block table-bordered width="100%"">
-        <tr>
-          <th>Delivery name</th>
-          <th>Delivery address</th>
-        </tr>
-
-        <tr>
-          <td width="30%"></td>
-          <td width="70%"></td>
-        </tr>
+      <table class="table-content-block table-bordered" width="100%">
+        <% @user.addresses.each do |address| %>
+          <tr>
+            <th>Delivery name</th>
+            <th>Delivery address</th>
+          </tr>
+          <tr>
+            <td width="30%"><%= address.last_name %><%= address.first_name %></td>
+            <td width="70%"><%= address.prefecture %><%= address.city_address %><%= address.building %></td>
+          </tr>
+        <% end %>
       </table>
 
 
@@ -74,20 +75,24 @@
           </th>
         </tr>
       </table>
-      <table class="table-content-block table-bordered width="100%"">
+      <table class="table-content-block table-bordered" width="100%">
         <tr>
           <th>Order number</th>
           <th>Order item</th>
           <th>Price</th>
-          <th>Payment</th>
           <th>Delivery stutas</th>
         </tr>
 
+        <% @user.orders.each do |order| %>
         <tr>
-          <td width="20%"></td>
-          <td width="35%"></td>
-          <td width="15%"></td>
-          <td width="15%"></td>
-          <td width="15%"></td>
+          <td width="20%"><%= order.order_number %></td>
+          <td width="40%"><%= order.order_items.first.item.prodct_name %></td>
+          <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...<% end %></td>
+          <td width="20%"><%= order.item.purchase_price %></td>
+          <td width="20%"><%= order.status_i18n %></td>
         </tr>
+      <% end %>
       </table>
+    </div>
+  </div>
+</div>

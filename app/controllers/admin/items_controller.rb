@@ -1,10 +1,12 @@
 class Admin::ItemsController < ApplicationController
 
+  PER = 9 ## ページネーション
+
   def index
     @item = Item.all
     @items = Item.all
     @genre = Genre.all
-
+    @items = Item.page(params[:page]).per(10).reverse_order
   end
 
   def show
