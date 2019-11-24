@@ -1,18 +1,26 @@
 
-<% breadcrumb :carts_index %>
+<%# breadcrumb :carts_index %>
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <h2 class="prodct_name">Votre histoire</h2>
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
 
-      <div class="title style="text-align:left;">CART</div>
+    <div class="col-xs-9">
+      <h2 class="shop_name">Votre histoire</h2>
+
+      <div class="space"></div>
+
+      <div class="title_cart">CONFIRMATION</div>
+
 
       <div class="note">
         <p>下記ご注文内容で送信してもよろしいでしょうか？<br>
             よろしければ、「次へ」ボタンをクリックしてください。</p>
       </div>
 
+      <div class="space"></div>
 
       <table class="table-date">
         <tr>
@@ -20,64 +28,64 @@
         </tr>
       </table>
 
-      <table class="table-content-block table-bordered width="100%"">
+      <table class="table_nomal table-bordered" width="100%">
         <tr>
           <th>商品写真</th>
           <th>商品名</th>
           <th>単価（税込）</th>
-          <th>数量</th>
           <th>小計</th>
         </tr>
 
-        <% @carts.each_with_index do |cart, i| %>
+        <% @carts.each do |cart, i| %>
           <tr>
             <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %> </td>
             <td width="40%"><%= cart.item.prodct_name %></td>
             <td width="15%"><%= cart.item.price %>円</td>
-            <td width="10%"><%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %></td>
-            <% subtotal = cart.item.price * cart.amount %>
+            <% subtotal = cart.item.price %>
             <td width="15%"><%= subtotal.round(0) %></td>
           </tr>
         <% end %>
 
         <tr>
-          <th colspan="4", style="text-align:right;">小計</th>
+          <th colspan="3", style="text-align:right;">小計</th>
           <td></td>
         </tr>
         <tr>
-          <th colspan="4", style="text-align:right;">送料</th>
+          <th colspan="3", style="text-align:right;">送料</th>
+          <td>600円</td>
+        </tr>
+        <tr>
+          <th colspan="3", style="text-align:right;">手数料</th>
           <td></td>
         </tr>
         <tr>
-          <th colspan="4", style="text-align:right;">手数料</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th colspan="4", style="text-align:right;">合計</th>
+          <th colspan="3", style="text-align:right;">合計</th>
           <td></td>
         </tr>
       </table>
 
-      <table class="table-date">
-        <tr>
-          <th>ご注文者</th>
-            <td></td>
-        </tr>
-      </table>
+      <div class="space"></div>
 
-      <table class="table-date">
-        <tr>
-          <th>お届け先</th>
-            <td></td>
-        </tr>
-      </table>
+      <div class="choice"">
+        &emsp;お支払方法
+      </div>
+      <div class="method">
+      </div>
 
-      <table class="table-date">
-        <tr>
-          <th>配送方法・お支払方法</th>
-          <td></td>
-        </tr>
-      </table>
+      <div class="choice">
+        &emsp;お届け先
+      </div>
+      <div class="method">
+      </div>
+
+      <div class="choice"">
+        &emsp;お支払方法
+      </div>
+      <div class="method">
+      </div>
+
+      <%= link_to "戻る", new_user_cart_path(current_user.id)%>
+      <%= link_to "次へ", complete_order_path(current_user.id) %>
     </div>
   </div>
 </div>

@@ -38,6 +38,11 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
+    resources :item_colors do
+      resources :item_color_sizes do
+        resource :carts, only: [:create]
+      end
+    end
     get :genre, on: :collection
   end
 
@@ -46,13 +51,13 @@ Rails.application.routes.draw do
     get :complete, on: :member
   end
 
-  resources :carts, only: [:create, :destroy]
+  resources :carts, only: [:create]
 
   resources :genres, only: [:show]
 
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
-    resources :carts, only: [:index, :new, :update]
-    ## favoritesはitemsのところでネストさせていて誰のどのitemかというのがわかっているからここにはネストさせなくても良い
+    resources :carts, only: [:index, :new, :update, :destroy]
+    resources :favorites, only: [:index]
   end
 end

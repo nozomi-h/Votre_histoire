@@ -42,4 +42,11 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
 
+  def purchase_price
+    sum = 0 ## 変数を作る
+    carts.each do |cart| ## userが持っているcartで回す(1人のuserが複数のカートを持っているため)
+      sum += cart.item.price * cart.amount ## userが持っている全部のカートに入っている商品の合計金額
+    end
+    return sum ## 合計金額を返している
+  end
 end

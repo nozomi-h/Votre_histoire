@@ -55,7 +55,7 @@
               </div>
             </div>
             <h5>Amount</h5>
-            <div class="stock">
+            <div class="stock"><%# amount 設定 %>
               <%= f.number_field :amount, min: 1 %>
             </div>
           </div>
@@ -67,7 +67,7 @@
           </div>
           <div class="sell-form-box">
             <div class="field_1">
-              <h5>Price</h5><%# priceの設定 %>
+              <h5>Price</h5><%# price 設定 %>
               <%= f.number_field :price %>円
             </div>
           </div>

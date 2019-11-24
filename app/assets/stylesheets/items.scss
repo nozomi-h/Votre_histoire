@@ -42,6 +42,20 @@ table {
   padding: 10px;
 }
 
+.table_nomal th{
+  font-weight: normal;
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Times New Roman';
+}
+
+.table_nomal td{
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+}
+
 .create{
   padding: 20px auto;
 }
@@ -81,7 +95,7 @@ ul {
 }
 
 .item_show_image{
-  
+  text-align: center;
 }
 
 .show_page_side{
@@ -110,13 +124,16 @@ ul {
 }
 
 .item_show_favorite{
-  display: inline;
+  display: block;
   background-color: #EFEFEF;
-  background-size: 50% auto;
   border-radius: 100%;
-  width: 32px;
   height: 32px;
+  width: 32px;
   text-align: center;
+}
+
+.item_show_favorite li{
+  margin-top: 8px;
 }
 
 .heart{
@@ -126,13 +143,24 @@ ul {
 .item_color{
   font-size: 20px;
   font-family: 'Times New Roman';
+  float: left;
+}
+
+.item_size{
+  font-size: 20px;
+  font-family: 'Times New Roman';
+  float: left;
+}
+
+.item_show_favorite{
+  float: left;
 }
 
 .item_material{
-  font-size: 13px;
+  font-size: 15px;
   margin: 20px;
 }
 
 .material_date{
-  font-size: 11px;
+  font-size: 13px;
 }

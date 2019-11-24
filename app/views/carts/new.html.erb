@@ -9,7 +9,7 @@
       <h2 class="shop_name">Votre histoire</h2>
 
       <div class="space"></div>
-      <div class="title">CART</div>
+      <div class="title_cart">CART</div>
 
       <%# breadcrumb pretext: "CART: ", separator: " &rsaquo; " %>
       <%# end %>
@@ -26,7 +26,6 @@
             <th>商品写真</th>
             <th>商品名</th>
             <th>単価（税込）</th>
-            <th>数量</th>
             <th>削除</th>
             <th>小計</th>
           </tr>
@@ -36,43 +35,47 @@
               <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %></td>
               <td width="40%"><%= cart.item.prodct_name %></td>
               <td width="10%"><%= cart.item.price %>円</td>
-              <td width="10%">
-                <%#= form_for(:number, url: user_cart_path(current_user.id,cart.id), method: :PATCH) do |f| %>
-                  <%= number_field :amount, name=i, value: cart.amount, min: "1", max: "99" %>
-                <%# end %>
-              </td>
-              <td width="10%"><%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
-              <% subtotal = cart.item.price * cart.amount %>
+              <td width="10%"><%= link_to "削除", user_cart_path(current_user,cart), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
+              <% subtotal = cart.item.price %>
               <td width="10%"><%= subtotal.round(0) %>円</td>
             </tr>
           <% end %>
 
           <tr>
-            <td colspan="5", style="text-align:right;">合計</td>
-            <td><%#= current_user.cart.sum.round(0) %>円　(税込)</td>
+            <td colspan="4", style="text-align:right;">合計</td>
+            <td><%= current_user.purchase_price %>円　(税込)</td>
           </tr>
         </table>
       </div>
 
-      <div class="choice">
-        &emsp;お届け先
-      </div>
-      <div class="method">
-        <%= radio_button_tag "address", 0, checked: "checked" %>
-        <%= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
-        <div class="delivery-address">
-          <% @addresses.each do |address| %>
-            <%= radio_button_tag "address", 1 %>
-            <%= label_tag "#{@user.address.prefecture + @user.address.city_address + @user.address.building}" %>
-          <% end %>
+      <%= form_tag new_user_cart_path do %>
+        <div class="choice">
+          &emsp;お届け先
         </div>
-      </div>
+        <div class="method">
+          <%= radio_button_tag "address", 0, checked: "checked" %> <%# checkedオプションは選択済みにする %>
+          <%= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
+          <div class="delivery-address">
+            <% @addresses.each do |address| %>
+              <%= radio_button_tag "address", 1 %>
+              <%= label_tag "#{address.prefecture + address.city_address + address.building}" %><br>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
       <div class="choice"">
         &emsp;お支払方法
       </div>
       <div class="method">
+          <%= radio_button_tag "payment", 0, checked: 'checked' %>
+          <%= label_tag "商品代引き" %><br>
+          <%= radio_button_tag "payment", 1 %>
+          <%= label_tag "振込" %><br>
+          <%= radio_button_tag "payment", 2 %>
+          <%= label_tag "クレジットカード決済" %>
       </div>
+      <%= link_to "購入手続きへ", user_carts_path(current_user.id) %>
     </div>
   </div>
 </div>

@@ -10,8 +10,8 @@ class UsersController < ApplicationController
     end
     @order = current_user.orders ## userを特定して注文日時を表示
     @orders = @user.orders.limit(3) ## limit(3)で1件表示
-    @favorites = @user.favorites.limit(10)
-    #@favorites = current_user.favorite_items
+    #@favorites = @user.favorites.limit(10)
+    @favorites = current_user.favorites
   end
 
   def create

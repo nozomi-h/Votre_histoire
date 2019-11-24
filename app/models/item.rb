@@ -12,11 +12,11 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :status, presence: true
 
+  ## status=販売状況 / genre=種類
   attachment :image
-
   enum status: {Available: 0, Not_available: 1, Sold_out: 2}
+
   enum genre: {OUTER: 0, TOPS: 1, BOTTOMS: 2, ONEPICE: 3, ACCESSORIES: 4, SHOES: 5}
-  acts_as_paranoid
 
   def favorited_by?(current_user)
     favorites.where(user_id: current_user.id).exists?

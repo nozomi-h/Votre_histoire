@@ -21,13 +21,17 @@
       <div class="line_box_gray"></div>
 
       <%# --お気に入り情報をここに記述-- %>
-      <% @favorites.each do |item| %>
+      <% @favorites.each do |favorite| %>
         <div class="favorite_items">
-          <%= attachment_image_tag item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+          <%= attachment_image_tag favorite.item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
         </div>
-          <%= link_to "#{item.prodct_name}",item_path(item.id), style: "color: white;" %>
-          ¥<%= item.price %> (税込)
+          <%= link_to "#{favorite.item.prodct_name}",item_path(favorite.item.id), style: "color: white;" %>
+          ¥<%= favorite.item.price %> (税込)
       <% end %>
+
+      <div class="user-edit">
+        <%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id), class:'btn btn-default col-xs-5 col-xs-offset-7' %>
+      </div>
 
 
       <div class="border">

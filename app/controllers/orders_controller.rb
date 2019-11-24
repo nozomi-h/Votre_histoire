@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
   end
 
   def edit

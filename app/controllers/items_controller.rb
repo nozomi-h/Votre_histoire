@@ -17,6 +17,7 @@ PER = 9 ## ページネーション
     @items = Item.where(genre: params[:id]).page(params[:page]).per(20).reverse_order
     @item = Item.find(params[:id])
     @item_color_size = Item.find(params[:id])
+    #@cart = Cart.new
   end
 
   def genre

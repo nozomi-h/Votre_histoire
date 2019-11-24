@@ -1,24 +1,22 @@
 class FavoritesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :destroy]
+
+  def index
+    @favorites = current_user.favorites_items
+  end
 
   def create
     item = Item.find(params[:item_id])
     favorite = current_user.favorites.new(item_id: item.id)
     favorite.save
-
-    @items=Item.all
-    @item = item
-    @favorites = Favorite.where(user_id: current_user.id)
+    redirect_to item_path(item)
   end
 
   def destroy
     item = Item.find(params[:item_id])
     favorite = current_user.favorites.find_by(item_id: item.id)
     favorite.destroy
-
-    @items = Item.all
-    @item = item
-    @favorites = Favorite.where(user_id: current_user.id)
+    redirect_to item_path(item)
   end
 end

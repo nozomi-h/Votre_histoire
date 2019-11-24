@@ -1,24 +1,23 @@
 ## 情報入力
-crumb :root do
-  link "情報入力", new_user_cart_path
-end
+# crumb :root do
+#   link "情報入力", new_user_cart_path(current_user.id)
+# end
 
 ## ご注文内容の確認
-crumb :carts_index do
-  link "ご注文内容の確認", carts_path
-end
+# crumb :carts_index do
+#   link "ご注文内容の確認", carts_path
+# end
 
-ご注文完了
-crumb :issue do |issue|
-  link "ご注文完了", complete_order_path
-end
+# ご注文完了
+# crumb :issue do |issue|
+#   link "ご注文完了", complete_order_path
+# end
 
 ## ご注文完了
 # crumb :carts do
 #   link "ご注文完了", new_user_cart_path
 #   parent :carts_index
 # end
-
 
 # crumb :projects do
 #   link "Projects", projects_path
