@@ -12,104 +12,96 @@
       <div class="line_box_long"></div>
 
       <%# table-condensedは行間の狭いテーブルになる　小さいテーブル %>
-      <table class="table-content-block table-bordered">
+      <table class="table-content table-bordered">
         <%# thの横にtdがくる形式のtableの書き方 %>
         <tr>
           <th>Order number</th>
-          <td class="date">
+          <td>
             <%= @order.order_number %>
           </td>
         </tr>
         <tr>
-          <th>注文日時</th>
-          <td class="date">
-            <%= @order.created_at %>
+          <th>Order date</th>
+          <td>
+            <%= @order.created_at.strftime('%Y/%m/%d') %>
           </td>
         </tr>
         <tr>
-          <th>お届け先名前（漢字）</th>
-          <td class="date">
-            <%= @order.delivery_last_name + @order.delivery_first_name %>
+          <th>Delivery name</th>
+          <td>
+            <%= @order.address.last_name %><%= @order.address.first_name %>
           </td>
         </tr>
         <tr>
-          <th>お届け先</th>
-          <td class="date">
-            <%= @order.prefecture + @order.city_address + @order.building %>
+          <th>Delivery address</th>
+          <td>
+            <%= @order.address.prefecture %><%= @order.address.city_address %><%= @order.address.building %>
           </td>
         </tr>
         <tr>
-          <th>配送状況</th>
-          <td class="date">
-            <p class="date_1">
-              <%= @order.status_i18n %>
-            </p>
+          <th>Status</th>
+          <td>
+            配送中<%#= @order.status_i18n %>
             <%# selectを使って選択ボタン（プルダウン）を作成 %>
             <%= form_for @order, url:admin_order_path(@order) do |f| %>
               <%# scssでプルダウンの位置を設定をしているためcalssを指定している%>
               <p class="status_box">
                 <%# プルダウンメニューの先頭に空白行を追加する（:include_blank オプション）
                 プルダウンメニューの選択肢の先頭に空白の選択肢を追加することができる　一旦どれかを選択しても、未選択の状態に戻せるということ %>
-                <%= f.select :status, [['配送準備中',0] ,['配送中',1],['配送完了',2],['キャンセル',3]], {include_blank: '選択してください'} %>
-                <%= f.submit "変更する", :class => 'btn btn-success' %>
+                <%= f.select :status, [['配送準備中',0] ,['配送中',1],['配送完了',2]], {include_blank: '---'} %>
+                <%= f.submit "EDIT", :class => 'btn btn-default' %>
               </p>
             <% end %>
           </td>
         </tr>
         <tr>
-          <th>支払方法</th>
-          <td class="date_2">
-            <%= @order.payment_i18n %>
+          <th>Payment</th>
+          <td>
+            クレジットカード<%#= @order.payment_i18n %>
           </td>
         </tr>
       </table>
 
       <table class="table-date">
         <tr class="active">
-          <th>▼配送セット</th>
+          <th>&nbsp;▼ Purchase details</th>
         </tr>
       </table>
-      <table class="table-content-block table-bordered">
+      <table class="table-content-block table-bordered" width="100%">
         <tr>
-          <th>商品</th>
-          <th>単価（税込）</th>
-          <th>個数</th>
-          <th>小計</th>
+          <th>PRODUCT</th>
+          <th>PRODUCT DETAILS</th>
+          <th>TAX INCLUDED</th>
+          <th>SUBTOTAL</th>
         </tr>
 
-        <% @order.order_items.each do |order_item| %>
+        <% @order_items.each do |order_item| %>
           <tr>
-            <td width="60%", style="text-align:left;"><font size="2"><%= order_item.with_deleted_item.title %></font></td>
-            <%# tax_includeは税込価格 %>
-            <% tax_include = order_item.purchase_price * 1.10 %>
-            <td width="15%", style="text-align:center;"><font size="2">¥<%= tax_include.round(0) %></font></td>
-            <td width="10%", style="text-align:center;"><font size="2"><%= order_item.amount %></font></td>
-            <% subtotal = tax_include * order_item.amount %>
-            <%# .floorは小数点を切り捨て .round(0)は小数点切り上げ %>
-            <td width="15%", style="text-align:center;"><font size="2">¥<%= subtotal.round(0) %></font></td>
+            <td width="30%"><%= attachment_image_tag order_item.item, :image, size: '100x150', fallback: 'no_image.jpg' %></td>
+            <td width="50%"><%= order_item.item.prodct_name %></td>
+            <% tax_include = order_item.item.price * 1.10 %>
+            <td width="10%"><%= tax_include.round(0) %>円</td>
+            <% subtotal = tax_include %>
+            <td width="10%"><%= subtotal.round(0) %>円</td><%# .floorは小数点を切り捨て .round(0)は小数点切り上げ %>
           </tr>
         <% end %>
-
         <tr>
-          <%# colspanで連結するセルの数を数字で指定 %>
-          <td colspan="3", style="text-align:right;">送料（税込）→</td>
-          <td style="text-align:center;"><font size="2">¥<%= @order.postage %></font></td>
+          <td colspan="3", style="text-align: right;">送料</td>
+          <td>600　円</td>
+          <%#= @order.postage %>
+        </tr>
+        <tr>
+          <td colspan="3", style="text-align: right;">合計</td>
+          <td><%= @order.total_price.round(0) %>　円</td>
         </tr>
       </table>
 
-      <p class="total_price">
-        <strong>お支払い合計　¥
-        <%= @order.total_price.round(0) %> <%# floorは小数点を切り捨て .round(0)は小数点切り上げ%>
-        </strong>
-      </p>
+      <div class="space">Orderer information</div>
+      <div class="line_box_pink"></div>
 
-      <p class="user_show">
-        <span style="color:red">◆</span><strong>注文者情報</strong>
-      </p>
-
-      <table class="table-content-block table-bordered">
+      <table class="table-content table-bordered">
         <tr>
-          <th>名前（漢字）</th>
+          <th>Name</th>
           <td style="text-align:left;">
             <font size="2">
               <%= @order.user.last_name + @order.user.first_name %>
@@ -117,7 +109,7 @@
           </td>
         </tr>
         <tr>
-          <th>名前（カタカナ）</th>
+          <th>Name kana</th>
           <td style="text-align:left;">
             <font size="2">
               <%= @order.user.last_kana_name + @order.user.first_kana_name %>
@@ -125,7 +117,7 @@
           </td>
         </tr>
         <tr>
-          <th>住所</th>
+          <th>Address</th>
           <td style="text-align:left;">
             <font size="2">
               <%= @order.user.prefecture + @order.user.city_address + @order.user.building %>
@@ -133,7 +125,7 @@
           </td>
         </tr>
         <tr>
-          <th>電話番号</th>
+          <th>Tellphon</th>
           <td style="text-align:left;">
             <font size="2">
               <%= @order.user.tel_number %>
@@ -141,7 +133,7 @@
           </td>
         </tr>
         <tr>
-          <th>メールアドレス</th>
+          <th>Mail</th>
           <td style="text-align:left;">
             <font size="2">
               <%= @order.user.email %>

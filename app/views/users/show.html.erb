@@ -20,52 +20,61 @@
       <div class="space">　お気に入り</div>
       <div class="line_box_gray"></div>
 
-      <%# --お気に入り情報をここに記述-- %>
-      <% @favorites.each do |favorite| %>
-        <div class="favorite_items">
-          <%= attachment_image_tag favorite.item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+      <div class="col-xs-12">
+
+        <%# --お気に入り情報をここに記述-- %>
+        <% @favorites.each do |favorite| %>
+          <div class="favorite_items clearfix">
+            <div class="favorite_items_img">
+              <%= attachment_image_tag favorite.item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x200' %>
+            </div>
+            <div class="favorite_item_name">
+              <%= link_to "#{favorite.item.prodct_name}",item_path(favorite.item.id), style: "color: black;" %>
+            </div>
+            <div class="favorite_item_price">
+              ¥<%= favorite.item.price %> + 税
+            </div>
+          </div>
+        <% end %>
+
+        <div class="user-edit">
+          <%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id), class:'btn btn-default col-xs-5 col-xs-offset-7' %>
         </div>
-          <%= link_to "#{favorite.item.prodct_name}",item_path(favorite.item.id), style: "color: white;" %>
-          ¥<%= favorite.item.price %> (税込)
-      <% end %>
-
-      <div class="user-edit">
-        <%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id), class:'btn btn-default col-xs-5 col-xs-offset-7' %>
       </div>
-
 
       <div class="border">
         <div class="space">　購入履歴</div>
         <div class="line_box_gray"></div>
 
         <%# --購入履歴をここに記述-- %>
-        <table class="table-date table-bordered">
-          <tr>
-            <th>▼<%#= @order.created_at.strftime('%Y/%m/%d') %>
-                ご注文<%#= link_to '(詳細へ)', order_path(order.id) %>
-            </th>
-          </tr>
-        </table>
-
-        <table class="table-content table-bordered" width="100%">
-          <tr>
-            <th>ご注文番号</th>
-            <th>ご注文内容</th>
-            <th>ご注文金額合計</th>
-            <th>お支払方法</th>
-            <th>配送状況</th>
-          </tr>
-
-          <% @orders.each do |order| %>
+          <table class="table-date table-bordered">
             <tr>
-              <td width="20%"><%= order.order_number %></td>
-              <td width="40%"><%= order.order_items.first.item.prodct_name %>
-              <% if order.amount_except_one != 0  %>ほか<%= order.amount_except_one %>点...<% end %></td>
-              <td width="20%"><%= order.item.purchase_price %></td>
-              <td width="10%"><%= order.payment %></td>
-              <td width="10%"><%= order.status_i18n %></td>
+              <th>▼<%= @orders.created_at.strftime('%Y/%m/%d') %>
+                最近のご注文<%= link_to '(詳細へ)', order_path(@orders.id) %>
+              </th>
             </tr>
-          <% end %>
+          </table>
+          <table class="table-content table-bordered" width="100%">
+            <tr>
+              <th>ご注文番号</th>
+              <th>ご注文内容</th>
+              <th>ご注文金額合計</th>
+              <th>お支払方法</th>
+              <th>配送状況</th>
+            </tr>
+
+            <% %>
+            <tr>
+              <td width="20%"><%= @orders.order_number %></td>
+              <td width="40%">
+                <% @orders.order_items.each do |order_item| %>
+                  <%= order_item.item.prodct_name %>
+                <% end %>
+              <% if @orders.amount_except_one != 0  %>他<%= @orders.amount_except_one %>点...<% end %></td>
+              <td width="20%"><%= @orders.purchase_price %></td>
+              <td width="10%"><%= @orders.payment %></td>
+              <td width="10%"><%= @orders.status_i18n %></td>
+            </tr>
         </table>
         <%# != とは、等しくない という意味 %>
 

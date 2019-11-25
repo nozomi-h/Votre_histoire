@@ -183,3 +183,18 @@
 .postal_code{
 	margin-left: 140px;
 }
+
+.favorite_items{
+	float: left; //右側に回り込ませる
+	margin: 20px 0 0 10px;
+}
+
+.favorite_item_name{
+  font-size: 13px;
+  text-align: center;
+}
+
+.favorite_item_price{
+  font-size: 13px;
+  text-align: center;
+}

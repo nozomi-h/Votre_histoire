@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create, :destroy]
 
   def index
-    @favorites = current_user.favorites_items
+    @favorites = current_user.favorites
   end
 
   def create

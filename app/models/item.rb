@@ -22,8 +22,8 @@ class Item < ApplicationRecord
     favorites.where(user_id: current_user.id).exists?
   end
 
-  def stock
-    (Stock.where(item_id: id).sum(:arrival_count)) - (OrderItem.where(item_id: id).sum(:amount))
+  def arrival
+    (Arrival.where(item_id: id).sum(:arrival_count)) - (OrderItem.where(item_id: id).sum(:amount))
   end
 
   def tax_include

@@ -8,10 +8,8 @@ class UsersController < ApplicationController
     if @user.id != current_user.id
       redirect_to root_path
     end
-    @order = current_user.orders ## userを特定して注文日時を表示
-    @orders = @user.orders.limit(3) ## limit(3)で1件表示
-    #@favorites = @user.favorites.limit(10)
-    @favorites = current_user.favorites
+    @orders = @user.orders.last ## lastで最後に注文したorderを表示
+    @favorites = @user.favorites.limit(5) ## limitで表示件数を指定
   end
 
   def create

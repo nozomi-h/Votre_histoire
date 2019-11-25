@@ -12,7 +12,6 @@
       <div class="space_box"></div>
 
       <% @items.each do |item| %>
-
         <div class="genre_item clearfix">
           <div class="genre_item_img">
             <%= link_to item_path(item.id) do %>
@@ -24,7 +23,7 @@
             <%= link_to "#{item.prodct_name}",item_path(item.id), class: "link-text" %>
           </div>
           <div class="genre_item_price">
-            <%= item.tax_include.round(0) %>円(税込)
+            ¥<%= item.price %> + 税
           </div>
         </div>
       <% end %>

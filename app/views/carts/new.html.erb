@@ -11,8 +11,7 @@
       <div class="space"></div>
       <div class="title_cart">CART</div>
 
-      <%# breadcrumb pretext: "CART: ", separator: " &rsaquo; " %>
-      <%# end %>
+      <%# breadcrumbs pretext: "CART: ", separator: " &rsaquo; " %>
 
       <div class="cart_content">
         <table class="table-date">
@@ -21,7 +20,7 @@
           </tr>
         </table>
 
-        <table class="table-content-block table-bordered" width="100%">
+        <table class="table_nomal table-bordered" width="100%">
           <tr>
             <th>商品写真</th>
             <th>商品名</th>
@@ -30,20 +29,20 @@
             <th>小計</th>
           </tr>
 
-          <% @carts.each do |cart, i| %>
+          <% @carts.each do |cart| %>
             <tr>
-              <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %></td>
+              <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x150', fallback: 'no_image.jpg' %></td>
               <td width="40%"><%= cart.item.prodct_name %></td>
-              <td width="10%"><%= cart.item.price %>円</td>
+              <td width="10%"><%= cart.item.tax_include.round(0) %>円</td>
               <td width="10%"><%= link_to "削除", user_cart_path(current_user,cart), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
-              <% subtotal = cart.item.price %>
+              <% subtotal = cart.item.price * 1.10 %>
               <td width="10%"><%= subtotal.round(0) %>円</td>
             </tr>
           <% end %>
 
           <tr>
             <td colspan="4", style="text-align:right;">合計</td>
-            <td><%= current_user.purchase_price %>円　(税込)</td>
+            <td><%= (current_user.purchase_price * 1.10).round(0) %>円</td>
           </tr>
         </table>
       </div>

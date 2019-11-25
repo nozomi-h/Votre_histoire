@@ -13,6 +13,7 @@ table {
   background-color: #dcdcdc;
   height: 25px;
   font-weight: normal;
+  font-family: 'Times New Roman';
 }
 
 .table-content th{
@@ -22,6 +23,7 @@ table {
   text-align: left;
   width: 20%;
   padding: 10px;
+  font-family: 'Times New Roman';
 }
 
 .table-content-block th{
@@ -35,11 +37,13 @@ table {
 
 .table-content-block td{
   text-align: center;
+  font-family: 'Times New Roman';
 }
 
 .table-content td{
   font-weight: normal;
   padding: 10px;
+  font-family: 'Times New Roman';
 }
 
 .table_nomal th{
@@ -54,6 +58,7 @@ table {
   font-weight: normal;
   text-align: center;
   padding: 10px;
+  font-family: 'Times New Roman';
 }
 
 .create{
@@ -75,6 +80,7 @@ ul {
   padding: 0 160px;
   text-align: left;
   line-height: 30px;
+  font-family: 'Times New Roman';
 }
 
 .top-image{

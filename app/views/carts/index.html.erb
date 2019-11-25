@@ -1,6 +1,4 @@
 
-<% breadcrumb :carts_index %>
-
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
@@ -14,6 +12,7 @@
 
       <div class="title_cart">CONFIRMATION</div>
 
+      <%# breadcrumbs :carts_index %>
 
       <div class="note">
         <p>下記ご注文内容で送信してもよろしいでしょうか？<br>
@@ -36,19 +35,21 @@
           <th>小計</th>
         </tr>
 
-        <% @carts.each do |cart, i| %>
+        <% @carts.each do |cart| %>
           <tr>
-            <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x100', fallback: 'no_image.jpg' %> </td>
+            <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x150', fallback: 'no_image.jpg' %></td>
             <td width="40%"><%= cart.item.prodct_name %></td>
-            <td width="15%"><%= cart.item.price %>円</td>
-            <% subtotal = cart.item.price %>
-            <td width="15%"><%= subtotal.round(0) %></td>
+            <% tax_included = cart.item.price * 1.10 %>
+            <td width="10%"><%= tax_included.round(0) %>円</td>
+            <% subtotal = tax_included %>
+            <td width="10%"><%= subtotal.round(0) %>円</td>
           </tr>
         <% end %>
 
         <tr>
           <th colspan="3", style="text-align:right;">小計</th>
-          <td></td>
+          <%# subtotal += @carts.item.price * 1.10 %>
+          <td><%= (current_user.purchase_price * 1.10).round(0) %>円</td>
         </tr>
         <tr>
           <th colspan="3", style="text-align:right;">送料</th>
@@ -56,7 +57,7 @@
         </tr>
         <tr>
           <th colspan="3", style="text-align:right;">合計</th>
-          <td></td>
+          <td><%= (current_user.purchase_price * 1.10 + 600).round(0) %>円</td>
         </tr>
       </table>
 

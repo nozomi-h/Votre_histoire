@@ -2,9 +2,10 @@ class OrdersController < ApplicationController
 
   before_action :authenticate_user!, only: [:index, :show, :create, :edit, :update, :complete]
 
+
   def index
     @user = current_user
-    @orders = current_user.orders
+    @orders = @user.orders
     render :index
   end
 
@@ -28,6 +29,15 @@ class OrdersController < ApplicationController
     end
     @order.purchase_price = sum
     if @order.save
+      @order.update(order_number: @order.order_number)
+      @carts.each do |cart|
+        @order_item = OrderItem.new
+        @order_item.item_id = cart.item.id
+        @order_item.amount = cart.amount
+        @order_item.order_id = @order.id
+        @order_item.total_price = cart.item.price
+        @order_item.save
+      end
       current_user.carts.destroy_all ## has manyした物を全部消す
       redirect_to complete_order_path(@order.id)
     else

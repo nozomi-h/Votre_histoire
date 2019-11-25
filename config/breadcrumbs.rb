@@ -5,7 +5,7 @@ end
 
 # ご注文内容の確認
 crumb :carts_index do
-  link "ご注文内容の確認", carts_path
+  link "ご注文内容の確認", user_carts_path
 end
 
 # ご注文完了

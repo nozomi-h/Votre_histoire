@@ -62,11 +62,11 @@ class CartsController < ApplicationController
     case params[:address].to_i
     when 0
       address_data = { delivery_last_name: current_user.last_name, delivery_first_name: current_user.first_name, postal_code: current_user.postal_code, prefecture: current_user.prefecture, city_address: current_user.city_address, building: current_user.building}
-      payment_data = {delivery_first_kana_name: current_user.first_kana_name, delivery_last_kana_name: current_user.last_kana_name, payment: params[:payment].to_i, purchase_price: 500, status: 0}
+      payment_data = {delivery_first_kana_name: current_user.first_kana_name, delivery_last_kana_name: current_user.last_kana_name, payment: params[:payment].to_i, purchase_price: 600, status: 0}
     when 1
       address = params[:other_address]
       address_data = split_address(address)
-      payment_data = { payment: params[:payment].to_i, purchase_price: current_user.cart_sum, postage: 500, status: 0}
+      payment_data = { payment: params[:payment].to_i, purchase_price: current_user.cart_sum, postage: 600, status: 0}
     end
     address_data.merge(payment_data)
   end
