@@ -22,7 +22,7 @@ PER = 9 ## ページネーション
   end
 
   def genre
-    @items = Item.where(genre:Item.genres[params[:genre]])
+    @items = Item.where(genre:Item.genres[params[:genre]]).reverse_order
   end
 
   private

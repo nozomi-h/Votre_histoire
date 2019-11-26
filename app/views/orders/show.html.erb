@@ -137,7 +137,7 @@
       </table>
 
       <div class="user-edit">
-        <%#= link_to 'マイページへ', user_path(user.id), :class => 'btn btn-default col-xs-4 col-xs-offset-1' %>
+        <%= link_to 'マイページへ', user_path(current_user.id), :class => 'btn btn-default col-xs-4 col-xs-offset-1' %>
         <%= link_to '購入履歴へ', orders_path, :class => 'btn btn-default col-xs-4 col-xs-offset-2' %>
       </div>
     </div>

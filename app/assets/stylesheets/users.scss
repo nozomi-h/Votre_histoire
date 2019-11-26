@@ -175,9 +175,33 @@
 	text-align: center;
 }
 
+.user-show{
+	padding: 20px;
+	margin: 10px 20px 0 0;
+	text-align: right;
+}
+
+.user-add{
+	padding: 0 20px 20px 0;
+	margin-right: 20px;
+	text-align: right;
+}
+
+.user-favorite{
+	padding: 20px;
+	margin: 10px 0 40px 0;
+	text-align: center;
+	float: right;
+}
+
+.user_address_btn{
+	margin: 80px;
+}
+
 .unsubscribe{
 	padding: 40px 40px 0 40px;
 	text-align: right;
+	margin-top: 100px;
 }
 
 .postal_code{
@@ -190,11 +214,15 @@
 }
 
 .favorite_item_name{
-  font-size: 13px;
+  font-size: 16px;
   text-align: center;
 }
 
+.favorite_item_name a{
+	color: #333333;
+}
+
 .favorite_item_price{
-  font-size: 13px;
+  font-size: 16px;
   text-align: center;
 }

@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   attachment :image
   enum status: {Available: 0, Not_available: 1, Sold_out: 2}
 
-  enum genre: {OUTER: 0, TOPS: 1, BOTTOMS: 2, ONEPICE: 3, ACCESSORIES: 4, SHOES: 5}
+  enum genre: {OUTER: 0, TOPS: 1, BOTTOMS: 2, ONEPICE: 3, ACCESSORIES: 4, SHOES: 5, BAG: 6}
 
   def favorited_by?(current_user)
     favorites.where(user_id: current_user.id).exists?

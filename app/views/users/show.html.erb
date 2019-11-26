@@ -37,8 +37,8 @@
           </div>
         <% end %>
 
-        <div class="user-edit">
-          <%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id), class:'btn btn-default col-xs-5 col-xs-offset-7' %>
+        <div class="user-favorite">
+          <%= link_to '　お気に入り一覧へ　', user_favorites_path(@user.id), class:'btn btn-default' %>
         </div>
       </div>
 
@@ -54,7 +54,7 @@
               </th>
             </tr>
           </table>
-          <table class="table-content table-bordered" width="100%">
+          <table class="table-content-block table-bordered" width="100%">
             <tr>
               <th>ご注文番号</th>
               <th>ご注文内容</th>
@@ -71,16 +71,18 @@
                   <%= order_item.item.prodct_name %>
                 <% end %>
               <% if @orders.amount_except_one != 0  %>他<%= @orders.amount_except_one %>点...<% end %></td>
-              <td width="20%"><%= @orders.purchase_price %></td>
-              <td width="10%"><%= @orders.payment %></td>
-              <td width="10%"><%= @orders.status_i18n %></td>
+              <td width="10%"><%= @orders.purchase_price %> 円</td>
+              <td width="20%">クレジットカード<%#= @orders.payment %></td>
+              <td width="10%">配送中<%#%= @orders.status_i18n %></td>
             </tr>
         </table>
         <%# != とは、等しくない という意味 %>
 
-        <div class="user-edit">
-          <%= link_to '購入履歴一覧へ', orders_path(@user_id), class:'btn btn-default col-xs-5 col-xs-offset-7' %>
+        <div class="user-show">
+          <%= link_to '　 購入履歴一覧へ 　', orders_path(@user_id), class:'btn btn-default' %>
         </div>
+
+        <div class="space_box"></div>
       </div>
 
 
@@ -112,9 +114,11 @@
         </tr>
       </table>
 
-      <div class="user-edit">
-        <%= link_to "変更する", edit_user_path(@user.id), class:'btn btn-default col-xs-5' %>
-        <%= link_to "住所一覧へ", user_addresses_path(current_user.id), class:'btn btn-default col-xs-5 col-xs-offset-2' %>
+      <div class="user-show">
+        <%= link_to "　登録住所一覧へ　", user_addresses_path(current_user.id), class:'btn btn-default' %>
+      </div>
+      <div class="user-add">
+        <%= link_to "登録内容を変更する", edit_user_path(@user.id), class:'btn btn-default' %>
       </div>
 
       <div class="unsubscribe">

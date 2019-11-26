@@ -26,11 +26,11 @@
         <% @item.item_colors.each do |color| %>
           <div class="item_cart">
             <div class="item_color">
-              <%= color.color.color %>&thinsp;|
+              <%= color.color.color %>&thinsp;&thinsp;|
             </div>
             <% color.item_color_sizes.each do |size| %>
               <div class="item_size">
-                &thinsp;<%= size.size.size %>
+                <%= size.size.size %>
               </div>
               <div class="item_show_favorite">
                 <% if @item.favorited_by?(current_user) %>

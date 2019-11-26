@@ -24,10 +24,10 @@
                   <%= attachment_image_tag topic_item, :image, size: '160x250', fallback: 'no_image.jpg' %>
               </div>
               <div class="genre_item_name">
-                  <%= topic_item.prodct_name %>
+                <%= topic_item.prodct_name %>
               </div>
               <div class="genre_item_price">
-                  <%= topic_item.price %>
+                ¥<%= topic_item.price %> + 税
               </div>
                 <% end %>
             </div>

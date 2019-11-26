@@ -38,6 +38,7 @@ table {
 .table-content-block td{
   text-align: center;
   font-family: 'Times New Roman';
+  padding: 10px;
 }
 
 .table-content td{
@@ -118,6 +119,7 @@ ul {
 .item_show_price{
   font-size: 22px;
   font-family: 'Times New Roman';
+  margin-bottom: 40px;
 }
 
 .tax{
@@ -126,7 +128,8 @@ ul {
 }
 
 .cart_presence{
-  margin: 10px;
+  margin: 50px 10px;
+  padding-top: 70px;
 }
 
 .item_show_favorite{
@@ -150,21 +153,24 @@ ul {
   font-size: 20px;
   font-family: 'Times New Roman';
   float: left;
+  padding: 10px;
 }
 
 .item_size{
   font-size: 20px;
   font-family: 'Times New Roman';
   float: left;
+  padding: 10px 10px 10px 0;
 }
 
 .item_show_favorite{
   float: left;
+  margin: 10px 0 0 10px;
 }
 
 .item_material{
   font-size: 15px;
-  margin: 20px;
+  margin: 50px 20px 20px 20px;
 }
 
 .material_date{

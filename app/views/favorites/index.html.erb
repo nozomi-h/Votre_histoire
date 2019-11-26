@@ -17,9 +17,9 @@
               <% end %>
             </div>
             <div class="favorite_item_name">
-              <%= link_to "#{item.item.prodct_name}",item_path(item.id), style: "color: black;" %>
+              <%= link_to "#{item.item.prodct_name}",item_path(item.id) %>
             </div>
-            <div class="favotire_item_price">
+            <div class="favorite_item_price">
               ¥<%= item.item.price %> + 税
             </div>
           </div>

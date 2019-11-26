@@ -24,7 +24,7 @@
           <%= link_to '(詳細へ)', order_path(order.id) %></th>
         </tr>
       </table>
-      <table class="table-content table-bordered" width="100%">
+      <table class="table-content-block table-bordered" width="100%">
         <tr>
           <th>ご注文番号</th>
           <th>ご注文内容</th>
@@ -39,9 +39,9 @@
               <% order.order_items.each do |order_item| %>
                 <%= order_item.item.prodct_name %>
               <% end %>
-            <td width="15%"><%= order.purchase_price %></td>
-            <td width="15%">クレジットカード<%#= order.payment %></td>
-            <td width="15%">配送中<%#= order.status_i18n %></td>
+            <td width="10%"><%= order.purchase_price %> 円</td>
+            <td width="20%">クレジットカード<%#= order.payment %></td>
+            <td width="10%">配送中<%#= order.status_i18n %></td>
           </tr>
         <% end %>
       </table>

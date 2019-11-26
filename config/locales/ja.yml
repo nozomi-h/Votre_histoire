@@ -25,6 +25,7 @@ ja:
         ONEPICE: "ONEPICE"
         ACCESSORIES: "ACCESSORIES"
         SHOES: "SHOES"
+        BAG: "BAG"
     order:
       status:
         preparing: "配送準備中"
