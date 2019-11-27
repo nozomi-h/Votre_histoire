@@ -5,7 +5,7 @@
     </header>
 
     <nav>
-      <%= form_tag root_path, :method => 'get' do %><%# httpのget method %>
+      <%= form_tag item_search_path, :method => 'get' do %><%# httpのget method %>
         <%= text_field_tag :search, params[:search] %><%# [:search]に入ったwordを探す %>
           <%= button_tag :type => "submit", :class =>"btn" do %><%# 検索 %>
             <i class="fas fa-search"></i>

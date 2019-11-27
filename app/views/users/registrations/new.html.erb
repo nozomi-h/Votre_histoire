@@ -83,19 +83,21 @@
         <div class="field">
           <p>性別</p>
           <div class="field_box cp_sl01">
-            <%= f.select :sex, [["女"], ["男"]], :prompt => "選択してください"%>
+            <%= f.select :sex, [["女"], ["男"]], :prompt => "---"%>
           </div>
         </div>
-
 
         <div class="field">
           <p>生年月日</p>
           <div class="field_box cp_sl01">
-            <%= f.date_select :birth_day, autofocus: true, autocomplete: "birth_day", :size => "50*50" %>
+            <%= f.date_select(
+              :birth_day,
+              #use_month_numbers: true, ## jan, febとかじゃなくて数字で月を表現
+              start_year:     1960, ## 何年から表示させるか
+              end_year:       (Time.now.year), ## 何年まで表示させるか
+              default:        Date.new(1989, 1, 1)) %> <%# 最初に表示されている年月日 %>
           </div>
         </div>
-
-
 
         <div class="field">
           <h5 class="space">パスワード</h5>

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
+  get '/search' => 'items#search', as: 'item_search'
   resources :items, only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
     resources :item_colors do

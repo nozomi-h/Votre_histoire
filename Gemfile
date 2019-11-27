@@ -87,3 +87,7 @@ group :development do
 end
 
 gem 'cocoon'
+
+# group :production do
+#   gem 'mysql2'
+# end
