@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="sticky">
+        <p><%= render 'layouts/header' %></p>
+      </div>
+    </div>
+
+    <div class="col-xs-9">
+      <p>検索</p>
+      <%= form_tag(search_path,:method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :name => nil %>
+      <% end %>
+
+      <ul><% @items.each do |item| %>
+        <li>
+          <%= link_to item.prodct_name, item %>
+          <%= item.created_at %>
+          <%= item.status %>
+        </li>
+        <%= link_to "編集",edit_item_path(item) %>
+        <%= link_to "削除",item, method: :delete %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

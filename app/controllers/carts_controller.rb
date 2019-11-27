@@ -3,11 +3,11 @@ class CartsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :destroy, :update]
 
   def new
-    #if Cart.exists?(user_id: current_user.id)
+    if Cart.exists?(user_id: current_user.id)
       @carts = Cart.where(user_id: current_user.id) ## whereで該当するデータ全てが返ってくる
-    #else
-      #redirect_to root_path ## 空の場合のリダイレクト先
-    #end
+    else
+      redirect_to root_path ## 空の場合のリダイレクト先
+    end
     @user = current_user
     @addresses = @user.addresses
   end

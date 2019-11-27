@@ -18,7 +18,7 @@
         <div class="line_box_pink"></div>
 
         <%= form_for @user do |f| %>
-          <%#= render "error_messages" %>
+          <%= render 'layouts/error_message', form: @user %>
 
           <div class="field">
             <p>氏名<span class="required">必須</span></p>

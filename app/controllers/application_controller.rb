@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when :admin
-      admin_path
+      new_admin_item_path
     when :user
-    user_path(resource)
+      user_path(resource)
     end
 	end
 
