@@ -1,0 +1,146 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ORDER DETAILS</div>
+      <div class="line_box_long"></div>
+
+      <%# table-condensedは行間の狭いテーブルになる　小さいテーブル %>
+      <table class="table-content table-bordered">
+        <%# thの横にtdがくる形式のtableの書き方 %>
+        <tr>
+          <th>Order number</th>
+          <td>
+            <%= @order.order_number %>
+          </td>
+        </tr>
+        <tr>
+          <th>Order date</th>
+          <td>
+            <%= @order.created_at.strftime('%Y/%m/%d') %>
+          </td>
+        </tr>
+        <tr>
+          <th>Delivery name</th>
+          <td>
+            <%= @order.address.last_name %><%= @order.address.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>Delivery address</th>
+          <td>
+            <%= @order.address.prefecture %><%= @order.address.city_address %><%= @order.address.building %>
+          </td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td>
+            配送中<%#= @order.status_i18n %>
+            <%# selectを使って選択ボタン（プルダウン）を作成 %>
+            <%= form_for @order, url:admin_order_path(@order) do |f| %>
+              <%# scssでプルダウンの位置を設定をしているためcalssを指定している%>
+              <p class="status_box">
+                <%# プルダウンメニューの先頭に空白行を追加する（:include_blank オプション）
+                プルダウンメニューの選択肢の先頭に空白の選択肢を追加することができる　一旦どれかを選択しても、未選択の状態に戻せるということ %>
+                <%= f.select :status, [['配送準備中',0] ,['配送中',1],['配送完了',2]], {include_blank: '---'} %>
+                <%= f.submit "EDIT", :class => 'btn btn-default' %>
+              </p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>Payment</th>
+          <td>
+            クレジットカード<%#= @order.payment_i18n %>
+          </td>
+        </tr>
+      </table>
+
+      <table class="table-date">
+        <tr class="active">
+          <th>&nbsp;▼ Purchase details</th>
+        </tr>
+      </table>
+      <table class="table-content-block table-bordered" width="100%">
+        <tr>
+          <th>PRODUCT</th>
+          <th>PRODUCT DETAILS</th>
+          <th>TAX INCLUDED</th>
+          <th>SUBTOTAL</th>
+        </tr>
+
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td width="30%"><%= attachment_image_tag order_item.item, :image, size: '100x150', fallback: 'no_image.jpg' %></td>
+            <td width="50%"><%= order_item.item.prodct_name %></td>
+            <% tax_include = order_item.item.price * 1.10 %>
+            <td width="10%"><%= tax_include.round(0) %>円</td>
+            <% subtotal = tax_include %>
+            <td width="10%"><%= subtotal.round(0) %>円</td><%# .floorは小数点を切り捨て .round(0)は小数点切り上げ %>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="3", style="text-align: right;">送料</td>
+          <td>600　円</td>
+          <%#= @order.postage %>
+        </tr>
+        <tr>
+          <td colspan="3", style="text-align: right;">合計</td>
+          <td><%= @order.total_price.round(0) %>　円</td>
+        </tr>
+      </table>
+
+      <div class="space">Orderer information</div>
+      <div class="line_box_pink"></div>
+
+      <table class="table-content table-bordered">
+        <tr>
+          <th>Name</th>
+          <td style="text-align:left;">
+            <font size="2">
+              <%= @order.user.last_name + @order.user.first_name %>
+            </font>
+          </td>
+        </tr>
+        <tr>
+          <th>Name kana</th>
+          <td style="text-align:left;">
+            <font size="2">
+              <%= @order.user.last_kana_name + @order.user.first_kana_name %>
+            </font>
+          </td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td style="text-align:left;">
+            <font size="2">
+              <%= @order.user.prefecture + @order.user.city_address + @order.user.building %>
+            </font>
+          </td>
+        </tr>
+        <tr>
+          <th>Tellphon</th>
+          <td style="text-align:left;">
+            <font size="2">
+              <%= @order.user.tel_number %>
+            </font>
+          </td>
+        </tr>
+        <tr>
+          <th>Mail</th>
+          <td style="text-align:left;">
+            <font size="2">
+              <%= @order.user.email %>
+            </font>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

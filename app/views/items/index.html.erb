@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="main-contents">
+        <%= image_tag('top-new.jpg', class: 'top-image') %>
+      </div>
+
+      <%= video_tag('top-video.mp4',style: "width:100%;", autoplay: true, :loop => true) %>
+
+      <div class="space"></div>
+
+      <div class="news">
+        <h4 class="top_title">NEW ITEM</h4>
+          <% @topic_items.each do |topic_item| %>
+            <div class="genre_item clearfix">
+              <div class="genre_item_img">
+                <% if topic_item.created_at %>
+                  <%= attachment_image_tag topic_item, :image, size: '190x290', fallback: 'no_image.jpg' %>
+              </div>
+              <div class="genre_item_name">
+                <%= topic_item.prodct_name %>
+              </div>
+              <div class="genre_item_price">
+                ¥<%= topic_item.price %> + 税
+              </div>
+                <% end %>
+            </div>
+          <% end %>
+        <div class="line_box"></div>
+      </div>
+
+      <div class="col-xs-12">
+
+      <div class="space"></div>
+
+
+      <div class="news">
+        <h4 class="top_title">NEWS</h4>
+        <div class="line_box"></div>
+        <%# お知らせがある時はここを更新 %>
+        <ul>
+          <li>2019.11.21&emsp;&emsp;&emsp;&emsp;新作多数入荷しました !!!</li>
+          <li>2019.11.01&emsp;&emsp;&emsp;&emsp;３rd. ANNIVERSARY&emsp;"1日限定30%OFF" 開催 !!!</li>
+          <li>2019.10.14&emsp;&emsp;&emsp;&emsp;送料改定 → 全国一律600円に変更しました。</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

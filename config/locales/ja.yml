@@ -1,0 +1,43 @@
+
+ja:
+  enums:
+    color:
+      color:
+        white: "white"
+        black: "black"
+        beige: "beige"
+        pink: "pink"
+        brown: "brown"
+        gray: "gray"
+    size:
+      size:
+        S: "S"
+        M: "M"
+        24: "24"
+        25: "25"
+        26: "26"
+        Free: "Free"
+    genre:
+      genre:
+        OUTER: "OUTER"
+        TOPS: "TOPS"
+        BOTTOMS: "BOTTOMS"
+        ONEPICE: "ONEPICE"
+        ACCESSORIES: "ACCESSORIES"
+        SHOES: "SHOES"
+        BAG: "BAG"
+    order:
+      status:
+        preparing: "配送準備中"
+        in_delivery: "配送中"
+        delivered: "配送完了"
+      payment:
+        cash: "代金引換"
+        transfer: "振込み"
+        credit_card: "クレジットカード"
+    item:
+      status:
+        available: "販売中"
+        not_available: "販売停止中"
+        sold_out: "在庫切れ"
+

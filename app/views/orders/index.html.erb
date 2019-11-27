@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+
+      <%# --ユーザーの名前-- %>
+      <div class="user-name">
+        <p class="current-user">
+          <%= @user.last_name %><%= @user.first_name %>　様
+        </p>
+      </div>
+
+      <div class="space">　購入履歴一覧</div>
+      <div class="line_box_pink"></div>
+
+      <% @orders.each do |order| %>
+      <%# --購入履歴をここに記述-- %>
+      <table class="table-date table-condensed">
+        <tr>
+          <th>▼<%= order.created_at.strftime('%Y/%m/%d') %>ご注文
+          <%= link_to '(詳細へ)', order_path(order.id) %></th>
+        </tr>
+      </table>
+      <table class="table-content-block table-bordered" width="100%">
+        <tr>
+          <th>ご注文番号</th>
+          <th>ご注文内容</th>
+          <th>ご注文金額合計</th>
+          <th>お支払方法</th>
+          <th>配送状況</th>
+        </tr>
+
+          <tr>
+            <td width="20%"><%= order.order_number %></td>
+            <td width="35%">
+              <% order.order_items.each do |order_item| %>
+                <%= order_item.item.prodct_name %>
+              <% end %>
+            <td width="10%"><%= order.purchase_price %> 円</td>
+            <td width="20%">クレジットカード<%#= order.payment %></td>
+            <td width="10%">配送中<%#= order.status_i18n %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <%# ページネーション %>
+

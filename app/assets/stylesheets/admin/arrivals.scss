@@ -1,0 +1,35 @@
+// Place all the styles related to the admin::arrivals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table_admin th{
+  background-color: #e6e6e6;
+  font-weight: normal;
+  text-align: center;
+  width: 25%;
+}
+
+.boxes {
+  text-align:center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.line_border_arrival{
+  width: 25%;
+	border-bottom: 1px solid #333333;
+  margin-bottom: 10px auto;
+}
+
+.arrival-count{
+  text-align: center;
+}
+
+.line_box_pastel{
+  border-bottom: 1px solid #c8c8c8;
+  margin: 20px;
+}
+
+.space_mini{
+  margin: 40px;
+}

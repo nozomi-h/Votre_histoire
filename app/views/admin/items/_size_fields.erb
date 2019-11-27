@@ -1,0 +1,12 @@
+<%# cocoon %>
+
+<div class="nested-fields well-compact size-box">
+  <h6>Size</h6><%# color 登録 %>
+  <div class="field_box cp_sl01">
+    <div class="select">
+      <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
+    </div>
+  </div>
+  <p style="margin: 10px;"><%= link_to_remove_association "DELETE", f %></p>
+    <%= link_to_add_association "ADD TO COLOR", f, :sizes %>    </div>
+</div>

@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+
+      <%# --ユーザーの名前-- %>
+      <div class="user-name">
+        <p class="current-user">
+          <%= @order.user.last_name %><%= @order.user.first_name %>　様
+        </p>
+      </div>
+
+
+      <div class="space">購入履歴・配送状況詳細</div>
+      <div class="line_box_pink"></div>
+
+      <%# --購入履歴・配送状況をここに記述-- %>
+      <table class="table-content table-bordered">
+        <tr>
+          <th>注文番号</th>
+          <td><%= @order.order_number %></td>
+        </tr>
+        <tr>
+          <th>注文日時</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>配送状況</th>
+          <td>配送中</td>
+          <%#%= @order.status_i18n %>
+        </tr>
+      </table>
+      <table class="table-date table-bordered">
+        <tr>
+          <th>▼配送内容</th>
+        </tr>
+      </table>
+      <table class="table_nomal table-bordered" width="100%">
+        <tr>
+          <th>商品</th>
+          <th>商品内容</th>
+          <th>単価（税込）</th>
+          <th>小計</th>
+        </tr>
+
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td width="30%"><%= attachment_image_tag order_item.item, :image, size: '100x150', fallback: 'no_image.jpg' %>
+            <td width="30%"><%= order_item.item.prodct_name %></td>
+            <% tax_included = order_item.item.price * 1.10 %><%# tax_included（税込商品）= 注文商品 %>
+            <td width="20%"><%= tax_included.round(0) %> 円</td>
+            <% subtotal = tax_included %><%# subtotal = 税込商品 %>
+            <td width="20%"><%= subtotal.round(0) %>　円</td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="3", style="text-align: right;">送料</td>
+          <td>600　円</td>
+          <%#= @order.postage %>
+        </tr>
+        <tr>
+          <td colspan="3", style="text-align: right;">合計</td>
+          <td><%= @order.total_price.round(0) %>　円</td>
+        </tr>
+      </table>
+
+
+      <div class="space">注文者情報</div>
+      <div class="line_box_pink"></div>
+
+      <%# --注文者情報をここに記述-- %>
+      <table class="table-content table-bordered">
+        <tr>
+          <th>氏名（漢字）</th>
+          <td><%= @order.user.last_name %><%= @order.user.first_name %></td>
+        </tr>
+        <tr>
+          <th>氏名（カナ）</th>
+          <td><%= @order.user.last_kana_name %><%= @order.user.first_kana_name %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td>〒<%= @order.address.postal_code %>&emsp;<%= @order.address.prefecture %><%= @order.address.city_address %><%= @order.address.building %></td>
+        </tr>
+        <tr>
+          <th>連絡先電話番号</th>
+          <td><%= @order.user.tel_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @order.user.email %></td>
+        </tr>
+      </table>
+
+
+      <div class="space">配送先</div>
+      <div class="line_box_pink"></div>
+
+      <%# ここでは、preparingであれば[変更する]ボタンが出るというif文 %>
+      <div class="order-edit">
+        <%#[変更する] ボタンがない場合はすでに出荷準備に入ってるため配送先住所を変更できません。%>
+        <% if @order.status == "preparing" %>
+          <%= link_to"[変更する]", edit_order_path(@order.id) %>
+        <% end %>
+      </div>
+
+      <%# --配送先情報をここに記述-- %>
+      <table class="table-content table-bordered">
+        <tr>
+          <th>お届け先氏名（漢字）</th>
+          <td><%= @order.address.last_name %><%= @order.address.first_name %></td>
+        </tr>
+        <tr>
+          <th>お届け先氏名（カナ）</th>
+          <td><%= @order.address.last_kana_name %><%= @order.address.first_kana_name %></td>
+        </tr>
+        <tr>
+          <th>お届け先住所</th>
+          <td><%= @order.address.prefecture %><%= @order.address.city_address %><%= @order.address.building %></td>
+        </tr>
+      </table>
+
+
+      <div class="space">お支払方法</div>
+      <div class="line_box_pink"></div>
+
+      <%# --支払方法をここに記述-- %>
+      <table class="table-content table-bordered">
+        <tr>
+          <th>お支払方法</th>
+          <td>クレジットカード</td>
+          <%#= @order.payment_i18n %>
+        </tr>
+      </table>
+
+      <div class="user-edit">
+        <%= link_to 'マイページへ', user_path(current_user.id), :class => 'btn btn-default col-xs-4 col-xs-offset-1' %>
+        <%= link_to '購入履歴へ', orders_path, :class => 'btn btn-default col-xs-4 col-xs-offset-2' %>
+      </div>
+    </div>
+  </div>
+</div>

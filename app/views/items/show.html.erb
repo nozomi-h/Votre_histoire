@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="show_page clearfix">
+        <div class="item_show_image">
+          <%= attachment_image_tag @item, :image, size: '430x580', fallback: 'no_image.jpg' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="show_page_side clearfix">
+        <div class="item_show_name">
+          <%= @item.prodct_name %>
+        </div>
+        <div class="item_show_price">
+          ¥<%= @item.tax_include.round(0) %><p class="tax"> (税込)</p>
+        </div>
+
+        <div class="line_box_long"></div>
+
+        <% @item.item_colors.each do |color| %>
+          <div class="item_cart">
+            <div class="item_color">
+              <%= color.color.color %>&thinsp;&thinsp;|
+            </div>
+            <% color.item_color_sizes.each do |size| %>
+              <div class="item_size">
+                <%= size.size.size %>
+              </div>
+              <div class="item_show_favorite">
+                <% if @item.favorited_by?(current_user) %>
+                  <li>
+                    <%= link_to item_favorites_path(@item), method: :delete do %>
+                      <i class="fas fa-heart fa-lg" style="color: pink;"></i>
+                      <%#= @item.favorites.count %>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to item_favorites_path(@item), method: :post do %>
+                      <i class="fas fa-heart fa-lg" style="color: gray;"></i>
+                      <%#= @item.favorites.count %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </div>
+              <div class="cart_presence clearfix">
+                <% if color.item.status_before_type_cast == 0 %>
+                  <%= link_to "ADD TO CART", item_item_color_item_color_size_carts_path(@item.id, color.id, size.id), method: :post, class: "btn btn-primary col-xs-12" %>
+                <% else %>
+                  <%= button_tag type: "submit", disabled: true, class: "btn btn-primary", style: "background-color: pink; border-color: pink; padding-right: 10px;" do %>
+                    <p style="font-size: 16px; font-weight: bold; margin: 0 auto;">SOLD OUT</p>
+                  <% end %>
+                <% end %>
+              </div>
+              <% end %>
+          </div>
+        <% end %>
+
+        <div class="line_box_long"></div>
+
+        <div class="item_material">
+          <p>【 素材 】</p>
+          <div class="material_date">
+            <%= @item.material %>
+          </div>
+        </div>
+        <div class="size_table">
+          <%# @items.each do |item| %>
+            <%#= item.size(genre:genre) %>
+          <%# end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

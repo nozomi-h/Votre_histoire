@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ITEM LIST</div>
+      <div class="line_box_long"></div>
+
+      <table class="table-content-block table-bordered" width="100%">
+        <tr>
+          <th>Date</th>
+          <th>Product name</th>
+          <th>Product material</th>
+          <th>Genre</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+
+        <% @items.each do |item| %>
+          <tr>
+            <td width="10%"><%= item.created_at %></td>
+            <%= link_to admin_item_path(item.id) do %>
+              <td width="20%"><%= link_to "#{item.prodct_name}", item_path(item.id) %></td>
+            <% end %>
+
+              <td width="25%"><%= item.material %></td>
+
+            <td width="15%"><%= item.genre %></td>
+
+            <td width="10%"><%= item.status_i18n %></td>
+
+            <td width="10%">
+              <%= link_to "EDIT", edit_admin_item_path(item.id) %>
+              <%= link_to "DELETE", admin_item_path(item.id), method: :delete, class: "btn", "data-confirm" => "本当に削除しますか？" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="paginate">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>

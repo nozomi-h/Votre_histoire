@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">FAVORITE LIST</div>
+      <div class="line_box_long"></div>
+        <% @favorites.each do |item| %>
+          <div class="favorite_items clearfix">
+            <div class="favorite_item_img">
+              <%= link_to item_path(item.id) do %>
+                <%= attachment_image_tag item.item, :image, format:'jpeg', fallback: "no_image.jpg", size: '200x300' %>
+              <% end %>
+            </div>
+            <div class="favorite_item_name">
+              <%= link_to "#{item.item.prodct_name}",item_path(item.id) %>
+            </div>
+            <div class="favorite_item_price">
+              ¥<%= item.item.price %> + 税
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="sticky">
+  <p>
+    <header>
+      <h2 class="shop_name_sideber">Votre histoire</h2>
+    </header>
+
+    <nav>
+      <%= form_tag item_search_path, :method => 'get' do %><%# httpのget method %>
+        <%= text_field_tag :search, params[:search] %><%# [:search]に入ったwordを探す %>
+          <%= button_tag :type => "submit", :class =>"btn" do %><%# 検索 %>
+            <i class="fas fa-search"></i>
+          <% end %>
+      <% end %>
+
+      <ol class="header_menu">
+        <%# enumで定義したkeyの一覧を取得する %>
+        <% Item.genres.keys.each do |genre| %>
+          <li><%= link_to genre, genre_items_path(genre:genre) %></li>
+        <% end %>
+      </ol>
+
+      <ol class="header_menu">
+        <% if user_signed_in? %><%# userがログインしている時の表示 %>
+        <a class="">
+          <li><%= link_to "TOP", root_path %></li>
+          <li><%= link_to "MY PAGE", user_path(current_user) %></li>
+          <li><%= link_to "CART", new_user_cart_path(current_user) %></li>
+          <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+          <% else %><%# userがログアウトしている時の表示 %>
+          <li><%= link_to "TOP", root_path %></li>
+          <li><%= link_to "LOG IN", new_user_session_path %></li>
+          <li><%= link_to "MY PAGE", new_user_session_path %></li>
+          <li><%= link_to "NEW ACCOUNT", new_user_registration_path %></li>
+        </a>
+        <% end %>
+      </ol>
+
+      <div class="social">
+        <%# fa-lgは、アイコンの大きさ設定 1.333…倍 %>
+        <i class="fab fa-facebook-f fa-lg"></i>
+        <i class="fab fa-twitter fa-lg"></i>
+        <i class="fab fa-instagram fa-lg"></i>
+        <i class="fab fa-line fa-lg"></i>
+      </div>
+    </nav>
+  </p>
+
+</div>

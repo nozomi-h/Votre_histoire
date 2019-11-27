@@ -1,0 +1,55 @@
+
+<h2 class="shop_name">Votre histoire</h2>
+<div class="line_box"></div>
+
+<div class="line_box_long"></div>
+<div class="title">ログイン</div>
+<div class="line_box_long"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h5 class="space">SNSからログインする</h5>
+      <div class="line_box_pink"></div>
+
+      <h5 class="space">メールアドレスとパスワードからログインする</h5>
+      <div class="line_box_pink"></div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field_1">
+          <p>メールアドレス　
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "50*50" %>
+          </p>
+        </div>
+
+        <div class="field_1">
+          </p>パスワード　　　
+            <%= f.password_field :password, autocomplete: "current-password", :size => "50*50" %>
+          </p>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field_1">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="user-edit">
+          <%= f.submit "ログインする", :class => "btn btn-primary col-xs-10 col-xs-offset-1" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+
+      <h5 class="space">初めてご利用の方・会員以外の方</h5>
+      <div class="line_box_pink"></div>
+      <p>初めてご利用のお客様は、こちらから会員登録を行ってください。<br>
+          メールアドレスとパスワードを登録しておくと便利にお買い物ができるようになります。</p>
+      <div class="user-edit">
+        <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-primary col-xs-10 col-xs-offset-1"%>
+      </div>
+    </div>
+  </div>
+</div>

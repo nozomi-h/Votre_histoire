@@ -1,0 +1,33 @@
+<div class="sticky">
+  <p>
+    <header>
+      <h2 class="shop_name_sideber">Votre histoire</h2>
+    </header>
+
+    <nav>
+      <%= form_tag item_search_path, :method => 'get' do %><%# httpのget method %>
+        <%= text_field_tag :search, params[:search] %><%# [:search]に入ったwordを探す %>
+          <%= button_tag :type => "submit", :class =>"btn" do %><%# 検索 %>
+            <i class="fas fa-search"></i>
+          <% end %>
+      <% end %>
+
+      <ol class="header_menu">
+        <% Item.genres.keys.each do |genre| %>
+          <li><%= link_to genre, genre_items_path(genre:genre) %></li>
+        <% end %>
+      </ol>
+
+      <ol class="header_menu">
+        <a class="">
+          <li><%= link_to "ユーザー管理", admin_users_path %></li>
+          <li><%= link_to "新規商品登録", new_admin_item_path %></li>
+          <li><%= link_to "商品管理", admin_items_path %></li>
+          <li><%= link_to "再入荷管理", admin_arrivals_path %></li>
+          <li><%= link_to "受注管理", admin_orders_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        </a>
+      </ol>
+    </nav>
+  </p>
+</div>

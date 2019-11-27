@@ -1,0 +1,38 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">USER LIST</div>
+      <div class="line_box_long"></div>
+
+      <table class="table-content-block table-bordered width="100%"">
+        <tr>
+          <th>User name</th>
+          <th>Address</th>
+          <th>Tel</th>
+          <th>Mail</th>
+          <th></th>
+        </tr>
+
+        <% @user.each do |user| %>
+          <tr>
+            <td width="20%"><%= link_to "#{user.last_name + user.first_name}", admin_user_path(user.id) %></td>
+            <td width="30%"><%= user.prefecture %><%= user.city_address %><%= user.building %></td>
+            <td width="15%"><%= user.tel_number %></td>
+            <td width="25%"><%= user.email %></td>
+            <td width="10%"><%= link_to 'DELETE', admin_user_path(user.id), method: :delete, class: "btn", "data-confirm" => "本当に削除しますか？" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="paginate">
+        <%= paginate @user %>
+      </div>
+    </div>
+  </div>
+</div>

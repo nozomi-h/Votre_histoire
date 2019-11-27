@@ -1,0 +1,86 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">ADD PRODUCT</div>
+      <div class="line_box_long"></div>
+
+      <div class="sell-content clearfix">
+        <%# product_name,product_material 登録 %>
+        <div class="sell-sub-head">
+          Product name
+        </div>
+        <div class="boxes"><%= @item.prodct_name %></div>
+        <%# <div class="line_border_arrival"></div> %>
+        <div class="sell-sub-head">
+          Product material
+        </div>
+        <div class="boxes"><%= @item.material %></div>
+        <%# <div class="line_border_arrival"></div> %>
+      </div>
+
+      <div class="line_box_pastel"></div>
+
+      <div class="sell-content">
+        <div class="sell-sub-head">
+          Product Details
+        </div>
+
+        <div class="space_mini"></div>
+
+        <%= form_with(model: @arrival, url: admin_item_arrivals_path(@item.id), local: true) do |f| %>
+
+          <h5>Color</h5><%# color 登録 %>
+          <div class="field_box cp_sl01">
+            <%= f.select :colors, [["white",0], ["block",1], ["beige",2], ["pink",3], ["brown",4], ["gray",5]], :prompt => "---" %>
+          </div>
+
+          <h5>Size</h5><%# size 登録 %>
+          <div class="field_box cp_sl01">
+            <%= f.select :sizes, [["S",0], ["M",1], ["24",2], ["25",3], ["26",4], ["Free",5]], :prompt => "---" %>
+          </div>
+      </div>
+
+      <div class="line_box_pastel"></div>
+
+      <div class="sell-content">
+        <div class="sell-sub-head">
+          Stock quantity
+        </div>
+
+        <div class="space_mini"></div>
+
+          <h5 align="center">Current stock</h5>
+          <div class="arrival-count">
+            <%= (Arrival.where(item_id: @item.id).sum(:arrival_count)) - (OrderItem.where(item_id: @item.id).sum(:amount))%>
+          </div>
+
+          <div class="space_mini"></div>
+
+          <h5 align="center">Arrival date</h5>
+          <div class="boxes">
+            <%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %>
+          </div>
+
+          <div class="space_mini"></div>
+
+          <h5 align="center">Number of arrivals</h5>
+          <div class="boxes">
+            <%= f.number_field :arrival_count, min: "1", value: "1" %>
+          </div>
+
+          <div class = "create">
+            <%= f.submit 'POST', class: "btn btn-primary col-xs-10 col-xs-offset-1" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

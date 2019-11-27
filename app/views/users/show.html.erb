@@ -1,0 +1,130 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+
+      <%# --ユーザーの名前-- %>
+      <div class="user-name">
+        <p class="current-user">
+          <%= @user.last_name %><%= @user.first_name %>　様
+        </p>
+      </div>
+
+
+      <div class="space">お買い物情報</div>
+      <div class="line_box_pink"></div>
+
+      <div class="space">　お気に入り</div>
+      <div class="line_box_gray"></div>
+
+      <div class="col-xs-12">
+
+        <%# --お気に入り情報をここに記述-- %>
+        <% @favorites.each do |favorite| %>
+          <div class="favorite_items clearfix">
+            <div class="favorite_items_img">
+              <%= attachment_image_tag favorite.item, :image, format:'jpeg', fallback: "no_image.jpg", size: '150x200' %>
+            </div>
+            <div class="favorite_item_name">
+              <%= link_to "#{favorite.item.prodct_name}",item_path(favorite.item.id), style: "color: black;" %>
+            </div>
+            <div class="favorite_item_price">
+              ¥<%= favorite.item.price %> + 税
+            </div>
+          </div>
+        <% end %>
+
+        <div class="user-favorite">
+          <%= link_to '　お気に入り一覧へ　', user_favorites_path(@user.id), class:'btn btn-default' %>
+        </div>
+      </div>
+
+      <div class="border">
+        <div class="space">　購入履歴</div>
+        <div class="line_box_gray"></div>
+
+        <%# --購入履歴をここに記述-- %>
+          <table class="table-date table-bordered">
+            <tr>
+              <th>▼<%= @orders.created_at.strftime('%Y/%m/%d') %>
+                最近のご注文<%= link_to '(詳細へ)', order_path(@orders.id) %>
+              </th>
+            </tr>
+          </table>
+          <table class="table-content-block table-bordered" width="100%">
+            <tr>
+              <th>ご注文番号</th>
+              <th>ご注文内容</th>
+              <th>ご注文金額合計</th>
+              <th>お支払方法</th>
+              <th>配送状況</th>
+            </tr>
+
+            <% %>
+            <tr>
+              <td width="20%"><%= @orders.order_number %></td>
+              <td width="40%">
+                <% @orders.order_items.each do |order_item| %>
+                  <%= order_item.item.prodct_name %>
+                <% end %>
+              <% if @orders.amount_except_one != 0  %>他<%= @orders.amount_except_one %>点...<% end %></td>
+              <td width="10%"><%= @orders.purchase_price %> 円</td>
+              <td width="20%">クレジットカード<%#= @orders.payment %></td>
+              <td width="10%">配送中<%#%= @orders.status_i18n %></td>
+            </tr>
+        </table>
+        <%# != とは、等しくない という意味 %>
+
+        <div class="user-show">
+          <%= link_to '　 購入履歴一覧へ 　', orders_path(@user_id), class:'btn btn-default' %>
+        </div>
+
+        <div class="space_box"></div>
+      </div>
+
+
+      <div class="space">お客様情報</div>
+      <div class="line_box_pink"></div>
+
+      <%# --会員情報をここに記述-- %>
+      <%# table-borderedはボーダー（ラインの表示） %>
+      <table class="table-content table-bordered">
+        <tr><%# thの横にtdがくる形式のtableの書き方 %>
+          <th>氏名</th>
+          <td><%= @user.last_name %><%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @user.last_kana_name %><%= @user.first_kana_name %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @user.prefecture %><%= @user.city_address %><%= @user.building %></td>
+        </tr>
+        <tr>
+          <th>連絡先電話番号</th>
+          <td><%= @user.tel_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+
+      <div class="user-show">
+        <%= link_to "　登録住所一覧へ　", user_addresses_path(current_user.id), class:'btn btn-default' %>
+      </div>
+      <div class="user-add">
+        <%= link_to "登録内容を変更する", edit_user_path(@user.id), class:'btn btn-default' %>
+      </div>
+
+      <div class="unsubscribe">
+        <%= link_to "退会する", user_path(@user.id), method: :delete, "data-confirm" => "退会すると【お客様の情報が全て失われてしまいます】がよろしいですか？" %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,42 @@
+// Place all the styles related to the genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.genre{
+  font-size: 20px;
+}
+
+.genre_name_title{
+  float: left;
+  margin-top: 45px;
+  font-family: 'Times New Roman';
+  font-size: 20px;
+}
+
+.genre_item{
+  float: left; //右側に回り込ませる
+  margin: 20px 0 0 10px;
+}
+
+.genre_item_name{
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.genre_item_name a{
+  color: #333333;
+  font-family: 'Times New Roman';
+}
+
+.genre_item_price{
+  font-size: 16px;
+  text-align: center;
+  font-family: 'Times New Roman';
+}
+
+//displayに対する値
+//block; 要素が横までいっぱいに広がり、縦に並んでいく
+//inline; 要素が平ぺったく横に並んでいく
+//inline-block; blockとinlineの中間
+//none; 非表示になる

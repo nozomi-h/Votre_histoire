@@ -1,0 +1,23 @@
+// Place all the styles related to the admin::items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sell-content{
+  padding: 50px;
+  font-family: 'Times New Roman'
+  // border-bottom: 1px solid #e6e6e6;
+}
+
+.border{
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.sell-sub-head{
+  float: left;
+  color: #888;
+}
+
+.sell-form-box{
+  float: right;
+}
+

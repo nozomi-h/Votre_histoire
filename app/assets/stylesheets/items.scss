@@ -1,0 +1,178 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  word-break: break-all; // 文の改行 言語に関係なく表示範囲に合わせて改行する
+  word-wrap: break-all; //文字の切れ目で自動改行
+}
+
+.table-date th{
+  background-color: #dcdcdc;
+  height: 25px;
+  font-weight: normal;
+  font-family: 'Times New Roman';
+}
+
+.table-content th{
+  background: #efefef;
+  font-weight: normal; // 文字の太さ
+  white-space: nowrap; // ソース中のホワイトスペース・改行の表示方法 nowrapはは両方とも無効とする
+  text-align: left;
+  width: 20%;
+  padding: 10px;
+  font-family: 'Times New Roman';
+}
+
+.table-content-block th{
+  background: #efefef;
+  font-weight: normal; // 文字の太さ
+  white-space: nowrap; // ソース中のホワイトスペース・改行の表示方法 nowrapはは両方とも無効とする
+  text-align: center;
+  padding: 10px;
+  font-family: 'Times New Roman';
+}
+
+.table-content-block td{
+  text-align: center;
+  font-family: 'Times New Roman';
+  padding: 10px;
+}
+
+.table-content td{
+  font-weight: normal;
+  padding: 10px;
+  font-family: 'Times New Roman';
+}
+
+.table_nomal th{
+  font-weight: normal;
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Times New Roman';
+}
+
+.table_nomal td{
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Times New Roman';
+}
+
+.create{
+  padding: 20px auto;
+}
+
+.top-image{
+  width: 100%;
+  margin-top: 40px;
+}
+
+.news{
+  padding: 40px 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0 160px;
+  text-align: left;
+  line-height: 30px;
+  font-family: 'Times New Roman';
+}
+
+.top-image{
+  width: 100%;
+}
+
+.main-contents{
+  margin: 10px auto;
+}
+
+.top_title{
+  text-align: center;
+  font-family: 'Times New Roman';
+}
+
+.show_page{
+  margin: 60px 10px 20px 40px;
+}
+
+.item_show_image{
+  text-align: center;
+}
+
+.show_page_side{
+  margin: 60px 0 0 10px;
+}
+
+.item_show_name{
+  font-size: 25px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  font-family: 'Times New Roman';
+}
+
+.item_show_price{
+  font-size: 22px;
+  font-family: 'Times New Roman';
+  margin-bottom: 40px;
+}
+
+.tax{
+  display: inline;
+  font-size: 13px;
+}
+
+.cart_presence{
+  margin: 50px 10px;
+  padding-top: 70px;
+}
+
+.item_show_favorite{
+  display: block;
+  background-color: #EFEFEF;
+  border-radius: 100%;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+}
+
+.item_show_favorite li{
+  margin-top: 8px;
+}
+
+.heart{
+  color: pink;
+}
+
+.item_color{
+  font-size: 20px;
+  font-family: 'Times New Roman';
+  float: left;
+  padding: 10px;
+}
+
+.item_size{
+  font-size: 20px;
+  font-family: 'Times New Roman';
+  float: left;
+  padding: 10px 10px 10px 0;
+}
+
+.item_show_favorite{
+  float: left;
+  margin: 10px 0 0 10px;
+}
+
+.item_material{
+  font-size: 15px;
+  margin: 50px 20px 20px 20px;
+}
+
+.material_date{
+  font-size: 13px;
+}

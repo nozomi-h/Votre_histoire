@@ -1,0 +1,85 @@
+<div class="container">
+  <div classs="row">
+
+    <div class="col-xs-3">
+      <%= render 'layouts/header_admin' %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="space_box"></div>
+      <div class="line_box_long"></div>
+      <div class="title">EDIT PRODUCT</div>
+      <div class="line_box_long"></div>
+
+      <%# %>
+      <%= form_with(model: @item, url:admin_item_path(@item), local: true) do |f| %>
+
+        <div class="sell-content">
+        <%# image 登録 %>
+          <h5>Image</h5>
+          <%= f.attachment_field :image %>
+        </div>
+
+        <div class="sell-content clearfix">
+          <%# product_name,genre 登録 %>
+          <h5>Product name</h5>
+          <%= f.text_field :prodct_name, class: "col-xs-12" %>
+          <h5>Product material</h5>
+          <%= f.text_area :material, class: "col-xs-12" %>
+        </div>
+
+        <div class="sell-content clearfix">
+          <div class="sell-sub-head">
+            Product Details
+          </div>
+          <div class="sell-form-box">
+            <h5>Status</h5><%# status 登録 %>
+            <div class="field_box cp_sl01">
+              <%= f.select :status, Item.statuses.keys, {}, :prompt => "---" %>
+            </div>
+            <h5>Genre</h5><%# genre 登録 %>
+            <div class="field_box cp_sl01">
+              <%= f.select :genre, Item.genres.keys, {}, :prompt => "---" %>
+            </div>
+            <h5>Color</h5><%# color 登録 %>
+            <div class="field_box cp_sl01">
+              <div class="select">
+                <%= f.fields_for :item_colors do |ic| %>
+                  <%= ic.collection_select :color_id, Color.all, :id, :color %>
+                    <h5>Size</h5><%# size 登録 %>
+                    <div class="field_box cp_sl01">
+                      <%= ic.fields_for :item_color_sizes do |ics| %>
+                        <%= ics.collection_select :size_id, Size.all, :id, :size %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sell-content clearfix">
+          <div class="sell-sub-head">
+            Selling Price
+          </div>
+
+          <div class="sell-form-box">
+            <div class="field_1">
+              <h5>Price</h5><%# priceの設定 %>
+              <%= f.number_field :price %>円
+            </div>
+          </div>
+        </div>
+
+        <div class="sell-content">
+          <div class = "create">
+            <%= f.submit 'POST', class: "btn btn-primary col-xs-6 col-xs-offset-3" %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

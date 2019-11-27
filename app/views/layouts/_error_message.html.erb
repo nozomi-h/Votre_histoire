@@ -1,0 +1,8 @@
+<% if form.errors.any? %>
+  <%= "#{form.errors.count}件のエラーがあります" %>
+  <% form.errors.full_messages.each do |message| %>
+    <ul style="color: red;">
+      <li style="list-style: none"><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>

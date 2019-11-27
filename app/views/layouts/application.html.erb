@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Votre histoire</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <%# パンくずリスト %>
+    <div class="container">
+      <p><%= breadcrumbs separator: "&rsaquo;"%></p>
+    </div>
+    <div class="body-container">
+    <%= yield %>
+    </div>
+
+    <%# フッター %>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ol>
+            <li>　OFFICIAL SNS</li>
+            <li>
+              &emsp;<i class="fab fa-facebook-f fa-lg"></i>
+              &emsp;<i class="fab fa-twitter fa-lg"></i>
+              &emsp;<i class="fab fa-instagram fa-lg"></i>
+              &emsp;<i class="fab fa-line fa-lg"></i>
+            </li>
+          </ol>
+          <ol></ol>
+          <ol></ol>
+          <ol>
+            <li>CONTACT</li>
+            <li>USER GUIDE</li>
+            <li>SIZE GUIDE</li>
+          </ol>
+          <ol>
+            <li>SHOP LIST</li>
+            <li>NEWS LETTER</li>
+            <li>FAQ</li>
+          </ol>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

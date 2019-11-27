@@ -1,0 +1,95 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'layouts/header' %>
+    </div>
+
+    <div class="col-xs-9">
+      <h2 class="shop_name">Votre histoire</h2>
+
+      <div class="space"></div>
+
+      <div class="title_cart">CONFIRMATION</div>
+
+      <%# breadcrumbs :carts_index %>
+
+      <div class="note">
+        <p>下記ご注文内容で送信してもよろしいでしょうか？<br>
+            よろしければ、「次へ」ボタンをクリックしてください。</p>
+      </div>
+
+      <div class="space"></div>
+
+      <table class="table-date">
+        <tr>
+          <th>ご注文商品</th>
+        </tr>
+      </table>
+
+      <table class="table_nomal table-bordered" width="100%">
+        <tr>
+          <th>商品写真</th>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>小計</th>
+        </tr>
+
+        <% @carts.each do |cart| %>
+          <tr>
+            <td width="20%"><%= attachment_image_tag cart.item, :image, size: '100x150', fallback: 'no_image.jpg' %></td>
+            <td width="40%"><%= cart.item.prodct_name %></td>
+            <% tax_included = cart.item.price * 1.10 %>
+            <td width="10%"><%= tax_included.round(0) %>円</td>
+            <% subtotal = tax_included %>
+            <td width="10%"><%= subtotal.round(0) %>円</td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <th colspan="3", style="text-align:right;">小計</th>
+          <%# subtotal += @carts.item.price * 1.10 %>
+          <td><%= (current_user.purchase_price * 1.10).round(0) %>円</td>
+        </tr>
+        <tr>
+          <th colspan="3", style="text-align:right;">送料</th>
+          <td>600円</td>
+        </tr>
+        <tr>
+          <th colspan="3", style="text-align:right;">合計</th>
+          <td><%= (current_user.purchase_price * 1.10 + 600).round(0) %>円</td>
+        </tr>
+      </table>
+
+      <div class="space"></div>
+
+      <div class="choice">
+        &emsp;ご注文者
+      </div>
+      <div class="method">
+        <%= current_user.last_name %><%= current_user.first_name %>
+        <%#%= @cart.address.delivery_last_name %><%#= @order.delivery_first_name %>
+      </div>
+
+      <div class="choice">
+        &emsp;お届け先
+      </div>
+      <div class="method">
+        <% address = current_user.addresses[params[:address].to_i] %>
+        <%= "#{address.prefecture + address.city_address + address.building}" %>
+      </div>
+
+      <div class="choice">
+        &emsp;お支払方法
+      </div>
+      <div class="method">
+        <%#= @order.payment_i18n %>
+        クレジットカード
+      </div>
+      <div class="user-edit">
+      <%= link_to "戻る", new_user_cart_path(current_user.id), class:'btn btn-default col-xs-4 col-xs-offset-1' %>
+      <%= link_to "次へ", orders_path, method: :post, class:'btn btn-default col-xs-4 col-xs-offset-2' %>
+      </div>
+    </div>
+  </div>
+</div>
