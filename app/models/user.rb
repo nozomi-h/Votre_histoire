@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   ## postal_codeは、数字３桁＋数字４桁の形式　　/\A(\d{7}|^$)\z/
   validates :postal_code, format: { with: /\A(\d{7}|^$)\z/ },
-    presence: true
+    presence: false
   # validates :prefecture
   validates :city_address,
     presence: true
