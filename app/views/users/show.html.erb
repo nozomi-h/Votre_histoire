@@ -49,8 +49,11 @@
         <%# --購入履歴をここに記述-- %>
           <table class="table-date table-bordered">
             <tr>
-              <th>▼<%= @orders.created_at.strftime('%Y/%m/%d') %>
+              <th>▼
+                <% if @orders.present? %>
+                <%= @orders.created_at.strftime('%Y/%m/%d') %>
                 最近のご注文<%= link_to '(詳細へ)', order_path(@orders.id) %>
+                <% end %>
               </th>
             </tr>
           </table>
@@ -63,8 +66,8 @@
               <th>配送状況</th>
             </tr>
 
-            <% %>
             <tr>
+              <% if @orders.present? %>
               <td width="20%"><%= @orders.order_number %></td>
               <td width="40%">
                 <% @orders.order_items.each do |order_item| %>
@@ -74,6 +77,7 @@
               <td width="10%"><%= @orders.purchase_price %> 円</td>
               <td width="20%">クレジットカード<%#= @orders.payment %></td>
               <td width="10%">配送中<%#%= @orders.status_i18n %></td>
+              <% end %>
             </tr>
         </table>
         <%# != とは、等しくない という意味 %>
