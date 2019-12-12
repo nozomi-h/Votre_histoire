@@ -19,8 +19,21 @@ class OrdersController < ApplicationController
     @carts = Cart.where(user_id: current_user.id)
     @order = Order.new
     @order.user = current_user
-    @order.address = @order.user.addresses.first
-    # @order.address = @order.user.carts.first.address
+    if @order.user.addresses.any?
+      @order.address = @order.user.addresses.first
+    else
+      @order.address = @order.user.addresses.build({
+        first_name: @order.user.first_name,
+        last_name: @order.user.last_name,
+        first_kana_name: @order.user.first_kana_name,
+        last_kana_name: @order.user.last_kana_name,
+        tel_number: @order.user.tel_number,
+        postal_code: @order.user.postal_code,
+        prefecture: @order.user.prefecture,
+        city_address: @order.user.city_address,
+        building: @order.user.building,
+      })
+    end
     @order.payment = 0
     @order.status = 0
     sum = 0
