@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
         postal_code: @order.user.postal_code,
         prefecture: @order.user.prefecture,
         city_address: @order.user.city_address,
-        building: @order.user.building,
+        building: @order.user.building || "",
       })
     end
     @order.payment = 0
