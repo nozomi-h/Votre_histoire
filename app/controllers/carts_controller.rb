@@ -14,6 +14,8 @@ class CartsController < ApplicationController
 
   def index
     @carts = Cart.where(user_id: current_user.id) ## whereで該当する商品全て持ってくる
+    @user = current_user
+    @addresses = @user.addresses
   end
 
   def create

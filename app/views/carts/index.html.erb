@@ -75,8 +75,11 @@
         &emsp;お届け先
       </div>
       <div class="method">
-        <% address = current_user.addresses[params[:address].to_i] %>
-        <%= "#{address.prefecture + address.city_address + address.building}" %>
+        <% if @addresses.present? %>
+          <%= "#{@addresses.first.prefecture + @addresses.first.city_address + @addresses.first.building}" %>
+        <% else %>
+          <%= "#{@user.prefecture + @user.city_address + @user.building}" %>
+        <% end %>
       </div>
 
       <div class="choice">
