@@ -53,9 +53,9 @@
         </div>
         <div class="method">
           <%#%= radio_button_tag "address", 0, checked: "checked" %> <%# checkedオプションは選択済みにする %>
-          <%#= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
           <div class="delivery-address">
-            <%= "#{@addresses.first.prefecture + @addresses.first.city_address + @addresses.first.building}" %>
+            <%= label_tag "#{@user.prefecture + @user.city_address + @user.building}" %>
+            <%#= "#{@addresses.first.prefecture + @addresses.first.city_address + @addresses.first.building}" %>
             <%# @addresses.each do |address| %>
               <%#= radio_button_tag "address", 1 %>
               <%#= label_tag "#{address.prefecture + address.city_address + address.building}" %><br>
