@@ -17,6 +17,5 @@ class Address < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A(\d{7}|^$)\z/ }
   validates :prefecture, presence: true
   validates :city_address, presence: true
-  validates :building, presence: true
 
 end
